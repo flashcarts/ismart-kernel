@@ -163,7 +163,7 @@ bool SD_ReadResponse(unsigned char *ppbuf,int len)
     int counterFA01=0;
     uint8 *p = (uint8 *)(&status);
     
-    //µÈ´ıÆğÊ¼±êÖ¾Î»ÖÃ
+    //ç­‰å¾…èµ·å§‹æ ‡å¿—ä½ç½®
     WAIT_CR &= ~0x0800;
     command[0]= 0x00;
     command[1]= 0x00;
@@ -274,7 +274,7 @@ bool SD_R2Response(unsigned char *ppbuf)
 }
 
 void SD_ReadLoop()
-{//¿Õ¶Á
+{//ç©ºè¯»
     uint32 i;
     uint32 target = 0x80;
     WAIT_CR &= ~0x0800;
@@ -324,7 +324,7 @@ bool wait_SD()
 
 bool SD_WaitOK()
 {
-    //Õâ¶Î´úÂë¡­¡­Ã²ËÆÎŞÓÃ
+    //è¿™æ®µä»£ç â€¦â€¦è²Œä¼¼æ— ç”¨
     uint32 status ;
     WAIT_CR &= ~0x0800;
     uint8 command[8];
@@ -350,7 +350,7 @@ bool SD_ReadData(unsigned char *ppbuf, int len,int wait)
     uint32 target = 512;
     uint32 status ;
  
-    //µÈ´ıÆğÊ¼±êÖ¾Î»ÖÃ
+    //ç­‰å¾…èµ·å§‹æ ‡å¿—ä½ç½®
     
     command[0]= 0x00;
     command[1]= 0x00;
@@ -370,7 +370,7 @@ bool SD_ReadData(unsigned char *ppbuf, int len,int wait)
             return  false;
         }
     }while(status & 0x000000FF);
-    //¶Á512 ByteÊı¾İ
+    //è¯»512 Byteæ•°æ®
     WAIT_CR &= ~0x0800;
   
     command[0]= 0x00;
@@ -478,7 +478,7 @@ void SD_WriteData(unsigned char *ppbuf, int len,int wait)
         status = Mart_Read4BYTE(command);
     }while(status & 0x00000001);
 
-//¶ÁCRC×´Ì¬
+//è¯»CRCçŠ¶æ€
     WAIT_CR &= ~0x0800;
     command[0]= 0x00;
     command[1]= 0x00;
@@ -551,7 +551,7 @@ void SD_WriteData_slow(unsigned char *ppbuf, int len,int wait)
         status = Mart_Read4BYTE(command);
     }while(status & 0x00000001);
 
-//¶ÁCRC×´Ì¬
+//è¯»CRCçŠ¶æ€
     WAIT_CR &= ~0x0800;
     command[0]= 0x00;
     command[1]= 0x00;
@@ -588,7 +588,7 @@ bool    SD_WriteSingleBlock(unsigned int address , unsigned char *ppbuf, int len
     SD_SendCommand(24,address); 
     SD_R16Response(pres); 
 
-    //ÕâÀïÊÇËæ±ã¼ÓÒ»¸ö¶Á£¬½â¾öÊ±¼äÎÊÌâ
+    //è¿™é‡Œæ˜¯éšä¾¿åŠ ä¸€ä¸ªè¯»ï¼Œè§£å†³æ—¶é—´é—®é¢˜
     uint8 command[8];   
     command[0]= 0x00;
     command[1]= 0x00;
@@ -610,7 +610,7 @@ bool  WaitCmd_return00()
 {
     uint32 loop= 8;
     uint8 command[8];
-    //µÈ´ıÆğÊ¼±êÖ¾Î»ÖÃ
+    //ç­‰å¾…èµ·å§‹æ ‡å¿—ä½ç½®
     WAIT_CR &= ~0x0800;
     command[0]= 0x00;
     command[1]= 0x00;
@@ -671,7 +671,7 @@ bool SD_initial()
  
          _consolePrintf("before cmd8 , press to continue \n");
          presskey();
-         //·¢ËÍCMD8£¬¼ì²âSDHC
+         //å‘é€CMD8ï¼Œæ£€æµ‹SDHC
         SD_SendCommand(8,0x1AA);
         SD_R16Response(pres);
         _consolePrintf("responde 0[%x] 1[%x] 5[%x] \n",pres[0],pres[1],pres[5]);
@@ -688,7 +688,7 @@ bool SD_initial()
         //SD_SendCommand(0,0);
         //WaitCmd_return00();//add 2008-12-16
 
-        //SD¿¨
+        //SDå¡
         SD_SendCommand(55,0);   
         ret = SD_R16Response(pres);   
         if(pres[0]!=55)
@@ -753,7 +753,7 @@ bool SD_initial()
     else
     {
         _consolePrintf("enter SDHC process \n");
-        //SDHC¿¨
+        //SDHCå¡
         u32 retry = 0;
          delay(0x1000);
         SD_SendCommand(55,0);

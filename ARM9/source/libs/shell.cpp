@@ -252,12 +252,12 @@ FAT_FILE* Shell_FAT_fopen_Language_chrglyph(void)
     
     if(GetKoreanFlg())
     {
-    	//ÊÇº«ÎÄ
+    	//æ˜¯éŸ©æ–‡
     	snprintf(fullfn,256,DefaultDataPath FontKorean "/" FontLibName);  
     }
     else if(GetFrenchFlg())
     {
-    	//ÊÇ·¨ÎÄ
+    	//æ˜¯æ³•æ–‡
     	snprintf(fullfn,256,DefaultDataPath FontFrench "/" FontLibName); 
     }
     else
@@ -278,7 +278,7 @@ FAT_FILE* Shell_FAT_fopen_Language_chrglyph(void)
 
 FAT_FILE* Shell_FAT_fopen_Language_messages(void)
 {
-	//´ò¿ªÓïÑÔĞÅÏ¢ÎÄ¼ş
+	//æ‰“å¼€è¯­è¨€ä¿¡æ¯æ–‡ä»¶
 	    static char fullfn[256];
 	    TProcState *CurProcState;
 	    CurProcState = &ProcState;
@@ -309,19 +309,19 @@ FAT_FILE* Shell_FAT_fopen_Language_messages(void)
 	    
 	    if(!memcmp(MulLangListFile[CurProcState->SetupW.WhichL].Filename,"KOREAN.INI",10))
 	    {
-	    	//ÊÇº«ÎÄ
+	    	//æ˜¯éŸ©æ–‡
 	    	SetKoreanFlg();
 	    	ClearFrenchFlg();
 	    }	    
 	    else if(!memcmp(MulLangListFile[CurProcState->SetupW.WhichL].Filename,"SWEDISH.INI",11))
 	    {
-	    	//ÊÇÈğµäÎÄ
+	    	//æ˜¯ç‘å…¸æ–‡
 	    	SetFrenchFlg();
 	    	ClearKoreanFlg();
 	    }
 	    else if(!memcmp(MulLangListFile[CurProcState->SetupW.WhichL].Filename,"BRAZIL.INI"/*"PORTUGAL.INI"*/,10))
 	    {
-	    	//ÊÇÆÏÌÑÑÀÎÄ
+	    	//æ˜¯è‘¡è„ç‰™æ–‡
 	    	SetFrenchFlg();
 	    	ClearKoreanFlg();
 	    }
@@ -468,7 +468,7 @@ void Shell_FAT_ReadMSP(const char *fn,void **pbuf,s32 *psize)
 
 void Shell_ShellSet_Init(void)
 {
-  MemSet8CPU(0,&ShellSet,sizeof(TShellSet)); // ƒNƒ‰ƒX‚ª“ü‚Á‚Ä‚È‚¢‚Ì‚Å0‚Å–„‚ß‚Ä‘S‚ÄFalse‚É‚·‚éB
+  MemSet8CPU(0,&ShellSet,sizeof(TShellSet)); // ã‚¯ãƒ©ã‚¹ãŒå…¥ã£ã¦ãªã„ã®ã§0ã§åŸ‹ã‚ã¦å…¨ã¦Falseã«ã™ã‚‹ã€‚
    
   const char *pfn;
   

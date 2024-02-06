@@ -28,11 +28,11 @@ void glDefaultMemorySetting(void)
 
 void glDefaultClassCreate(void)
 {
-    //´´½¨Ö÷ÆÁµÄÏÔÊ¾Ä£Ê½£¬Ë«ÏÔÊ¾Ä£Ê½£¬BG3 ,BG2 , »º³åÄ£Ê½¿ÉÒÔ½øĞĞÇĞ»»ÏÔÊ¾
+    //åˆ›å»ºä¸»å±çš„æ˜¾ç¤ºæ¨¡å¼ï¼ŒåŒæ˜¾ç¤ºæ¨¡å¼ï¼ŒBG3 ,BG2 , ç¼“å†²æ¨¡å¼å¯ä»¥è¿›è¡Œåˆ‡æ¢æ˜¾ç¤º
     pScreenMain=new CglScreenMain();
-    //´´½¨Ö÷ÆÁµÄOVERLay £¬sprite µÄÉèÖÃºÍÏÔÊ¾,Ò»¹²12¸ösprite
+    //åˆ›å»ºä¸»å±çš„OVERLay ï¼Œsprite çš„è®¾ç½®å’Œæ˜¾ç¤º,ä¸€å…±12ä¸ªsprite
     pScreenMainOverlay=new CglScreenMainOverlay();
-    //´´½¨×ÓÆÁµÄÏÔÊ¾,Í¬OVERLAYÒ»ÑùÒ²ÊÇSprite
+    //åˆ›å»ºå­å±çš„æ˜¾ç¤º,åŒOVERLAYä¸€æ ·ä¹Ÿæ˜¯Sprite
     pScreenSub=new CglScreenSub();
 }
 

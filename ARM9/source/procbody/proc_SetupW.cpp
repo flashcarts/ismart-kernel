@@ -84,7 +84,7 @@ void Switch_skin()
 	//StrConvert_Ank2Unicode(DefaultDataPath "/" SkinFileName1,DefaultFilenameW);
 	Skin_SetFilename(DefaultFilenameW);
 	
-	////////±£ÁôÆ¤·ôµÄÎÄ¼þÃû
+	////////ä¿ç•™çš®è‚¤çš„æ–‡ä»¶å
     const char* pfullalias=ConvertFullPath_Ansi2Alias(DefaultDataPath"/fpath.bin");        
     FAT_FILE* FileHandle2 = FAT2_fopen_AliasForWrite(pfullalias);
     if(FileHandle2 != NULL)
@@ -700,7 +700,7 @@ static void DrawOnlineHelp(void)
 	}
 	
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor(SYSColor1);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  
+	pTmpBM->SetFontTextColor(SYSColor1);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  
     
 	//pbm2= ScrollBarAlpha_GetSkin(EFLSA_Icon_sun);
    // pbm2->BitBlt(pTmpBM,0,0);
@@ -801,7 +801,7 @@ static void UpdataSetupW(void)
 	}
 	
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor(SYSColor1);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  
+	pTmpBM->SetFontTextColor(SYSColor1);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  
     
 	//pbm2= ScrollBarAlpha_GetSkin(EFLSA_Icon_sun);
    // pbm2->BitBlt(pTmpBM,0,0);

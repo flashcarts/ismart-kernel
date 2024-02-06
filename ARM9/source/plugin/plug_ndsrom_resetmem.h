@@ -298,7 +298,7 @@ clearDTCM_loop_I
     cmp		r12,#2
     beq		boot_slot2
                 
-//;;;;;;;;;;;;;;;;;;;;;;;;;;;;льйБ
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;Г┴╧Ф╝┼
     ldr     r3,=0x2330000
     stmia   r3,{r10,r11}
     ldr     r3,=0x2330800
@@ -379,7 +379,7 @@ CODE_IN_ITCM void MI_StopDma(uint32 dmaNo)
 
 CODE_IN_ITCM /*static*/ void resetMemory1_ARM9 (void) 
 {
-    //уБ╦Ж╩А╣╪жбфад╩ЁЖожр╩п╘ндвжЁЖож
+    //Х©≥Д╦╙Д╪ Е╞╪Х┤╢Е╠▐Е╧∙Е┤╨Г▌╟Д╦─Д╨⌡Ф√┤Е╜≈Е┤╨Г▌╟
 	for (u32 i=0; i<32*1024; i+=4) {
 	}
 
@@ -391,7 +391,7 @@ CODE_IN_ITCM /*static*/ void resetMemory1_ARM9 (void)
 		TIMER_CR(i) = 0;
 		TIMER_DATA(i) = 0;
 	}
-	//ох╧ь╠уотй╬
+	//Е┘┬Е┘ЁИ≈╜Ф≤╬Г╓╨
     DISPLAY_CR = 0 ;
     SUB_DISPLAY_CR = 0 ;
 

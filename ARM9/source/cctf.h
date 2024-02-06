@@ -4,7 +4,7 @@
 
 // Clear type font lib.
 
-// �_�C���N�g�f�B�X�N�A�N�Z�X���N���X�Ɨ��ł͂Ȃ��̂ŁActf�t�@�C����2�ȏ㓯���ɊJ���Ȃ����ƁB
+// ダイレクトディスクアクセスがクラス独立ではないので、ctfファイルを2つ以上同時に開かないこと。
 
 #include "unicode.h"
 
@@ -18,7 +18,7 @@ enum ECTF_DisplayFormat {ECTFDF_RGB,ECTFDF_BGR};
 
 #define CTF_FontCacheMax (1024)
 
-#define CTF_FontDataMaxSizeByte (272) // �ő�T�C�Y�̓t�H���g�t�@�C���쐬���Ƀ`�F�b�N���邱��
+#define CTF_FontDataMaxSizeByte (272) // 最大サイズはフォントファイル作成時にチェックすること
 
 typedef struct {
   u16 uidxs[CTF_FontCacheMax];

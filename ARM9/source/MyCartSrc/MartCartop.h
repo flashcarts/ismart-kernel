@@ -51,11 +51,11 @@
         //3 in 1
         #define FlashBase		0x08000000
 
-        #define	FlashLoaderOffSet 	0x00040000 //留出2Mbit 空间存放3in1  loader
-        #define TotalGbaGameAddr  0x00030000  //存储rom 个数
+        #define	FlashLoaderOffSet 	0x00040000 //鐣欏嚭2Mbit 绌洪棿瀛樻斁3in1  loader
+        #define TotalGbaGameAddr  0x00030000  //瀛樺偍rom 涓暟
         #define GotoGBAFirstAddr  0x00030005
-        #define GbaGameInfoAddr	0x0030010  // 存储rom 信息
-        #define GbaGameFilenameAddr 0x3a000 //存储rom 别名
+        #define GbaGameInfoAddr	0x0030010  // 瀛樺偍rom 淇℃伅
+        #define GbaGameFilenameAddr 0x3a000 //瀛樺偍rom 鍒悕
 
         #define _GoldenEnable	0x0A000400
         #define _GoldenSaver	0x0A000200

@@ -5,7 +5,7 @@ u16 PAD_Read(void)
 {
     IPC6->RequestUpdateIPC=true;
     u16 key9 = *(vu16 *)0x04000130 ;
-    //ÐèÒªÔÚreleaseÊ±Îª1£¬ °´ÏÂÎª 0 ; arm7¸ÕºÃÏà·´£¬ËùÒÔÐèÒª°´Î»È¡·´
+    //éœ€è¦åœ¨releaseæ—¶ä¸º1ï¼Œ æŒ‰ä¸‹ä¸º 0 ; arm7åˆšå¥½ç›¸åï¼Œæ‰€ä»¥éœ€è¦æŒ‰ä½å–å
     u16 key7 = (((~IPC6->buttons) & 0x3)<<10)|(((~IPC6->buttons) & IPC_PEN_DOWN)<<6) ;
     return (u16)(( key9 | key7 ) ^ PAD_ALL_MASK);
 }

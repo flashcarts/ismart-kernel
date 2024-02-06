@@ -23,7 +23,7 @@ HybridFilter_Shift EQU 10
   strb $reg_src,[$reg_dst],#1
   MEND
 
-;//  bkpt 0 // ƒfƒoƒbƒO—pƒuƒŒ[ƒNƒ|ƒCƒ“ƒgİ’è
+;//  bkpt 0 // ãƒ‡ãƒãƒƒã‚°ç”¨ãƒ–ãƒ¬ãƒ¼ã‚¯ãƒã‚¤ãƒ³ãƒˆè¨­å®š
   
   push {r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}
   
@@ -696,7 +696,7 @@ REG4_tmp RN r4
 ;  // -----------------------------------------------------
 Label_loop_end
   
-;//  bkpt 0 // ƒfƒoƒbƒO—pƒuƒŒ[ƒNƒ|ƒCƒ“ƒgİ’è
+;//  bkpt 0 // ãƒ‡ãƒãƒƒã‚°ç”¨ãƒ–ãƒ¬ãƒ¼ã‚¯ãƒã‚¤ãƒ³ãƒˆè¨­å®š
   
   add sp,#StackSize
   

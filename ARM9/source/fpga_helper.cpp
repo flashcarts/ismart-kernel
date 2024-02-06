@@ -258,14 +258,14 @@ bool FPGA_Start(void *pbuf,u32 size)
 	
 	ds_fpga_bus_init();
 
-	// FPGA‚ğƒRƒ“ƒtƒBƒOƒŒ[ƒVƒ‡ƒ“‚·‚é
+	// FPGAã‚’ã‚³ãƒ³ãƒ•ã‚£ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã™ã‚‹
 	_consolePrintf("FPGA CONFIG\n");
 	
 	if(ds_fpga_configration((u8*)pbuf,size)!=FPGA_NO_ERR) return(false);
 	
 	_consolePrintf("INIT=%d, DONE=%d\n",GET_FPGA_INIT(),GET_FPGA_DONE());
 	
-	// FPGA RING BUF‚ÌÄ¶‚ğŠJn‚·‚é
+	// FPGA RING BUFã®å†ç”Ÿã‚’é–‹å§‹ã™ã‚‹
 	if(GET_FPGA_DONE()==false) return(false);
   
 	return(true);

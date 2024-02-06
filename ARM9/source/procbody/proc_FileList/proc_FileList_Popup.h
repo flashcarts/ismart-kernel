@@ -14,7 +14,7 @@ static void Popup_Free(void)
   pScreenMainOverlay->SetVisible_for_LeftTop128x64(false);
 }
 
-static void Popup_VsyncUpdate(u32 VsyncCount) // (u32)-1‚Åí‚É‰B‚·
+static void Popup_VsyncUpdate(u32 VsyncCount) // (u32)-1ã§å¸¸ã«éš ã™
 {
   if(Popup_TimeoutVSync==0) return;
   

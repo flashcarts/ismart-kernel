@@ -102,7 +102,7 @@ void BootRomProgress(int iCnt,int flg)
     CglCanvas *pTmpBM=new CglCanvas(NULL,ScreenWidth,ScreenHeight,pf15bit);
 	pScreenSub->pCanvas->BitBltFullBeta(pTmpBM);
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor(ColorTable.ZV_SYSTEM.SYS_Color1);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  	
+	pTmpBM->SetFontTextColor(ColorTable.ZV_SYSTEM.SYS_Color1);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  	
 	
 	CglTGF * pbm2= BootRomAlpha_GetSkin(EBRSA_BootRomBG);
 	pbm2->BitBlt(pTmpBM,16,66);
@@ -172,7 +172,7 @@ CODE_IN_ITCM void HomeBrewRebootITCM(bool bMidstage)
     IPC6->RESET=RESET_Commercial;
 
 #define _REG_WAIT_CR (*(vuint16*)0x04000204)
-   _REG_WAIT_CR|=1 << 7; //0x80 arm7 gbaslotÈ¨ÏŞ
+   _REG_WAIT_CR|=1 << 7; //0x80 arm7 gbaslotæƒé™
    
 	Mart_DisableSpiWrite();//must use this function,if not this is dangerous for card!
    u32 DLDI_section_start_address_ITCM = DLDI_section_start_address;
@@ -206,7 +206,7 @@ CODE_IN_ITCM void HomeBrewRebootITCM(bool bMidstage)
         *(vuint32*)0x27ffe34 = 0x2380000 ;
         lp_resetMemory2_ARM9(&IPC6->RESET_BootAddress,1,bMidstage);
     }
-    while(1); // ¸Æ¤Ó½Ğ¤·¸µ¤Ë¤Ïµ¢¤é¤Ê¤¤¡£
+    while(1); // é’™ã³å«ã—å‚…ã«ã¯è€½ã‚‰ãªã„ã€‚
 }
 static void RebootNDSHomeBrew(const char *pFilename)
 {		
@@ -231,7 +231,7 @@ static void RebootNDSHomeBrew(const char *pFilename)
     }
     u32 FileSize=FAT2_GetFileSize(FileHandle);
     /*if(FileSize <0x360000) 
-    {//·ÇEFS
+    {//éEFS
     	for(int kk=0;kk<0x20;kk++)
     		*((u32*)0x027FFF70+kk) = 0;
     }*/
@@ -359,9 +359,9 @@ static void BackupDLDIBody(const char *pFilename)
   FAT2_fclose(pf);
 */
     Mart_EnableSpiWrite();//enable it for flash write
-	//ÉèÖÃÕâ¸ö,ÈÃdldiµÄSDÔÚ³õÊ¼»¯µÄÊ±ºò,ÄÜ¹»È¡
-    dsCardi_WriteSram(0x7dfE0 , IsSDHC()); //  ¸ßNÎ»ÓĞĞ§À´Ë÷Òı
-    dsCardi_WriteSram(0x7dfE2 , 0); //  ¸ßNÎ»ÓĞĞ§À´Ë÷Òı
+	//è®¾ç½®è¿™ä¸ª,è®©dldiçš„SDåœ¨åˆå§‹åŒ–çš„æ—¶å€™,èƒ½å¤Ÿå–
+    dsCardi_WriteSram(0x7dfE0 , IsSDHC()); //  é«˜Nä½æœ‰æ•ˆæ¥ç´¢å¼•
+    dsCardi_WriteSram(0x7dfE2 , 0); //  é«˜Nä½æœ‰æ•ˆæ¥ç´¢å¼•
 
 	uint8 copy_arm7_code[] __attribute__ ((aligned (4))) = {
 	0x2c,0x00,0x8f,0xe2,0x0e,0x00,0xb0,0xe8,0x01,0x40,0xa0,0xe1,0x03,0x30,0x81,0xe0,
@@ -369,7 +369,7 @@ static void BackupDLDIBody(const char *pFilename)
 	0x00,0x00,0xa0,0xe3,0x00,0x10,0xa0,0xe3,0x00,0x20,0xa0,0xe3,0x00,0x30,0xa0,0xe3,
 	0x14,0xff,0x2f,0xe1,0x00,0x80,0x7f,0x03,0x40,0x00,0x38,0x02,0xf0,0x1f,0x00,0x00
 	};
-    //¼ì²âÎÄ¼şÊÇ·ñ´æÔÚ
+    //æ£€æµ‹æ–‡ä»¶æ˜¯å¦å­˜åœ¨
         //uint32 *pkStart = 0,*pkEnd = 0 ;
         FAT_FILE *FileHandle=FAT2_fopen_AliasForRead(pFilename);
         
@@ -496,7 +496,7 @@ void BootNDSROM(void)
 	_ShowLogHalt();
 }
 //######################################################
-//ITCMµÄÆô¶¯´úÂë
+//ITCMçš„å¯åŠ¨ä»£ç 
 CODE_IN_ITCM void rebootITCM(bool bMidstage)
 {
     REG_IME = IME_DISABLE;  // Disable interrupts
@@ -508,7 +508,7 @@ CODE_IN_ITCM void rebootITCM(bool bMidstage)
     IPC6->RESET=RESET_Commercial;
 
 #define _REG_WAIT_CR (*(vuint16*)0x04000204)
-   _REG_WAIT_CR|=1 << 7; //0x80 arm7 gbaslotÈ¨ÏŞ
+   _REG_WAIT_CR|=1 << 7; //0x80 arm7 gbaslotæƒé™
 
    /*//here check some value
    _consolePrintf("%x = %x\n",0x01FF7800,*(uint32*)0x01FF7800 ) ;
@@ -571,7 +571,7 @@ CODE_IN_ITCM void rebootITCM(bool bMidstage)
         SendError(0x1234);       
         lp_resetMemory2_ARM9(&IPC6->RESET_BootAddress,1,bMidstage);
     }
-    while(1); // ¸Æ¤Ó½Ğ¤·¸µ¤Ë¤Ïµ¢¤é¤Ê¤¤¡£
+    while(1); // é’™ã³å«ã—å‚…ã«ã¯è€½ã‚‰ãªã„ã€‚
 }
 //
 static bool CheckSaverSynPatch()
@@ -586,12 +586,12 @@ static bool CheckSaverSynPatch()
     pfullalias=ConvertFullPath_Ansi2Alias(DefaultDataPath"/miscneed.bin");
     FAT_FILE *pfile = FAT2_fopen_AliasForRead(pfullalias);
     if(pfile)
-    {//32×Ö½ÚÒ»¿é£¬ÓĞÀàĞÍ£¬ºÍÊı¾İ´¦Àí
+    {//32å­—èŠ‚ä¸€å—ï¼Œæœ‰ç±»å‹ï¼Œå’Œæ•°æ®å¤„ç†
         do
         {
             returnsize = FAT2_fread(readcache,1,0x20,pfile);
             int cmpsize =  ((u8*)readcache)[1] ;
-            if(*(u8*)readcache == 0x51) // ÀàĞÍ1 £¬±íÊ¾ĞèÒªÖ±´æÍ¬²½µÄÀàĞÍ
+            if(*(u8*)readcache == 0x51) // ç±»å‹1 ï¼Œè¡¨ç¤ºéœ€è¦ç›´å­˜åŒæ­¥çš„ç±»å‹
             {
                 if(!memcmp((char*)&readcache[4],pbuf,cmpsize))
                 {
@@ -599,7 +599,7 @@ static bool CheckSaverSynPatch()
                     break;
                 }
             }
-            if(*(u8*)readcache == 0x52) //ÀàĞÍ2£¬±íÊ¾Èí¸´Î»µØÖ·ĞèÒªÌØÊâÖ¸¶¨
+            if(*(u8*)readcache == 0x52) //ç±»å‹2ï¼Œè¡¨ç¤ºè½¯å¤ä½åœ°å€éœ€è¦ç‰¹æ®ŠæŒ‡å®š
             {
                 if(!memcmp((char*)&readcache[4],pbuf,cmpsize))
                 {
@@ -607,24 +607,24 @@ static bool CheckSaverSynPatch()
                     //while(*(vuint16*)0x04000130 != 0x3ff); 
                     dsCardi_WriteSram(0x7DFB0 , 0x5259);
                     dsCardi_WriteSram(0x7DFB2 , 0xF5A0);
-                    //Ğ´ÈëµØÖ·
+                    //å†™å…¥åœ°å€
                     dsCardi_WriteSram(0x7DFB4 , readcache[1]&0xFFFF);
                     dsCardi_WriteSram(0x7DFB6 , (readcache[1]>>16)&0xFFFF);
                     
-                    //´úÌæÍ·²¿ swi B
+                    //ä»£æ›¿å¤´éƒ¨ swi B
                     dsCardi_WriteSram(0x7DFB8 , readcache[2]&0xFFFF);
                     dsCardi_WriteSram(0x7DFBA , (readcache[2]>>16)&0xFFFF);
                     dsCardi_WriteSram(0x7DFBC , readcache[3]&0xFFFF);
                     dsCardi_WriteSram(0x7DFBE , (readcache[3]>>16)&0xFFFF);
                 }
             }
-            if(*(u8*)readcache == 0x53) //ÀàĞÍ2£¬±íÊ¾Èí¸´Î»µØÖ·ĞèÒªÌØÊâÖ¸¶¨
-            {//Èç¹ûĞèÒªÖ¸¶¨ÌØÊâÓÎÏ·ÀàĞÍ£¬´ËÀàĞÍ×îºÃ·ÅÇ°Ãæ
+            if(*(u8*)readcache == 0x53) //ç±»å‹2ï¼Œè¡¨ç¤ºè½¯å¤ä½åœ°å€éœ€è¦ç‰¹æ®ŠæŒ‡å®š
+            {//å¦‚æœéœ€è¦æŒ‡å®šç‰¹æ®Šæ¸¸æˆç±»å‹ï¼Œæ­¤ç±»å‹æœ€å¥½æ”¾å‰é¢
                 if(!memcmp((char*)&readcache[4],pbuf,cmpsize))
                 {
                     dsCardi_WriteSram(0x7DFB0 , 0x55AA);
                     dsCardi_WriteSram(0x7DFB2 , 0xF5A0);
-                    //Ğ´ÈëµØÖ·
+                    //å†™å…¥åœ°å€
                     dsCardi_WriteSram(0x7DFB4 , 1);
                     dsCardi_WriteSram(0x7DFB6 , 0);
                 }
@@ -650,7 +650,7 @@ void RebootCommercialNDSROM(const char *pFilename)
     }
     CheckNDSfile(pFilename);
     MemClearAllFreeBlocks();  
-    //read Cartridge Header to 0x27FFE00£¬´óĞ¡0x160 size
+    //read Cartridge Header to 0x27FFE00ï¼Œå¤§å°0x160 size
     uint32 *p2x = (uint32*)0x27FFE00 ;
     FAT2_fread(p2x,1,0x160,FileHandle);
     //check special
@@ -667,8 +667,8 @@ void RebootCommercialNDSROM(const char *pFilename)
     FAT2_fseek(FileHandle,*(s32*)0x27FFE30,SEEK_SET);
     FAT2_fread(p2x,4,(*(vuint32*)0x27FFE3C)>>2,FileHandle);
 
-    //ÕâÀïÖ®ËùÒÔÓÃCµØÖ·£¬ÊÇÒòÎªÔÚºóÃæĞèÒª·ÅÖÃÒ»¸ö²¹¶¡´úÂë£¬Bl 0x23XXXXXX
-    // bootGame.sÖĞ
+    //è¿™é‡Œä¹‹æ‰€ä»¥ç”¨Cåœ°å€ï¼Œæ˜¯å› ä¸ºåœ¨åé¢éœ€è¦æ”¾ç½®ä¸€ä¸ªè¡¥ä¸ä»£ç ï¼ŒBl 0x23XXXXXX
+    // bootGame.sä¸­
     pSave2_23XX = (uint32*)0x0230000C ;
     memset(pSave2_23XX,0,0x2000);
     GetSpecialSave((char*)0x27FFE00); //Special save
@@ -806,7 +806,7 @@ void RebootCommercialNDSROM(const char *pFilename)
     {      
         _consolePrintf("find debug.bin \n");
         WriteFat2_FPGA_SRAM(FileHandle,0x7DFE8,0);
-        //debug info address£¬ 231XXXX
+        //debug info addressï¼Œ 231XXXX
         dsCardi_WriteSram(0x7DFFC , 0);  
         dsCardi_WriteSram(0x7DFFE , 0x0231); 
 

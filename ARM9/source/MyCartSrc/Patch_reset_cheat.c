@@ -21,7 +21,7 @@ extern "C" void arm7_interrup();
 extern "C" void arm7_Readkey();
 extern "C" void copy_in_2();
 
-//¼´Ê±´æµµ
+//å³æ—¶å­˜æ¡£
 extern "C" void RTS_ReplaceIRQ_start(void) ;
 extern "C" void RTS_ReplaceIRQ_end(void);
 extern "C" void RTS_copy_in();
@@ -36,7 +36,7 @@ extern "C" void fix_data();
 extern "C" void is_softReset();
 extern "C" void b_arm7Reset_wait();
 
-//²¹¶¡¹ı³ÌÊ¹ÓÃµÄ´úÂë GamePatch.sÎÄ¼şÀïÃæ
+//è¡¥ä¸è¿‡ç¨‹ä½¿ç”¨çš„ä»£ç  GamePatch.sæ–‡ä»¶é‡Œé¢
 extern "C" void WriteDubugInfo(uint32 r0_result) ;
 extern "C" void WritePatchInfo(uint32 address , uint32 size , uint32* buffer);
 extern "C" void WritePatchInfo_4BYTE(uint32 address ,  uint32  data);
@@ -73,7 +73,7 @@ CODE_IN_ITCM static uint32* Find_FunctionStart_ARM(uint32 *pPoint)
 }
 //---------------------------------------------------------------------------
 CODE_IN_ITCM static void Find_CallARM(uint32 *Callto, uint32** plist, uint32 &listsize)
-{//Ñ°ÕÒ¶Ôº¯ÊıCallto µÄµ÷ÓÃ
+{//å¯»æ‰¾å¯¹å‡½æ•°Callto çš„è°ƒç”¨
     int k =0 ;
     uint32*pBf = Callto - 0x400 ;
     int bl_fc ,call_off;
@@ -107,7 +107,7 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	uint32 cheat_switch = A9_ReadSram(0x7DFC4);
 	uint32 RTS_switch = A9_ReadSram(0x7DFC8);
 	
-	if(cheat_switch || softreset_switch ) //Ö»´ò¿ª½ğÊÖÖ¸ 
+	if(cheat_switch || softreset_switch ) //åªæ‰“å¼€é‡‘æ‰‹æŒ‡ 
 	{
 		uint32 *pA7Patchinfo = (uint32*)A9_ReadSram(0x7DFCC) ;
 	    uint32 *parm7_interrup  = (uint32*)arm7_interrup;
@@ -139,8 +139,8 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	    }
 	    *(vuint32*)0x27FFF68 = return7;
 	    
-	    *irqHandler7 = arm7Patch_address;//Ìøµ½¹Ì¶¨µØÖ·
-        //±£´æarm7µÄÖĞ¶ÏÈë¿Ú,LRSSÊ¹ÓÃ
+	    *irqHandler7 = arm7Patch_address;//è·³åˆ°å›ºå®šåœ°å€
+        //ä¿å­˜arm7çš„ä¸­æ–­å…¥å£,LRSSä½¿ç”¨
         *(pA7Patchinfo) = (uint32)irqHandler7;
         *(pA7Patchinfo+1) = 4;
         *(pA7Patchinfo+2) = arm7Patch_address;
@@ -149,7 +149,7 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	    pA7_Start = (uint32*)0x2380000 ;
 	    do
 	    {
-	        //ËÑË÷µÚÒ»¸öbx  R1
+	        //æœç´¢ç¬¬ä¸€ä¸ªbx  R1
 	        if(((*pA7_Start & 0xFFFFFF00) == 0xe12FFF00)&&(!p238CopyFrom))
 	        {
 
@@ -161,11 +161,11 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	        }
 	        pA7_Start++;
 	    }while(1);
-	    /////ÓĞÒ»Ğ©ÌØÊâÇé¿ö
+	    /////æœ‰ä¸€äº›ç‰¹æ®Šæƒ…å†µ
 	    uint32 *pA7End_temp = pA7End - 0x20;
 	    do
 	    {
-	    	if(*pA7End_temp == 0x27E0000)//4786ÏµÁĞ
+	    	if(*pA7End_temp == 0x27E0000)//4786ç³»åˆ—
 	    	{
 	    		p238CopyFrom += *(pA7End_temp+1);
 	    		break;
@@ -176,7 +176,7 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	    	}
 	    	pA7End_temp++;	
 	    }while(pA7End_temp<pA7End);
-	    if(*(uint32*)0x2380010 == 0xE2823028) //Ã²ËÆÊÇiµÄÓÎÏ·
+	    if(*(uint32*)0x2380010 == 0xE2823028) //è²Œä¼¼æ˜¯içš„æ¸¸æˆ
 	    {
 	    	pA7End_temp = (uint32*)p238CopyFrom;
 	    	for(uint32 ii=0;ii<0x20;ii++)
@@ -194,9 +194,9 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
     		if((*pA7_Start == 0xE3A00701)&&(*(pA7_Start+2) == 0xE3E00000))
 	    	{
     			pA7_Reset = Find_FunctionStart_ARM(pA7_Start+2);
-	            if(RTS_switch)//Ê¹ÓÃ¼´Ê±´æµµ,Ìøµ½Ö±´æºóÃæµÄº¯Êı 
+	            if(RTS_switch)//ä½¿ç”¨å³æ—¶å­˜æ¡£,è·³åˆ°ç›´å­˜åé¢çš„å‡½æ•° 
 	            {
-	            	//ÈÃarm7ÖĞ¶ÏÌøµ½µÈ´ı
+	            	//è®©arm7ä¸­æ–­è·³åˆ°ç­‰å¾…
 	            	uint32 b_arm7Reset_wait_in_23FFxxx = ((pb_arm7Reset_wait - parm7_interrup)<<2) + arm7Patch_address;//arm7Patch_address;
 	            	uint32 arm7Reset_wait_in_37f8xx = A9_ReadSram(0x7DFAC)- p238CopyFrom + 0x37f8000 ;
 	            	
@@ -219,7 +219,7 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	             }
     			else
     			{
-			        //¼ÆËãresetÔÚ37f8ÖĞµÄµØÖ·
+			        //è®¡ç®—resetåœ¨37f8ä¸­çš„åœ°å€
 			        uint32  u37f8_reset = (uint32)(pA7_Reset) - p238CopyFrom + 0x37f8000 ;
 			        *(uint32*)fix_data = u37f8_reset;             
 				 	#ifdef yafeidebug           
@@ -236,7 +236,7 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	        pA7_Start++;  
 	    }while(pA7_Start<pA7End);
 	    if(!pA7_Reset)
-	    {//±íÊ¾ÎŞ·¨Ñ°ÕÒµ½RESETº¯ÊıÈë¿Ú,¶ÁÈ¡ÉèÖÃ
+	    {//è¡¨ç¤ºæ— æ³•å¯»æ‰¾åˆ°RESETå‡½æ•°å…¥å£,è¯»å–è®¾ç½®
 			#ifdef yafeidebug           
 	    	WriteDubugInfo((uint32)'2222') ;   
 			#endif
@@ -253,26 +253,26 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	                    L ++ ;
 	                    if(((*pRstemp&0xFFFF0000) == 0xE3A00000)&&((*(pRstemp-1)&0xFFFF0000) == 0x0))
 	                    {
-	                        //ÕÒµ½º¯ÊıÍ·
+	                        //æ‰¾åˆ°å‡½æ•°å¤´
 	                        uint32 *pFun[4] ;
 	                        uint32  numFun =0;
 	                        
 	                        Find_CallARM(pRstemp,pFun,numFun) ;
 	                        if(numFun)
 	                        {
-	                            //Í¨³££¬Õâ¸ö¾ÍÊÇ²éÕÒµ½µÄreset
+	                            //é€šå¸¸ï¼Œè¿™ä¸ªå°±æ˜¯æŸ¥æ‰¾åˆ°çš„reset
 	                            pA7_Reset = Find_FunctionStart_ARM(pFun[0]);
 	                            break;
 	                        }
 	                        else
-	                        {//ÕÒ²»µ½£¬ÊÇ37f8000 + XXXXµÄµØÖ·ĞÎÊ½
+	                        {//æ‰¾ä¸åˆ°ï¼Œæ˜¯37f8000 + XXXXçš„åœ°å€å½¢å¼
 	                        }
 	                    }
 	                        
 	                }while(L<0x40);
 	                
 	                
-	                //ÏòÉÏÑ°ÕÒµÄº¯Êı¿ªÊ¼
+	                //å‘ä¸Šå¯»æ‰¾çš„å‡½æ•°å¼€å§‹
 	                break;
 	            }
 	            pA7_Start ++ ;
@@ -312,11 +312,11 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	//#####################################################
 	if(softreset_switch)
 	{
-	    uint32 *pA9_Start = (uint32*)(*(uint32*)0x27FFE24) ; //¿ªÊ¼Ö´ĞĞ³ÌĞòµÄµØ·½
+	    uint32 *pA9_Start = (uint32*)(*(uint32*)0x27FFE24) ; //å¼€å§‹æ‰§è¡Œç¨‹åºçš„åœ°æ–¹
 	    uint32 *pStackSP = 0;
 	    uint32 *p1ff8XXX = 0 ;
 	    bool isDSihybrid = false;
-		//*(vuint32*)0x2000030 = 0x1; //Èí¸´Î»¿ª¹Ø±ê¼Ç
+		//*(vuint32*)0x2000030 = 0x1; //è½¯å¤ä½å¼€å…³æ ‡è®°
 	     
 	    do
 	    {
@@ -333,12 +333,12 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	        		p1ff8XXX = pA9_Start-2; 
 	        		do
 	        		{      		     			
-	        			if((*pA9_Start & 0xFFFFFF00 ) == 0xE12FFF00)//Ñ°ÕÒ BX R1
+	        			if((*pA9_Start & 0xFFFFFF00 ) == 0xE12FFF00)//å¯»æ‰¾ BX R1
 	        			{
 	        				uint32  pStack =  *(pA9_Start+1);
 	        				if((pStack &0xFF000000)==0x2000000)
 	        				{
-	        					//ÕâÀï¿ÉÄÜÊÇ0x27XXXXX »òÕßÊÇ23XXXXX
+	        					//è¿™é‡Œå¯èƒ½æ˜¯0x27XXXXX æˆ–è€…æ˜¯23XXXXX
 	        					if(pStack>0x2400000)
 	        						pStackSP = (uint32*)(pStack - 0x400000) ;
 	        					else
@@ -354,10 +354,10 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	    	}
 	    	pA9_Start ++ ;
 	    }while(1);
-	    //ÖĞ¶ÏÌæ»»´úÂëÆğÊ¼ºÍ½áÊøµÄµØÖ·
+	    //ä¸­æ–­æ›¿æ¢ä»£ç èµ·å§‹å’Œç»“æŸçš„åœ°å€
 	     uint32 * pA9irq_patch  = (uint32*)ReplaceIRQ_start_arm9;
 	     uint32 * pA9irq_patch_end  = (uint32*)ReplaceIRQ_end_arm9;
-	     {//Ê¹ÓÃ¼´Ê±´æµµ 
+	     {//ä½¿ç”¨å³æ—¶å­˜æ¡£ 
 	     	if(RTS_switch)
 	     	{
 	     		pA9irq_patch  = (uint32*)RTS_ReplaceIRQ_start;
@@ -371,11 +371,11 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	     }
 	     *(pA9irq_patch_end-1) = *p1ff8XXX ;
 	     
-	     //×¼±¸ËÑË÷£¬¼ÌĞøÏòÏÂËÑËØ
+	     //å‡†å¤‡æœç´¢ï¼Œç»§ç»­å‘ä¸‹æœç´ 
 	     uint32 pResetAdd = 0 ;
 	     uStart =(uint32*)0x2000800 ;
 	     
-	    if(A9_ReadSram(0x7DFB0) != 0xF5A05259)//²ÉÓÃÇ¿ÖÆÖ¸¶¨µØÖ·
+	    if(A9_ReadSram(0x7DFB0) != 0xF5A05259)//é‡‡ç”¨å¼ºåˆ¶æŒ‡å®šåœ°å€
 	    {
 	     do
 	     {
@@ -386,8 +386,8 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	         {
 	        	 if((res_378==0x2FFF680)/*&&((res_27ff&0xFF000000)==0x2700000)*/)
 	        	 {
-		             //ÕâÀïÕÒµ½OS_GetInitArenaHi º¯Êı£¬ĞèÒªĞŞ¸Ä mainram·ÖÅäÄÚ´æµÄ×î¸ßµØÖ·
-		             //´ÓÕâÀïÏòÉÏÑ°ÕÒ 
+		             //è¿™é‡Œæ‰¾åˆ°OS_GetInitArenaHi å‡½æ•°ï¼Œéœ€è¦ä¿®æ”¹ mainramåˆ†é…å†…å­˜çš„æœ€é«˜åœ°å€
+		             //ä»è¿™é‡Œå‘ä¸Šå¯»æ‰¾ 
 		             int size = 0x10 ;
 		             uint32 *p37f8 = uStart ;
 		             do
@@ -406,7 +406,7 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 		                     }
 		                     pResetAdd = fn_end ;
 		                     *p37f8 = fn_end - RESET_SSIZE ;
-		                     //µÇ¼ÇĞ´Èë
+		                     //ç™»è®°å†™å…¥
 		                     WritePatchInfo_4BYTE((uint32)p37f8,fn_end - RESET_SSIZE );
 		                     break;
 		                 }
@@ -423,8 +423,8 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	                 continue ;
 	             }
 
-	             //ÕâÀïÕÒµ½OS_GetInitArenaHi º¯Êı£¬ĞèÒªĞŞ¸Ä mainram·ÖÅäÄÚ´æµÄ×î¸ßµØÖ·
-	             //´ÓÕâÀïÏòÉÏÑ°ÕÒ 
+	             //è¿™é‡Œæ‰¾åˆ°OS_GetInitArenaHi å‡½æ•°ï¼Œéœ€è¦ä¿®æ”¹ mainramåˆ†é…å†…å­˜çš„æœ€é«˜åœ°å€
+	             //ä»è¿™é‡Œå‘ä¸Šå¯»æ‰¾ 
 	             int size = 0x10 ;
 	             uint32 *p37f8 = uStart ;
 	             do
@@ -438,7 +438,7 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	                     WriteDubugInfo((uint32)p37f8) ;
 	 					#endif
 	                     if((fn_end&0xFFFF0000)==0x023C0000)
-	                     {//0138/0183ÀàËÆµÄÓÎÏ·,ÊÇ23c0000,ÇÒÊÇ¹²ÓÃµÄ
+	                     {//0138/0183ç±»ä¼¼çš„æ¸¸æˆ,æ˜¯23c0000,ä¸”æ˜¯å…±ç”¨çš„
 	 					#ifdef yafeidebug
 	                     WriteDubugInfo((uint32)'C320') ;
 	                     WriteDubugInfo((uint32)fn_end) ;
@@ -453,7 +453,7 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	                     }
 	                     pResetAdd = fn_end ;
 	                     *p37f8 = fn_end - RESET_SSIZE ;
-	                     //µÇ¼ÇĞ´Èë
+	                     //ç™»è®°å†™å…¥
 	                     WritePatchInfo_4BYTE((uint32)p37f8,fn_end - RESET_SSIZE );
 	                     break;
 	                 }
@@ -463,19 +463,19 @@ CODE_IN_ITCM void PackSoftRest_and_cheat(uint32* uStart,uint32* uEnd)
 	            
 	             if(size<1)
 	             {
-	                 //±íÊ¾Õâ¸ö²»ÊÇ²ÉÓÃLDR R0£¬=0x23XXXXXĞÎÊ½
+	                 //è¡¨ç¤ºè¿™ä¸ªä¸æ˜¯é‡‡ç”¨LDR R0ï¼Œ=0x23XXXXXå½¢å¼
 	                 size = 0x40 ;
 	                 do
 	                 {
 	                     uint32 fn_end = *p37f8 ;
 	                     if(fn_end == 0xE3A0078F) //mov r0,#0x23C0000
-	                     {//Õâ¸öÔõÃ´ĞŞ¸Ä
+	                     {//è¿™ä¸ªæ€ä¹ˆä¿®æ”¹
 	 						#ifdef yafeidebug
 	                         WriteDubugInfo((uint32)'xc32') ;
 	                         WriteDubugInfo((uint32)p37f8) ;
 	 						#endif
 	                        
-	                         gl_BACKROR +=4 ; //ÏòºóÒÆ£¬·ÀÖ¹´íĞ´
+	                         gl_BACKROR +=4 ; //å‘åç§»ï¼Œé˜²æ­¢é”™å†™
 	                         uint32*p = (uint32*)gl_BACKROR ;
 	  
 	                         *p = 0xe59f0004 ;

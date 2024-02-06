@@ -242,10 +242,10 @@ uint32 Mart_ReadFirmwareVer()
 }
 uint32  Mart_SetHeaderCleanSRAMRead(u32 start ,u32 size)
 {
-    //ÏÈcopyÒ»¶Ë´úÂëµ½psramÖĞ£¬ÉèÖÃ´Ëº¯ÊıÊÇÎªÁË·ÂÔìÒ»Ğ©ÓÎÏ·½øĞĞ´úÂë¼ì²â·ÀµÁ°æ
-    // start ÊÇpsramµÄ¿ªÊ¼µØÖ·£¬sizeÊÇ copyµÄÊı¾İ´óĞ¡
-    // ÌØ±ğµÄ£¬ ¶ÁµÄµØÖ·<0x1000 ,Ö±½Ó¶ÁµØÖ· £¬Èç¹û¶ÁµÄµØÖ·>0x4000 ,Ôò¶ÁSRamµØÖ· - 0x3000
-    //´«ËÍÇ°µÄÊı¾İÊÇÔ­Ê¼µÄÊı¾İ£¬ÕâÀï½«Ëü×ª»»Ò»ÏÂ
+    //å…ˆcopyä¸€ç«¯ä»£ç åˆ°psramä¸­ï¼Œè®¾ç½®æ­¤å‡½æ•°æ˜¯ä¸ºäº†ä»¿é€ ä¸€äº›æ¸¸æˆè¿›è¡Œä»£ç æ£€æµ‹é˜²ç›—ç‰ˆ
+    // start æ˜¯psramçš„å¼€å§‹åœ°å€ï¼Œsizeæ˜¯ copyçš„æ•°æ®å¤§å°
+    // ç‰¹åˆ«çš„ï¼Œ è¯»çš„åœ°å€<0x1000 ,ç›´æ¥è¯»åœ°å€ ï¼Œå¦‚æœè¯»çš„åœ°å€>0x4000 ,åˆ™è¯»SRamåœ°å€ - 0x3000
+    //ä¼ é€å‰çš„æ•°æ®æ˜¯åŸå§‹çš„æ•°æ®ï¼Œè¿™é‡Œå°†å®ƒè½¬æ¢ä¸€ä¸‹
     uint8 cmd[8] ;
     u16 start_SPI = (start>>8)&0xFFFF ;
     u16 size_sram = (size >> 12)&0xFF ;
@@ -260,7 +260,7 @@ uint32  Mart_SetHeaderCleanSRAMRead(u32 start ,u32 size)
     return Mart_Read4BYTE(cmd);
 }
 uint32 Mart_FPGA_IDLO()
-{//04 01 xx xx ·µ»ØÖµ
+{//04 01 xx xx è¿”å›å€¼
     uint8 command[8];
     command[0]= 0x00;
     command[1]= 0x55;
@@ -378,7 +378,7 @@ uint32   ReadNorFlashID()
 			ID = 0x89168916;
 			return 0x89168916;
 		}
-		//¼ì²â256M¿¨
+		//æ£€æµ‹256Må¡
 		*((vuint16 *)(FlashBase+0x555*2)) = 0xAA ;
 		*((vuint16 *)(FlashBase+0x2AA*2)) = 0x55 ;
 		*((vuint16 *)(FlashBase+0x555*2)) = 0x90 ;

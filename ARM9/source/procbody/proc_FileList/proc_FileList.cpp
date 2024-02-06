@@ -80,7 +80,7 @@ static u32 BacklightTimeout;
 static bool isPressSetUpDownButton = false;
 static bool isPressCheatDownButton = false;  
 
-//Ã¿Ò»¸öÍ¼±ê¶ÔÓ¦
+//æ¯ä¸€ä¸ªå›¾æ ‡å¯¹åº”
 static bool isPress_LightControl = false;
 static bool isPress_ToggleControl = false;
 static bool isPress_HelpControl = false;
@@ -96,7 +96,7 @@ static bool isMS2 = false;
 static void Backlight_ResetTimer(void)
 {
   if(BacklightTimeout==0){
-    //2009.04.09 modify by mj È¡Ïû³¬Ê±½»»»ÉÏÏÂÆÁÄÚÈİ		
+    //2009.04.09 modify by mj å–æ¶ˆè¶…æ—¶äº¤æ¢ä¸Šä¸‹å±å†…å®¹		
 	if(ShellSet.SwapDisp==true) REG_POWERCNT|=POWER_SWAP_LCDS;
     IPC6->LCDPowerControl=LCDPC_ON_BOTH;
     ForceUpdateSubScreenFlag=true;
@@ -120,7 +120,7 @@ static void Backlight_VsyncUpdate(u32 VsyncCount)
   }
   
   if(BacklightTimeout==0){
-    //2009.04.09 modify by mj È¡Ïû³¬Ê±¹ØÖ÷ÆÁµçÔ´£¬ÒÔ¼°½»»»ÉÏÏÂÆÁÄÚÈİ
+    //2009.04.09 modify by mj å–æ¶ˆè¶…æ—¶å…³ä¸»å±ç”µæºï¼Œä»¥åŠäº¤æ¢ä¸Šä¸‹å±å†…å®¹
 	if(ShellSet.SwapDisp==true) REG_POWERCNT&=~POWER_SWAP_LCDS;
     IPC6->LCDPowerControl=LCDPC_ON_TOP;
 	//IPC6->LCDPowerControl=LCDPC_ON_BOTH;
@@ -554,7 +554,7 @@ static void CB_ExternalPowerAttach(void)
 {
   if(PanelClosePowerOffTimeOut!=0){
     if(BacklightTimeout==0){
-      //2009.04.09 modify by mj È¡Ïû³¬Ê±¹ØÖ÷ÆÁµçÔ´
+      //2009.04.09 modify by mj å–æ¶ˆè¶…æ—¶å…³ä¸»å±ç”µæº
       IPC6->LCDPowerControl=LCDPC_ON_BOTH;
       }else{
       IPC6->LCDPowerControl=LCDPC_ON_BOTH;
@@ -606,7 +606,7 @@ static bool isSkinUserExits()
 {
 }
 static NDSCheatInfo *FindSelectNDSCheatHeadInfo(void)
-{//ÔÚ¿âÎÄ¼şÖĞÑ°ÕÒÓÎÏ·½ğÊÖÖ¸Êı¾İÊÇ·ñ´æÔÚ
+{//åœ¨åº“æ–‡ä»¶ä¸­å¯»æ‰¾æ¸¸æˆé‡‘æ‰‹æŒ‡æ•°æ®æ˜¯å¦å­˜åœ¨
 	_consolePrintf("\n this");
 	u32 gl_RomCRC;
 	uint8 *bm=(uint8*)safemalloc(512);
@@ -624,7 +624,7 @@ static NDSCheatInfo *FindSelectNDSCheatHeadInfo(void)
 	FAT2_fread(bm,512,1,fh);
 	FAT2_fclose(fh);
 	{
-		 	//¼ÆËãÏÂCRC32
+		 	//è®¡ç®—ä¸‹CRC32
 	 	gl_RomCRC=crc32(0,bm,512);
 		gl_RomCRC = ~gl_RomCRC;
 	}
@@ -889,7 +889,7 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 		  TNDSFile *pndsf=&pNDSFiles[ScrollBar.SelectedIndex];
   		  if((pndsf->FileType!=ENFFT_UpFolder) && (pndsf->FileType!=ENFFT_Folder)  )
   		  {
-  			  //¼ÇÂ¼ÎÄ¼ş±ğÃû
+  			  //è®°å½•æ–‡ä»¶åˆ«å
   			  const UnicodeChar *pFullPathUnicode=ConvertFull_MargeFromSplit(ProcState.FileList.CurrentPathUnicode,pndsf->pFilenameUnicode);
    			  Unicode_Copy(CpyCutFileInfo.FileName,pndsf->pFilenameUnicode);
   			  Unicode_Copy(CpyCutFileInfo.SrcPath,ProcState.FileList.CurrentPathUnicode);
@@ -899,16 +899,16 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 	  }  
 	  else
 	  {
-		  //¿ªÊ¼¸´ÖÆÎÄ¼şµ½Ä¿µÄÎ»ÖÃ
+		  //å¼€å§‹å¤åˆ¶æ–‡ä»¶åˆ°ç›®çš„ä½ç½®
 		 //TNDSFile *pndsf=&pNDSFiles[ScrollBar.SelectedIndex];
 		  //const UnicodeChar *pFullPathUnicode=ConvertFull_MargeFromSplit(ProcState.FileList.CurrentPathUnicode,CpyCutFileInfo.FileName);
 		  //strcpy(CpyCutFileInfo.DesFullPathAlias,ConvertFullPath_Unicode2Alias(pFullPathUnicode));	
 		  Unicode_Copy(CpyCutFileInfo.DesPath,ProcState.FileList.CurrentPathUnicode);
-		  //²»ÊÇÍ¬Ò»Ä¿Â¼
+		  //ä¸æ˜¯åŒä¸€ç›®å½•
   		  if(!Unicode_isEqual_NoCaseSensitive(CpyCutFileInfo.DesPath,CpyCutFileInfo.SrcPath))
   		  {
   			  SetY2Flag();
-  			  //µ¯³öÉ¾³ı²Ëµ¥
+  			  //å¼¹å‡ºåˆ é™¤èœå•
   			  SetNextProc(ENP_CpyCut,EPFE_CrossFade);
   		  }		
 	  }
@@ -931,31 +931,31 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 		SetNextProc(ENP_SetupW,EPFE_CrossFade);*/
 	  if(!GetY1Flag())
 	  {
-		  ////¿ªÊ¼É¾³ıÎÄ¼şµ½Ä¿µÄÎ»ÖÃ
+		  ////å¼€å§‹åˆ é™¤æ–‡ä»¶åˆ°ç›®çš„ä½ç½®
 		  TNDSFile *pndsf=&pNDSFiles[ScrollBar.SelectedIndex];
 		  if((pndsf->FileType!=ENFFT_UpFolder) && (pndsf->FileType!=ENFFT_Folder)  )
 		  {
-			  //¼ÇÂ¼ÎÄ¼ş±ğÃû
+			  //è®°å½•æ–‡ä»¶åˆ«å
 			  const UnicodeChar *pFullPathUnicode=ConvertFull_MargeFromSplit(ProcState.FileList.CurrentPathUnicode,pndsf->pFilenameUnicode);
 		      Unicode_Copy(CpyCutFileInfo.FileName,pndsf->pFilenameUnicode);
 		      strcpy(CpyCutFileInfo.SrcFullPathAlias,ConvertFullPath_Unicode2Alias(pFullPathUnicode));		
 		      SetX1Flag();
-			  //µ¯³öÉ¾³ı²Ëµ¥
+			  //å¼¹å‡ºåˆ é™¤èœå•
 			  SetNextProc(ENP_CpyCut,EPFE_CrossFade);
 		  }
 	  }
 	  else
 	  {
-		  //¿ªÊ¼¼ôÇĞÎÄ¼şµ½Ä¿µÄÎ»ÖÃ
+		  //å¼€å§‹å‰ªåˆ‡æ–‡ä»¶åˆ°ç›®çš„ä½ç½®
 		  //TNDSFile *pndsf=&pNDSFiles[ScrollBar.SelectedIndex];
   		  //const UnicodeChar *pFullPathUnicode=ConvertFull_MargeFromSplit(ProcState.FileList.CurrentPathUnicode,CpyCutFileInfo.FileName);
   		 // strcpy(CpyCutFileInfo.DesFullPathAlias,ConvertFullPath_Unicode2Alias(pFullPathUnicode));	
   		  Unicode_Copy(CpyCutFileInfo.DesPath,ProcState.FileList.CurrentPathUnicode);			  
-		  //²»ÊÇÍ¬Ò»Ä¿Â¼
+		  //ä¸æ˜¯åŒä¸€ç›®å½•
 		  if(!Unicode_isEqual_NoCaseSensitive(CpyCutFileInfo.DesPath,CpyCutFileInfo.SrcPath))
 		  {
 			  SetX2Flag();
-			  //µ¯³öÉ¾³ı²Ëµ¥
+			  //å¼¹å‡ºåˆ é™¤èœå•
 			  SetNextProc(ENP_CpyCut,EPFE_CrossFade);
 		  }
 	  }
@@ -1254,7 +1254,7 @@ static void CB_MouseUp(s32 x,s32 y)
   						}
   						else
   						{
-  							//ÌáÊ¾È¥MoonShellÍøÕ¾ÏÂ MoonShell2 °ü
+  							//æç¤ºå»MoonShellç½‘ç«™ä¸‹ MoonShell2 åŒ…
   							isMS2 = true ;
   						}
   					}
@@ -1394,9 +1394,9 @@ static void DrawOnlineHelp(void)
    // CglTGF *pbm = ScrollBarAlpha_GetSkin(EFLSA_Icon_FILEINFO);
     //pbm->BitBlt(pb15->pCanvas,0,36);
     
-    //ÏÔÊ¾¼ÓÔØÊı¾İ
+    //æ˜¾ç¤ºåŠ è½½æ•°æ®
    // pb15->pCanvas->SetCglFont(pCglFontDefault);
-   // pb15->pCanvas->SetFontTextColor(0x8000);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«
+   // pb15->pCanvas->SetFontTextColor(0x8000);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²
     //pb15->pCanvas->TextOutUTF8(93,46,Lang_GetUTF8("IV_LoadMsg0"));
    // pb15->pCanvas->TextOutUTF8(93,46+20,Lang_GetUTF8("IV_LoadMsg1"));
     
@@ -1415,7 +1415,7 @@ static void DrawOnlineHelp(void)
   //  pb15->pCanvas->TextOutUTF8_StartMid(140,154+6,68,Lang_GetUTF8("FL_Button_Cheat")); 
           
 
-    /*//½«OnlineÏÔÊ¾È¥µô
+    /*//å°†Onlineæ˜¾ç¤ºå»æ‰
     pb15->pCanvas->SetCglFont(pCglFontDefault);
   
     u32 x=8;
@@ -1460,7 +1460,7 @@ static void CB_Start(void)
 {
 	//videoSub_SetShowLog(true);  
 	if(first)
-	{//Çå¿ÕÏÂÆÁÇĞ»»µ½ÉÏÆÁµÄÊ±ºò²ĞÏñ   
+	{//æ¸…ç©ºä¸‹å±åˆ‡æ¢åˆ°ä¸Šå±çš„æ—¶å€™æ®‹åƒ   
 		vuint16*pv_main = pScreenMain->pViewCanvas->GetVRAMBuf(); 
 		vuint16*pv_sub = pScreenSub->GetVRAMBuf();
 		MemSet16CPU(0x8000,(void*)pv_main,0x18000);
@@ -1532,7 +1532,7 @@ static void CB_Start(void)
     Clock_Refresh();
     Backlight_ResetTimer();
   
-    //ÎÄ¼şÁĞ±í³õÊ¼»¯
+    //æ–‡ä»¶åˆ—è¡¨åˆå§‹åŒ–
     FileList_Mode=ProcState.FileList.Mode;
     FileListInit();
     isPressMouseButton=false;
@@ -1574,11 +1574,11 @@ static void CB_VsyncUpdate(u32 VsyncCount)
 	//videoSub_SetShowLog(true);
 
 	
-	//ÓÃÓÚ×ÖÌå¹ö¶¯
+	//ç”¨äºå­—ä½“æ»šåŠ¨
 	static int cntFont=0;	
 	if(cntFont == 5)
 	{
-		//ÉèÖÃ¹ö¶¯±êÖ¾
+		//è®¾ç½®æ»šåŠ¨æ ‡å¿—
 		cntFont = 0;
 		SetloopFlg();
 		_consolePrintf("\n loopFlg=%d",GetloopFlg());
@@ -1839,7 +1839,7 @@ static void CB_End(void)
   
   Resume_Clear();
   
-    //ÕâÀï±»Ç¿ÖÆĞŞ¸Ä»ØÀ´
+    //è¿™é‡Œè¢«å¼ºåˆ¶ä¿®æ”¹å›æ¥
     //if(ShellSet.SwapDisp==true) REG_POWERCNT&=~POWER_SWAP_LCDS;
 }
 
@@ -1910,7 +1910,7 @@ void ProcFileList_SetCallBack(TCallBack *pCallBack)
 
 /*
     case ENFFT_Text: {
-      // ‚ ‚Æ‚Åƒƒ“ƒOƒ^ƒbƒv‚µ‚½‚Æ‚«‚ÌƒTƒuƒƒjƒ…[‚Å‘I‘ğ‚Å‚«‚é‚æ‚¤‚É‚·‚éB
+      // åå²å±å„˜å„åƒŒåƒåƒ¢åƒ¾åŸå¨å²å’åºåƒ’åƒ½å„Šåƒ¯å„ä¹•å±æ…–æˆ°å±å’å‚å‚›å†åµå¡å‚ä¸…
       ManualTextEncode=ETE_Auto;
       ManualTextEncode_OverrideFlag=false;
       return;

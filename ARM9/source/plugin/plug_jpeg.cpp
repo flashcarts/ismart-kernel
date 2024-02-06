@@ -44,18 +44,18 @@ static bool JpegGetMasterImageSize(FAT_FILE *FileHandle)
   
   FAT2_fseek(FileHandle,0,SEEK_SET);
   
-  // ƒGƒ‰[‚Ìƒnƒ“ƒhƒŠƒ“ƒO
+  // ã‚¨ãƒ©ãƒ¼ã®ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
   cinfo.err = jpeg_std_error(&jerr);
 
-  // ˆÈ~‚Ì jpeg ƒ‰ƒCƒuƒ‰ƒŠ“à‚ÅƒGƒ‰[‚ª¶‚¶‚½ê‡A‘Œ¹‚ğŠJ•ú‚µ‚ÄI‚í‚éB
+  // ä»¥é™ã® jpeg ãƒ©ã‚¤ãƒ–ãƒ©ãƒªå†…ã§ã‚¨ãƒ©ãƒ¼ãŒç”Ÿã˜ãŸå ´åˆã€è³‡æºã‚’é–‹æ”¾ã—ã¦çµ‚ã‚ã‚‹ã€‚
 
-  // \‘¢‘Ì‚Ì‰Šúİ’è
+  // æ§‹é€ ä½“ã®åˆæœŸè¨­å®š
   jpeg_create_decompress(&cinfo);
   
-  // ƒtƒ@ƒCƒ‹“ü—Íƒnƒ“ƒhƒ‹‚Ìİ’è
+  // ãƒ•ã‚¡ã‚¤ãƒ«å…¥åŠ›ãƒãƒ³ãƒ‰ãƒ«ã®è¨­å®š
   jpeg_stdio_src(&cinfo, (FILE*)FileHandle);
 
-  // ƒtƒ@ƒCƒ‹‚Ìî•ñƒwƒbƒ_‚Ì“Ç‚İ
+  // ãƒ•ã‚¡ã‚¤ãƒ«ã®æƒ…å ±ãƒ˜ãƒƒãƒ€ã®èª­è¾¼ã¿
   jpeg_read_header(&cinfo, TRUE);
   
   if(cinfo.progressive_mode==TRUE){
@@ -71,7 +71,7 @@ static bool JpegGetMasterImageSize(FAT_FILE *FileHandle)
   MasterImageWidth=cinfo.image_width;
   MasterImageHeight=cinfo.image_height;
   
-  // ‘¦‰ğ•ú
+  // å³è§£æ”¾
   jpeg_finish_decompress(&cinfo);
   jpeg_destroy_decompress(&cinfo);
   
@@ -86,18 +86,18 @@ static bool JpegStart(FAT_FILE *FileHandle)
   
   FAT2_fseek(FileHandle,0,SEEK_SET);
   
-  // ƒGƒ‰[‚Ìƒnƒ“ƒhƒŠƒ“ƒO
+  // ã‚¨ãƒ©ãƒ¼ã®ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
   cinfo.err = jpeg_std_error(&jerr);
 
-  // ˆÈ~‚Ì jpeg ƒ‰ƒCƒuƒ‰ƒŠ“à‚ÅƒGƒ‰[‚ª¶‚¶‚½ê‡A‘Œ¹‚ğŠJ•ú‚µ‚ÄI‚í‚éB
+  // ä»¥é™ã® jpeg ãƒ©ã‚¤ãƒ–ãƒ©ãƒªå†…ã§ã‚¨ãƒ©ãƒ¼ãŒç”Ÿã˜ãŸå ´åˆã€è³‡æºã‚’é–‹æ”¾ã—ã¦çµ‚ã‚ã‚‹ã€‚
 
-  // \‘¢‘Ì‚Ì‰Šúİ’è
+  // æ§‹é€ ä½“ã®åˆæœŸè¨­å®š
   jpeg_create_decompress(&cinfo);
   
-  // ƒtƒ@ƒCƒ‹“ü—Íƒnƒ“ƒhƒ‹‚Ìİ’è
+  // ãƒ•ã‚¡ã‚¤ãƒ«å…¥åŠ›ãƒãƒ³ãƒ‰ãƒ«ã®è¨­å®š
   jpeg_stdio_src(&cinfo, (FILE*)FileHandle);
 
-  // ƒtƒ@ƒCƒ‹‚Ìî•ñƒwƒbƒ_‚Ì“Ç‚İ
+  // ãƒ•ã‚¡ã‚¤ãƒ«ã®æƒ…å ±ãƒ˜ãƒƒãƒ€ã®èª­è¾¼ã¿
   jpeg_read_header(&cinfo, TRUE);
   
   cinfo.scale_num=1;
@@ -111,7 +111,7 @@ static bool JpegStart(FAT_FILE *FileHandle)
     return(false);
   }
 
-  // ‰ğ“€‚ÌŠJn
+  // è§£å‡ã®é–‹å§‹
   jpeg_start_decompress(&cinfo);
 
   imgWidth=cinfo.image_width/ScalingFactor;

@@ -183,7 +183,7 @@ static void LoadDefaultFont(void)
 
 static void LangInitAndLoadFont(void)
 {
-    //language.set£¬
+    //language.setï¼Œ
     Shell_FAT_fopen_LanguageInit();
     //chrglyph /moonshl2/language/chrglyph.936
     FAT_FILE *pf=Shell_FAT_fopen_Language_chrglyph();
@@ -367,10 +367,10 @@ static __attribute__ ((noinline)) void main_ins_start(void)
         }
     }
     SetARM9_REG_WaitCR();
-    REG_POWERCNT = POWER_ALL_2D; // | POWER_SWAP_LCDS; // SWAP‚·‚é‚Æƒtƒ@ƒCƒ‹ƒŠƒXƒg‚ª‰º
+    REG_POWERCNT = POWER_ALL_2D; // | POWER_SWAP_LCDS; // SWAPã™ã‚‹ã¨ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆãŒä¸‹
     atype_init();
   
-    //DTCM ×îºóµÄ128×Ö½Ú±£Áô ,ÒòÎªDTCM ÓÃ×÷SP¼´¶ÑÕ»
+    //DTCM æœ€åçš„128å­—èŠ‚ä¿ç•™ ,å› ä¸ºDTCM ç”¨ä½œSPå³å †æ ˆ
     pDTCMEND=(u32*)&dtcmend;
     pDTCMEND+=128/4;
     {
@@ -1003,7 +1003,7 @@ static __attribute__ ((noinline)) void mainloop_ins_start(void)
     Sound_Init();    
     Splash_Update();
 
-    //set¡°/¡±
+    //setâ€œ/â€
     UnicodeChar *pcpu=ProcState.FileList.CurrentPathUnicode;
     const char *pafn=StrConvert_Unicode2Ank_Test(pcpu);
     _consolePrintf("Check current path. [%s]\n",pafn);

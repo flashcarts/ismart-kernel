@@ -314,7 +314,7 @@ static void make_coltbl9(ECTF_DisplayFormat DisplayFormat)
 
 void CCTF::DrawFont_Fast(CglCanvas *pcan,int x,int y,UnicodeChar wch)
 {
-  // ğŒF‰¡ƒTƒCƒY256pixels, ”wŒiF0xffff, •¶šF0x0000.
+  // æ¡ä»¶ï¼šæ¨ªã‚µã‚¤ã‚º256pixels, èƒŒæ™¯è‰²0xffff, æ–‡å­—è‰²0x0000.
   
   const u32 fontwidth=pWidthsTable[wch];
   
@@ -357,7 +357,7 @@ void CTF_DrawFont_Fast2_asm(u32 *pcoltbl9,const u16 *pfontdata,u32 fontwidth,u16
 
 void CCTF::DrawFont_Fast2(CglCanvas *pcan,int x,int y,UnicodeChar wch)
 {
-  // ğŒF‰¡ƒTƒCƒY256pixels, ”wŒiF0xffff, •¶šF0x0000.
+  // æ¡ä»¶ï¼šæ¨ªã‚µã‚¤ã‚º256pixels, èƒŒæ™¯è‰²0xffff, æ–‡å­—è‰²0x0000.
   
   _consolePrintf("Fatal error: Deleted CCTF::DrawFont_Fast2 function.\n");
   ShowLogHalt();
@@ -404,7 +404,7 @@ void CCTF::TextOutW(const int x,const int y,const UnicodeChar *str)
   int dx=x,dy=y;
   
   if((CTF_FontPadding==1)&&(canw==256)){
-    // ƒtƒHƒ“ƒg‚ªd‚È‚é‚Æ”’”wŒiÅ“K‰»‚ª‹w‚É‚È‚é‚Ì‚ÅCTF_FontPadding‚Í1‚¾‚¯‘Î‰B
+    // ãƒ•ã‚©ãƒ³ãƒˆãŒé‡ãªã‚‹ã¨ç™½èƒŒæ™¯æœ€é©åŒ–ãŒä»‡ã«ãªã‚‹ã®ã§CTF_FontPaddingã¯1ã ã‘å¯¾å¿œã€‚
     while(*str!=0){
       UnicodeChar wch=*str++;
       int w=GetCharWidth(wch);

@@ -2,40 +2,40 @@
 #define ards_h
 
 /*
-'ÎÄ¼þµÄ1-12×Ö½ÚÊÇ¹Ì¶¨ÄÚÈÝ
-'ÎÄ¼þµÄ13-15×Ö½ÚÓ¦¸ÃÊÇ¸Ã¿âµÄ°æ±¾ºÅ£¬1.0Îª£º00 01 00 00
-'ºóÃæÊÇÊý¾Ý¿âÃèÊö×Ö·û´®
-'ÓÎÏ·ÁÐ±í´Ó100h¿ªÊ¼£¬½á¹¹Îª£ºÒ»ÌõÐÅÏ¢4¸öDWORLD£¬·Ö±ðÊÇ£ºGameCode¡¢GameCRC¡¢½ðÊÖÖ¸¿ªÊ¼µØÖ·¡¢±£Áô
-'ÓÎÏ·ÁÐ±í½áÊø±êÖ¾Îª£ºÉÏÊö4¸ö×Ö¶Î¶¼Îª0
-'Ã¿¸öÓÎÏ·µÄ½ðÊÖÖ¸Êý¾Ý¸ñÊ½£º
-'Ê×ÏÈÊÇÒ»¸ö×Ö·û´®£¬³¤¶ÈÐ¡ÓÚ40hÇÒÓÃ\0²¹Æëµ½4µÄÕûÊý±¶£¨°üÀ¨\0£©£¬ÊÇÓÎÏ·ËµÃ÷
-'È»ºóÊÇÒ»¸öDWORD£¬ÊÇ¸ÃÓÎÏ·ÌõÄ¿ÊýÁ¿¶¨Òå£¬×¢£º¾¡¹ÜfolderÀàÐÍ×ÔÉíÃ»ÓÐ½ðÊÖÖ¸ÌõÄ¿£¬²»¹ýÒ²ËãÌõÄ¿ÊýÁ¿µÄÒ»¸ö£¬Õâ¸öÖµÒªÓëFFFFFFFh
-'È»ºóÊÇ8¸öDWORD£¬¾ßÌåº¬ÒåÎ´Öª
-'ÏÂÃæ¾ÍÊÇ¾ßÌå¸÷ÌõÄ¿£¬Ã¿ÌõÄ¿µÄ¸ñÊ½£º
-'Ê×ÏÈÊÇÒ»¸öDWORD£¬±íÊ¾¸ÃÌõÄ¿ÀàÐÍ£¬Èç¹û×î¸ß×Ö½Ú²»Îª0±íÊ¾Îªfolder£¬·ñÔò±íÊ¾code£¬
-'    µ±ÀàÐÍÎªfolderÊ±£ºXYZZZZZZ£¬X±íÊ¾foler£¬Y±íÊ¾£ºone hot£¬ZZZZZZÊÇ±¾folderÏÂÃæ°üÀ¨µÄcodeÊýÁ¿£¨ºÃÏñXYÒ»°ãÊÇ1£©
-'    µ±ÀàÐÍÎªcodeÊ±£ºXY=0£¬ZµÄº¬Òå²»Ã÷
-'È»ºóÊÇ2¸ö×Ö·û´®£¬·Ö±ð´ú±í¸ÃÌõÄ¿µÄNameºÍNote£¬µÚ2¸ö×Ö·û´®ºóÃæÒªÓÃ\0²¹Æë£¬Ê¹2¸ö×Ö·û´®³¤¶ÈºÍÊÇ4µÄÕûÊý±¶£¨ÎªÁËÕÕ¹Ë32Î»ÏµÍ³£¿£©
-'Èç¹ûÊÇfolderÔò¸ÃÌõÄ¿µ½´Ë½áÊø£¬Èç¹ûÊÇcode£¬ºóÃæ»¹ÓÐARDSÂë¶Î£¬¸ñÊ½Îª£ºARDSÂë´óÐ¡+ARDSÂë
-'   ARDSÂë´óÐ¡ÓÃ1¸öDWORD±íÊ¾
-'   ARDSÂëÊÇn¸öDWORD£¬Ã¿2¸öDWORD¹¹³ÉÒ»ÐÐÓï¾ä£¬¶þ½øÖÆ¸ñÊ½
+'æ–‡ä»¶çš„1-12å­—èŠ‚æ˜¯å›ºå®šå†…å®¹
+'æ–‡ä»¶çš„13-15å­—èŠ‚åº”è¯¥æ˜¯è¯¥åº“çš„ç‰ˆæœ¬å·ï¼Œ1.0ä¸ºï¼š00 01 00 00
+'åŽé¢æ˜¯æ•°æ®åº“æè¿°å­—ç¬¦ä¸²
+'æ¸¸æˆåˆ—è¡¨ä»Ž100hå¼€å§‹ï¼Œç»“æž„ä¸ºï¼šä¸€æ¡ä¿¡æ¯4ä¸ªDWORLDï¼Œåˆ†åˆ«æ˜¯ï¼šGameCodeã€GameCRCã€é‡‘æ‰‹æŒ‡å¼€å§‹åœ°å€ã€ä¿ç•™
+'æ¸¸æˆåˆ—è¡¨ç»“æŸæ ‡å¿—ä¸ºï¼šä¸Šè¿°4ä¸ªå­—æ®µéƒ½ä¸º0
+'æ¯ä¸ªæ¸¸æˆçš„é‡‘æ‰‹æŒ‡æ•°æ®æ ¼å¼ï¼š
+'é¦–å…ˆæ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œé•¿åº¦å°äºŽ40hä¸”ç”¨\0è¡¥é½åˆ°4çš„æ•´æ•°å€ï¼ˆåŒ…æ‹¬\0ï¼‰ï¼Œæ˜¯æ¸¸æˆè¯´æ˜Ž
+'ç„¶åŽæ˜¯ä¸€ä¸ªDWORDï¼Œæ˜¯è¯¥æ¸¸æˆæ¡ç›®æ•°é‡å®šä¹‰ï¼Œæ³¨ï¼šå°½ç®¡folderç±»åž‹è‡ªèº«æ²¡æœ‰é‡‘æ‰‹æŒ‡æ¡ç›®ï¼Œä¸è¿‡ä¹Ÿç®—æ¡ç›®æ•°é‡çš„ä¸€ä¸ªï¼Œè¿™ä¸ªå€¼è¦ä¸ŽFFFFFFFh
+'ç„¶åŽæ˜¯8ä¸ªDWORDï¼Œå…·ä½“å«ä¹‰æœªçŸ¥
+'ä¸‹é¢å°±æ˜¯å…·ä½“å„æ¡ç›®ï¼Œæ¯æ¡ç›®çš„æ ¼å¼ï¼š
+'é¦–å…ˆæ˜¯ä¸€ä¸ªDWORDï¼Œè¡¨ç¤ºè¯¥æ¡ç›®ç±»åž‹ï¼Œå¦‚æžœæœ€é«˜å­—èŠ‚ä¸ä¸º0è¡¨ç¤ºä¸ºfolderï¼Œå¦åˆ™è¡¨ç¤ºcodeï¼Œ
+'    å½“ç±»åž‹ä¸ºfolderæ—¶ï¼šXYZZZZZZï¼ŒXè¡¨ç¤ºfolerï¼ŒYè¡¨ç¤ºï¼šone hotï¼ŒZZZZZZæ˜¯æœ¬folderä¸‹é¢åŒ…æ‹¬çš„codeæ•°é‡ï¼ˆå¥½åƒXYä¸€èˆ¬æ˜¯1ï¼‰
+'    å½“ç±»åž‹ä¸ºcodeæ—¶ï¼šXY=0ï¼ŒZçš„å«ä¹‰ä¸æ˜Ž
+'ç„¶åŽæ˜¯2ä¸ªå­—ç¬¦ä¸²ï¼Œåˆ†åˆ«ä»£è¡¨è¯¥æ¡ç›®çš„Nameå’ŒNoteï¼Œç¬¬2ä¸ªå­—ç¬¦ä¸²åŽé¢è¦ç”¨\0è¡¥é½ï¼Œä½¿2ä¸ªå­—ç¬¦ä¸²é•¿åº¦å’Œæ˜¯4çš„æ•´æ•°å€ï¼ˆä¸ºäº†ç…§é¡¾32ä½ç³»ç»Ÿï¼Ÿï¼‰
+'å¦‚æžœæ˜¯folderåˆ™è¯¥æ¡ç›®åˆ°æ­¤ç»“æŸï¼Œå¦‚æžœæ˜¯codeï¼ŒåŽé¢è¿˜æœ‰ARDSç æ®µï¼Œæ ¼å¼ä¸ºï¼šARDSç å¤§å°+ARDSç 
+'   ARDSç å¤§å°ç”¨1ä¸ªDWORDè¡¨ç¤º
+'   ARDSç æ˜¯nä¸ªDWORDï¼Œæ¯2ä¸ªDWORDæž„æˆä¸€è¡Œè¯­å¥ï¼ŒäºŒè¿›åˆ¶æ ¼å¼
 */
 typedef struct _ARCHEAT{
-	char	*pDescription;//½ðÊÖÖ¸ÃèÊö
-	uint32  datasize;//½ðÊÖÖ¸´óÐ¡
-	uint32	*pData;//½ðÊÖÖ¸ÌõÂë
+	char	*pDescription;//é‡‘æ‰‹æŒ‡æè¿°
+	uint32  datasize;//é‡‘æ‰‹æŒ‡å¤§å°
+	uint32	*pData;//é‡‘æ‰‹æŒ‡æ¡ç 
 }ARCHEAT;
 
 typedef struct _AR_DATA{
-	char	*pFunction;//×¢ÊÍ1
-	char	*pFunction2;//×¢ÊÍ2
+	char	*pFunction;//æ³¨é‡Š1
+	char	*pFunction2;//æ³¨é‡Š2
 	ARCHEAT ARCheat;
-	bool	bFolder;//ÊÇ·ñÊÇÎÄ¼þ¼Ð
-	bool	bUse;//¸ÃÌõ½ðÊÖÖ¸ÊÇ·ñ±»Ê¹ÓÃ
+	bool	bFolder;//æ˜¯å¦æ˜¯æ–‡ä»¶å¤¹
+	bool	bUse;//è¯¥æ¡é‡‘æ‰‹æŒ‡æ˜¯å¦è¢«ä½¿ç”¨
 	bool    bOneHot;
 	bool 	bSub;
-	bool	bExpd;//ÎÄ¼þ¼ÐÕ¹¿ª»¹ÊÇÊÕËõ
-	uint32  SubCnt;//ÎÄ¼þ¼ÐÀïµÄÌõÄ¿Êý
+	bool	bExpd;//æ–‡ä»¶å¤¹å±•å¼€è¿˜æ˜¯æ”¶ç¼©
+	uint32  SubCnt;//æ–‡ä»¶å¤¹é‡Œçš„æ¡ç›®æ•°
 	_AR_DATA *pARNextData;
 	_AR_DATA *pARPreData;
 }AR_DATA;
@@ -45,7 +45,7 @@ typedef struct _NDSCheatInfo{
   uint32	dw_CRC; 
   uint32	dw_StartAddress;
 } NDSCheatInfo;
-//Ìõ¼þÓï¾ä
+//æ¡ä»¶è¯­å¥
 typedef struct _IFFUN{
 	uint32 index;
 	vuint32 *pPos;

@@ -40,7 +40,7 @@
 	http://march-hare.com/cvsnt/
 	
 	Revision 1.1  2009/03/30 15:26:20  administrator
-	×î³õ½¨Á¢µÄ°æ±¾
+	æœ€åˆå»ºç«‹çš„ç‰ˆæœ¬
 	Committed on the Free edition of March Hare Software CVSNT Server.
 	Upgrade to CVS Suite for more features and support:
 	http://march-hare.com/cvsnt/
@@ -332,7 +332,7 @@ static void StoreLogSector(const char *s)
 
 void _consolePrint(const char* s)
 {
-//  DTCM_StackCheck(-1); // DPGƒ‚[ƒh‚Å‚Íg‚Á‚Ä‚Í‚¢‚¯‚È‚¢B
+//  DTCM_StackCheck(-1);  // DPGãƒ¢ãƒ¼ãƒ‰ã§ã¯ä½¿ã£ã¦ã¯ã„ã‘ãªã„ã€‚
   
   pcprint(s);
   

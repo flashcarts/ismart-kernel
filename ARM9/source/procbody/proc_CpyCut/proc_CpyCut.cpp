@@ -181,7 +181,7 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 	 {
 		 if((bPressX1Flag) && (!bPressX2Flag))
 		 {
-			 //É¾³ıÑ¡ÖĞÎÄ¼ş
+			 //åˆ é™¤é€‰ä¸­æ–‡ä»¶
 			 FAT2_remove(CpyCutFileInfo.SrcFullPathAlias);
 			 //ClearX1Flag();
 			 SetFinishedOPFlag();
@@ -193,7 +193,7 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 	 {
 		 if((!bPressX1Flag) && (bPressX2Flag))
 		 {
-			 //¿ªÊ¼¼ôÇĞÎÄ¼şµ½Ä¿µÄÎ»ÖÃ
+			 //å¼€å§‹å‰ªåˆ‡æ–‡ä»¶åˆ°ç›®çš„ä½ç½®
 			// FAT2_move(CpyCutFileInfo.SrcFullPathAlias,ConvertFull_Unicode2Alias(CpyCutFileInfo.DesPath,NULL),CpyCutFileInfo.DesPath,CpyCutFileInfo.FileName);
 			 FAT2_move(CpyCutFileInfo.SrcFullPathAlias,ConvertFull_Unicode2Alias(CpyCutFileInfo.DesPath,NULL),CpyCutFileInfo.DesPath,CpyCutFileInfo.FileName);
 			// ClearX2Flag();
@@ -203,7 +203,7 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 		 if(bPressY2Flag)
 		 {
 			 SetbDisableABFlag();
-			 //¿ªÊ¼¸´ÖÆÎÄ¼şµ½Ä¿µÄÎ»ÖÃ
+			 //å¼€å§‹å¤åˆ¶æ–‡ä»¶åˆ°ç›®çš„ä½ç½®
 			 FAT2_Copy( CpyCutFileInfo.SrcFullPathAlias,CpyCutFileInfo.DesFullPathAlias,ConvertFull_Unicode2Alias(CpyCutFileInfo.DesPath,NULL));
 			 //ClearY2Flag();
 			 SetFinishedOPFlag();
@@ -305,13 +305,13 @@ static void UpdataCpyCut(void)
 	pScreenSub->pCanvas->BitBltFullBeta(pTmpBM);
 	
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor(SYSColor1);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  
+	pTmpBM->SetFontTextColor(SYSColor1);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  
 	
 	CglTGF * pbm2= CpyCutAlpha_GetSkin(ECCSA_CpyCutBG);
 	pbm2->BitBlt(pTmpBM,0,0);
 
 	
-	//ÎÄ¼ş
+	//æ–‡ä»¶
 	 if((bPressX1Flag) && (!bPressX2Flag) && (!bPressY1Flag) &&  (!bPressY2Flag))
 	 {
 		 pTmpBM->TextOutUTF8(x+2,y+2,Lang_GetUTF8("FileOP_Del")); 
@@ -358,7 +358,7 @@ static void UpdataCpyCut(void)
 	
 	
 	
-	//²Ù×÷Íê³ÉÍË³ö
+	//æ“ä½œå®Œæˆé€€å‡º
 	if( GetFinishedOPFlag())
 	{
 		ClearFinishedOPFlag();

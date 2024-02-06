@@ -196,7 +196,7 @@ void Clock_Standby_Draw(CglCanvas *pCanvas,int drawatMenu)
 /*    
     else
     {
-        //ÏÔÊ¾±³¾°Í¼Æ¬
+        //æ˜¾ç¤ºèƒŒæ™¯å›¾ç‰‡
         CBMPResource *pbmpres = new CBMPResource(DefaultDataPath"/themes/default/bckgrd_1.bmp");
         u16* pbmp = pbmpres->Get16bitData();
         u16* pv = pCanvas->GetVRAMBuf();

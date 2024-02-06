@@ -90,14 +90,14 @@ static bool bend2 = false;
 static int curChar2 = 0;
 static UnicodeChar dststr2Tmp[256];
 
-static u8 isItemEnable[1024];//0x00=½ûÖ¹ 0x01=ÆôÓÃ 0xff=ÎÄ¼ş¼Ğ
+static u8 isItemEnable[1024];//0x00=ç¦æ­¢ 0x01=å¯ç”¨ 0xff=æ–‡ä»¶å¤¹
 static u16 dI2ARD[1024];
 static u32 LastSelectItem;
 static s32 LastTopPos;
 static bool ChangFlg;
 static u8 toSaveCheatData[0x100];
 static NDSCheatInfo *FindSelectNDSCheatHeadInfo()
-{//ÔÚ¿âÎÄ¼şÖĞÑ°ÕÒÓÎÏ·½ğÊÖÖ¸Êı¾İÊÇ·ñ´æÔÚ
+{//åœ¨åº“æ–‡ä»¶ä¸­å¯»æ‰¾æ¸¸æˆé‡‘æ‰‹æŒ‡æ•°æ®æ˜¯å¦å­˜åœ¨
 	u32 gl_RomCRC;
 	uint8 *bm=(uint8*)safemalloc(512);
 	FAT_FILE *fh=FAT2_fopen_AliasForRead(CheatRomInfo.FullPathAlias);
@@ -113,7 +113,7 @@ static NDSCheatInfo *FindSelectNDSCheatHeadInfo()
 	FAT2_fread(bm,512,1,fh);
 	FAT2_fclose(fh);
 	{
-		 	//¼ÆËãÏÂCRC32
+		 	//è®¡ç®—ä¸‹CRC32
 	 	gl_RomCRC=crc32(0,bm,512);
 		gl_RomCRC = ~gl_RomCRC;
 	}
@@ -182,7 +182,7 @@ void CleanbHotItem(AR_DATA *pARDataCurItem,s32 SelectIndex)
 	if(pARDataCurItem->bUse==true && pARDataCurItem->bOneHot==true)
 	{
 		
-		//ÏòÇ°²éÕÒ
+		//å‘å‰æŸ¥æ‰¾
 		index=SelectIndex;
 		pCur=pPre=pNext=pARDataCurItem;
 		pPre=pCur->pARPreData;
@@ -202,7 +202,7 @@ void CleanbHotItem(AR_DATA *pARDataCurItem,s32 SelectIndex)
 					break;
 			}
 		}
-		//Ïòºó²éÕÒ
+		//å‘åæŸ¥æ‰¾
 		index=SelectIndex;
 		pCur=pPre=pNext=pARDataCurItem;
 		pNext=pCur->pARNextData;
@@ -564,7 +564,7 @@ static void Fun_global(u32 num)
 				ChangFlg=true;
 				CheatItemScrollBarInit();
 			}
-			else//ÊÕËõÎÄ¼ş¼Ğ
+			else//æ”¶ç¼©æ–‡ä»¶å¤¹
 			{
 				pARDataCur->bExpd=false;
 				m_FirstLevelCIC-=pARDataCur->SubCnt;
@@ -709,7 +709,7 @@ static void CB_MouseUp(s32 x,s32 y)
 	{
 		if(isPressRect13 ==true)
 			isPressRect13 = false;
-		//±£´æ´úÂë
+		//ä¿å­˜ä»£ç 
 		FindEnableData(); 
 		memset(toSaveCheatData,0x00,128);
 		for(u32 idx=0;idx<1024;idx++)
@@ -747,7 +747,7 @@ static void CB_MouseUp(s32 x,s32 y)
 			isPressRect14 = false;
 	    CB_CancelBtn_Click(NULL);
 	}
-	//´¥ÃşÑ¡Ïî
+	//è§¦æ‘¸é€‰é¡¹
 	if(isInsideRect(menurect21,x,y)==true)	
 	{
 		if(isPressRect21 ==true)
@@ -811,7 +811,7 @@ static void DrawOnlineHelp(void)
 	pbm2->BitBlt(pTmpBM,0,0);
 
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor(0x8000);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  
+	pTmpBM->SetFontTextColor(0x8000);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  
      
    // pTmpBM->TextOutUTF8(5,2,Lang_GetUTF8("CHEAT_Menu"));   
     
@@ -886,7 +886,7 @@ static void UpdataCheat(void)
 	pbm2->BitBltLimitY(pTmpBM3,0,0,16,163);
 	
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor(0x8000);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  
+	pTmpBM->SetFontTextColor(0x8000);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  
 	
 	//--------------------------------------------------------------//
 	pTmpBM->TextOutUTF8(5,2,Lang_GetUTF8("CHEAT_Menu"));   
@@ -919,7 +919,7 @@ static void UpdataCheat(void)
 	//------------------------------------------------------------------//
     
     TScrollBar *psb=&ScrollBar;
-    //»­½ğÊÖÖ¸ÌõÄ¿
+    //ç”»é‡‘æ‰‹æŒ‡æ¡ç›®
     u32 dx=0;
     u32 dy=16;//pSB->TopPos;
     u32 ddistance=16+2;
@@ -972,7 +972,7 @@ static void UpdataCheat(void)
 	}while(pARCheatCur!=NULL);    
 
 	pTmpBM2->SetCglFont(pCglFontDefault);
-	pTmpBM2->SetFontTextColor(0x8000);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  	
+	pTmpBM2->SetFontTextColor(0x8000);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  	
 	pTmpBM2->TextOutUTF8(5,2,Lang_GetUTF8("CHEAT_Menu")); 
 	pTmpBM2->BitBlt(pTmpBM,0,0,ScreenWidth,16,0,0,0);
 	if(pTmpBM2!=NULL)
@@ -1039,13 +1039,13 @@ static void UpdataCheat(void)
 	pbm2->BitBltLimitY(pTmpBM3,0,0,16,163);
 	
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor( SYSColor1 );//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  	
+	pTmpBM->SetFontTextColor( SYSColor1 );//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  	
 	
 	pTmpBM2->SetCglFont(pCglFontDefault);
-	pTmpBM2->SetFontTextColor( SYSColor1 );//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  	
+	pTmpBM2->SetFontTextColor( SYSColor1 );//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  	
     
     TScrollBar *psb=&ScrollBar;
-    //»­½ğÊÖÖ¸ÌõÄ¿
+    //ç”»é‡‘æ‰‹æŒ‡æ¡ç›®
     u32 dx=0;
     u32 dy=16;//pSB->TopPos;
     u32 ddistance=16+2;
@@ -1138,13 +1138,13 @@ static void UpdataCheat(void)
 			    	curChar2=0;
 			    	memset(dststr2Tmp,0x00,sizeof(UnicodeChar)*256);
 			    }
-				//¹ı³¤Ñ­»·ÏÔÊ¾Ãû×Ö					
+				//è¿‡é•¿å¾ªç¯æ˜¾ç¤ºåå­—					
 				{
 					 int wStr=0;
 					 wStr = pTmpBM->GetTextWidthW(dststr);
 					 if(wStr > wlimited-20)
 					 {
-						 //³¤¶È¹ı³¤£¬ÊÇ·ñÊÇÑ¡ÖĞµÄÏîÄ¿£¬Ñ¡ÖĞµÄÏîÄ¿Ñ­»·ÏÔÊ¾ÎÄ¼şÃû
+						 //é•¿åº¦è¿‡é•¿ï¼Œæ˜¯å¦æ˜¯é€‰ä¸­çš„é¡¹ç›®ï¼Œé€‰ä¸­çš„é¡¹ç›®å¾ªç¯æ˜¾ç¤ºæ–‡ä»¶å
 						 if(psb->SelectedIndex==idx)
 						 {							 
 							 if(bgoLoop)
@@ -1153,7 +1153,7 @@ static void UpdataCheat(void)
 								 {
 									 if(pTmpBM->GetTextWidthW(dststr+curChar) > wlimited-20)
 									 {
-										 //Ñ­»·Ã»µ½Ä©Î²
+										 //å¾ªç¯æ²¡åˆ°æœ«å°¾
 										 curChar++;
 									 }
 									 else
@@ -1214,13 +1214,13 @@ static void UpdataCheat(void)
 				    	memset(dststr2Tmp,0x00,sizeof(UnicodeChar)*256);
 				    }	
 				   
-					//¹ı³¤Ñ­»·ÏÔÊ¾Ãû×Ö					
+					//è¿‡é•¿å¾ªç¯æ˜¾ç¤ºåå­—					
 					{
 						 int wStr=0;
 						 wStr = pTmpBM->GetTextWidthW(dststr);
 						 if(wStr > wlimited-20)
 						 {
-							 //³¤¶È¹ı³¤£¬ÊÇ·ñÊÇÑ¡ÖĞµÄÏîÄ¿£¬Ñ¡ÖĞµÄÏîÄ¿Ñ­»·ÏÔÊ¾ÎÄ¼şÃû
+							 //é•¿åº¦è¿‡é•¿ï¼Œæ˜¯å¦æ˜¯é€‰ä¸­çš„é¡¹ç›®ï¼Œé€‰ä¸­çš„é¡¹ç›®å¾ªç¯æ˜¾ç¤ºæ–‡ä»¶å
 							 if(psb->SelectedIndex==idx)
 							 {							 
 								 if(bgoLoop)
@@ -1232,7 +1232,7 @@ static void UpdataCheat(void)
 									 {
 										 if(pTmpBM->GetTextWidthW(dststr+curChar) > wlimited-20)
 										 {
-											 //Ñ­»·Ã»µ½Ä©Î²
+											 //å¾ªç¯æ²¡åˆ°æœ«å°¾
 											 curChar++;
 										 }
 										 else
@@ -1270,13 +1270,13 @@ static void UpdataCheat(void)
 							SJIS2Unicode_Convert(pARCheatCur->pFunction2,dststr2);
 							Unicode_Copy(dststr23,dststr2);
 							
-							//¹ı³¤Ñ­»·ÏÔÊ¾×¢ÊÍ					
+							//è¿‡é•¿å¾ªç¯æ˜¾ç¤ºæ³¨é‡Š					
 							{
 								 int wStr=0;
 								 wStr = pTmpBM->GetTextWidthW(dststr2);
 								 if(wStr > 220)
 								 {
-									 //³¤¶È¹ı³¤£¬ÊÇ·ñÊÇÑ¡ÖĞµÄÏîÄ¿£¬Ñ¡ÖĞµÄÏîÄ¿Ñ­»·ÏÔÊ¾ÎÄ¼şÃû
+									 //é•¿åº¦è¿‡é•¿ï¼Œæ˜¯å¦æ˜¯é€‰ä¸­çš„é¡¹ç›®ï¼Œé€‰ä¸­çš„é¡¹ç›®å¾ªç¯æ˜¾ç¤ºæ–‡ä»¶å
 									 if(psb->SelectedIndex==idx)
 									 {							 
 										 if(bgoLoop2)
@@ -1287,7 +1287,7 @@ static void UpdataCheat(void)
 											 {
 												 if(pTmpBM->GetTextWidthW(dststr2+curChar2) > 220)
 												 {
-													 //Ñ­»·Ã»µ½Ä©Î²
+													 //å¾ªç¯æ²¡åˆ°æœ«å°¾
 													 curChar2++;
 												 }
 												 else
@@ -1327,7 +1327,7 @@ static void UpdataCheat(void)
 				}//end if(!pARCheatCur->bSub)
 				else
 				{
-					if(bDisSub)//Õ¹¿ª
+					if(bDisSub)//å±•å¼€
 					{
 						
 						
@@ -1355,13 +1355,13 @@ static void UpdataCheat(void)
 					    	
 					    }
 					    
-						//¹ı³¤Ñ­»·ÏÔÊ¾Ãû×Ö					
+						//è¿‡é•¿å¾ªç¯æ˜¾ç¤ºåå­—					
 						{
 							 int wStr=0;
 							 wStr = pTmpBM->GetTextWidthW(dststr);
 							 if(wStr > wlimited-20)
 							 {
-								 //³¤¶È¹ı³¤£¬ÊÇ·ñÊÇÑ¡ÖĞµÄÏîÄ¿£¬Ñ¡ÖĞµÄÏîÄ¿Ñ­»·ÏÔÊ¾ÎÄ¼şÃû
+								 //é•¿åº¦è¿‡é•¿ï¼Œæ˜¯å¦æ˜¯é€‰ä¸­çš„é¡¹ç›®ï¼Œé€‰ä¸­çš„é¡¹ç›®å¾ªç¯æ˜¾ç¤ºæ–‡ä»¶å
 								 if(psb->SelectedIndex==idx)
 								 {							 
 									 if(bgoLoop)
@@ -1370,7 +1370,7 @@ static void UpdataCheat(void)
 										 {
 											 if(pTmpBM->GetTextWidthW(dststr+curChar) > wlimited-20)
 											 {
-												 //Ñ­»·Ã»µ½Ä©Î²
+												 //å¾ªç¯æ²¡åˆ°æœ«å°¾
 												 curChar++;
 											 }
 											 else
@@ -1407,13 +1407,13 @@ static void UpdataCheat(void)
 								SJIS2Unicode_Convert(pARCheatCur->pFunction2,dststr2);
 								Unicode_Copy(dststr23,dststr2);
 								
-								//¹ı³¤Ñ­»·ÏÔÊ¾×¢ÊÍ					
+								//è¿‡é•¿å¾ªç¯æ˜¾ç¤ºæ³¨é‡Š					
 								{
 									 int wStr=0;
 									 wStr = pTmpBM->GetTextWidthW(dststr2);
 									 if(wStr > 220)
 									 {
-										 //³¤¶È¹ı³¤£¬ÊÇ·ñÊÇÑ¡ÖĞµÄÏîÄ¿£¬Ñ¡ÖĞµÄÏîÄ¿Ñ­»·ÏÔÊ¾ÎÄ¼şÃû
+										 //é•¿åº¦è¿‡é•¿ï¼Œæ˜¯å¦æ˜¯é€‰ä¸­çš„é¡¹ç›®ï¼Œé€‰ä¸­çš„é¡¹ç›®å¾ªç¯æ˜¾ç¤ºæ–‡ä»¶å
 										 if(psb->SelectedIndex==idx)
 										 {							 
 											 if(bgoLoop2)
@@ -1424,7 +1424,7 @@ static void UpdataCheat(void)
 												 {
 													 if(pTmpBM->GetTextWidthW(dststr2+curChar2) > 220)
 													 {
-														 //Ñ­»·Ã»µ½Ä©Î²
+														 //å¾ªç¯æ²¡åˆ°æœ«å°¾
 														 curChar2++;
 													 }
 													 else
@@ -1558,7 +1558,7 @@ static void CB_VsyncUpdate(u32 VsyncCount)
 	static int cntFont=0;	
 	if(cntFont == 20)
 	{
-		//ÉèÖÃ¹ö¶¯±êÖ¾
+		//è®¾ç½®æ»šåŠ¨æ ‡å¿—
 		cntFont = 0;	
 		bgoLoop = true;
 		bgoLoop2 = true;

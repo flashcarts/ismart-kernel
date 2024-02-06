@@ -119,7 +119,7 @@ static void NDSROMIcon_Get_ins_Conv32to16(TNDSROMIcon *pNDSROMIcon)
 }
 
 bool NDSROMIcon_Get(const char *pFilenameAlias,TNDSROMIcon *pNDSROMIcon,u16 *pJ ,u16 *pE)
-{//¿ÉÒÔÖ±½ÓGetICONÎÄ¼ş
+{//å¯ä»¥ç›´æ¥GetICONæ–‡ä»¶
     const u32 BinSize=0x840;
     u8 *pBinData=(u8*)safemalloc(BinSize);
   
@@ -174,7 +174,7 @@ bool NDSROMIcon_Get(const char *pFilenameAlias,TNDSROMIcon *pNDSROMIcon,u16 *pJ 
         FAT2_fseek(pf,0x68,SEEK_SET);
         FAT2_fread(&binofs,1,4,pf);
         FAT2_fseek(pf,binofs,SEEK_SET);
-        //ÕâÀï¶Á³öICONµÄ0x840´óĞ¡Êı¾İ
+        //è¿™é‡Œè¯»å‡ºICONçš„0x840å¤§å°æ•°æ®
         FAT2_fread(pBinData,1,BinSize,pf);
     }
   
@@ -199,7 +199,7 @@ bool NDSROMIcon_Get(const char *pFilenameAlias,TNDSROMIcon *pNDSROMIcon,u16 *pJ 
     }
   
     for(u32 y=0;y<4;y++)
-    {//½«ICONµÄÊı¾İ×ª»»³É²»ĞèÒªplatteµÄÊı¾İ
+    {//å°†ICONçš„æ•°æ®è½¬æ¢æˆä¸éœ€è¦platteçš„æ•°æ®
         for(u32 x=0;x<4;x++){
           u32 dstx=x*8;
           u32 dsty=y*8;

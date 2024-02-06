@@ -45,7 +45,7 @@ check_key_for_reset
 	cmp		r6,#0xFB	;@L+R+Select
 	bne		SoftReset_skip
 b_arm7Reset_wait
-	ldr		r0,=0x12345678  ;Õâ¸öÓĞÁ½ÖÖÇé¿ö,1.ÎŞ¼´Ê±¹¥ÂÔÊ±:bx os_resetsystem
+	ldr		r0,=0x12345678  ;è¿™ä¸ªæœ‰ä¸¤ç§æƒ…å†µ,1.æ— å³æ—¶æ”»ç•¥æ—¶:bx os_resetsystem
 	bx		r0				;			  2.bleq arm7Reset_wait
 SoftReset_skip
 	bl		AR_start

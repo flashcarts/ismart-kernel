@@ -15,17 +15,17 @@ _ttywrch
 	bx lr
 	
 __user_initial_stackheap
-	; r0 �q�[�v�x�[�X
-	; r1 �X�^�b�N�x�[�X�i�X�^�b�N�̈�̍ŏ�ʃA�h���X�j
-	; r2 �q�[�v���~�b�g
-	; r3 �X�^�b�N���~�b�g�i�X�^�b�N�̈�̍ŉ��ʃA�h���X�j
+	; r0 ヒープベース
+	; r1 スタックベース（スタック領域の最上位アドレス）
+	; r2 ヒープリミット
+	; r3 スタックリミット（スタック領域の最下位アドレス）
 	
 	IMPORT bottom_of_heap ; defined in heap.s
 
 	ldr r0,=bottom_of_heap
-	ldr r2,=(0x02400000-(16*1024)) ; �q�[�v���~�b�g�����C������������16kbyte�c�����A�h���X�ɍĐݒ�
+	ldr r2,=(0x02400000-(16*1024)) ; ヒープリミットをメインメモリから16kbyte残したアドレスに再設定
 	ldr r1,=0x02803f00
-	ldr r3,=0x02800000 ; �X�^�b�N���~�b�g�`�F�b�N�͂��Ȃ�
+	ldr r3,=0x02800000 ; スタックリミットチェックはしない
 	
 	bx lr
 

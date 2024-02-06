@@ -144,12 +144,12 @@ inline static bool isSwapFilenameUnicode(UnicodeChar *puc0,UnicodeChar *puc1)
     if(uc0==uc1){
       if(uc0==0) return(false);
       }else{
-      // ¥Õ¥¡¥¤¥ëÌ¾Ä¹¤µ¥Á¥§¥Ã¥¯
+      // ãƒ•ã‚¡ã‚¤ãƒ«åé•·ã•ãƒã‚§ãƒƒã‚¯
       if(uc0==0) return(false);
       if(uc1==0) return(true);
       if(uc0==(u32)'.') return(false);
       if(uc1==(u32)'.') return(true);
-      // Ê¸»úÈæ³Ó
+      // æ–‡å­—æ¯”è¼ƒ
       if(uc0<uc1){
         return(false);
         }else{

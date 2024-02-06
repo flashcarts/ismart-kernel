@@ -198,7 +198,7 @@ PROTECT_ENABLE EQU 1<<0
 	msr	cpsr_cxsf, r0
 	ldr	sp, =__dtcm_start+0x3f00		; Set user stack (not use this parametor. see init.s)
   
-;  bl CheckGUID //Õâ¸ö´úÂëÊÇÊ²Ã´ÓÃ£¿£¿Ææ¹Ö
+;  bl CheckGUID //è¿™ä¸ªä»£ç æ˜¯ä»€ä¹ˆç”¨ï¼Ÿï¼Ÿå¥‡æ€ª
   
     IMPORT  __main                     ; import label to __main
     LDR pc,=__main                     ; branch to C Library entry 

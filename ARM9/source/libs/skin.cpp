@@ -182,7 +182,7 @@ static void FileList_Init(void)
                     
                 } break;
            case EFLS_BG_Bottom: 
-                {//¼ÓÔØÏÂÆÁÐÅÏ¢ £¬ Ñ¡ÔñÎÄ¼þÐÅÏ¢
+                {//åŠ è½½ä¸‹å±ä¿¡æ¯ ï¼Œ é€‰æ‹©æ–‡ä»¶ä¿¡æ¯
                   /*  pfn="FL_BG_Bottom.b15"; 
                     SkinFile_LoadB15(pfn,&ptag->pbm);
                     
@@ -194,8 +194,8 @@ static void FileList_Init(void)
                     }
                     TSkinFileCache *psfc=&pSkinFileCache[fidx];
                        
-                    //psfc->pData Ó¦¸ÃÊÇ¿Õ
-                    //ÕâÀïÐèÒª¼ÓÔØÉÏÆÁÐÅÏ¢ ÎÄ¼þÁÐ±í±³¾°
+                    //psfc->pData åº”è¯¥æ˜¯ç©º
+                    //è¿™é‡Œéœ€è¦åŠ è½½ä¸Šå±ä¿¡æ¯ æ–‡ä»¶åˆ—è¡¨èƒŒæ™¯
                     char pp[256];   
                    if((ProcState.SetupW.SkinSelect>(SkinDataCount-1)) && ((ProcState.SetupW.SkinSelect<0)))
                    {
@@ -234,7 +234,7 @@ static void FileList_Init(void)
     }
     else
     {
-        /* ´Ë¶ÎÊÇ×Ô¶¨ÒåµÄ±³¾°Í¼ÏÔÊ¾
+        /* æ­¤æ®µæ˜¯è‡ªå®šä¹‰çš„èƒŒæ™¯å›¾æ˜¾ç¤º
         Splash_Update();
         {
             TstructB15 *ptag=&FileListSkin[(u32)EFLS_BG_TopMsg];
@@ -413,12 +413,12 @@ static void ScrollBarAlpha_Init(void)
      // case  EFLSA_Icon_reset1: pfn = "icon_reset1.tgf"; break;
       case  EFLSA_Btn_set0: pfn = "set_button0.tgf"; break;
       case  EFLSA_Btn_set1: pfn = "set_button1.tgf"; break;
-      //mjÌí¼Ó 2009Äê04ÔÂ15ÈÕ      
+      //mjæ·»åŠ  2009å¹´04æœˆ15æ—¥      
    // case  EFLSA_top_bar: pfn = "top_bar.tgf";break;
 //    case  EFLSA_bottom_bar: pfn = "bottom_bar.tgf";break;
    case  EFLSA_scroll_bar:pfn = "scroll_bar.tgf"; break;
  //   case  EFLSA_scroll_block: pfn = "scroll_block.tgf"; break;   
-    //mjÌí¼Ó 2009Äê05ÔÂ25ÈÕ  
+    //mjæ·»åŠ  2009å¹´05æœˆ25æ—¥  
     case  EFLSA_bright_up: pfn = "bright_up.tgf";break;   
     case  EFLSA_bright_down: pfn = "bright_down.tgf";break;   
     case  EFLSA_reserve_up: pfn = "reserve_up.tgf";break;   

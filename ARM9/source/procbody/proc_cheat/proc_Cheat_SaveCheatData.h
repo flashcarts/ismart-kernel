@@ -35,7 +35,7 @@ void CheatData_Init(void)
             if(FAT2_GetFileSize(pf)==512)
             {
                 if(pf->firstCluster!=0)
-                {//Ö±½Ó´ò¿ªÎÄ¼þµÄÔÚTF¿¨µÄËùÔÚÎïÀíÉÈÇø
+                {//ç›´æŽ¥æ‰“å¼€æ–‡ä»¶çš„åœ¨TFå¡çš„æ‰€åœ¨ç‰©ç†æ‰‡åŒº
                     DataSectorIndex=FAT2_ClustToSect(pf->firstCluster);
                 }
             }

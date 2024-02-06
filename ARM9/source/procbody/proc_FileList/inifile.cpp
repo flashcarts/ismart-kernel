@@ -297,7 +297,7 @@ static void readkey(char *str)
     }else{
     bvalue=true;
   }
-  //added 20090525 ¼ÓÈë×Ô¶¨ÒåÓÃ»§½çÃæ
+  //added 20090525 åŠ å…¥è‡ªå®šä¹‰ç”¨æˆ·ç•Œé¢
  if(strcmp(section,"LightControl")==0){
     TiniSkinUserBody *Rect=&GlobalUserINI.LightControl;
     

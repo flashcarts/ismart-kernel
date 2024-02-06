@@ -1158,7 +1158,7 @@ int main(void)
   
   // Keep the ARM7 out of main RAM
   while (1){
-	  /*****Æô¶¯gba*****/
+	  /*****å°¼å¼·gba*****/
 	  	if(*(uint32*)0x2000000 == 0xFDEf54C8)
 		{
 			//GBA reset
@@ -1195,7 +1195,7 @@ int main(void)
 			while (*SPI_Ctrl & 0x80);	// Wait for SPI to be non-busy
 			JmpGBA() ;
 		}
-	  	/*****Æô¶¯gba End*****/
+	  	/*****å°¼å¼·gba End*****/
 		if(	*(vuint32*)0x27FF200 == 0xFDEf54AA )
 		{
 				

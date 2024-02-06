@@ -165,7 +165,7 @@ static bool ScrollBar_MouseDown(TScrollBar *psb,s32 x,s32 y)
 
 static bool ScrollBar_MouseDown(TScrollBar *psb,s32 x,s32 y)
 {
-    //不需要scrool的按键处理，注释
+    //涓嶉渶瑕乻crool鐨勬寜閿鐞嗭紝娉ㄩ噴
    // return true ;
     
  

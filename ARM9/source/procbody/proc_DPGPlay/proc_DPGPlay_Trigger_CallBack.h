@@ -25,9 +25,9 @@ static void CB_Trigger_ins_Pause(void)
 
 static void CB_Trigger_ins_PlaySE(ETriggerType TriggerType,u32 Count,bool AddLong)
 {
-//  if(TriggerType!=ETT_PhoneSwitch) return; // HPSwitchˆÈŠO‚È‚ç‹A‚é
+//  if(TriggerType!=ETT_PhoneSwitch) return; // HPSwitchä»¥å¤–ãªã‚‰å¸°ã‚‹
   
-  if(AddLong==true) return; // ƒƒ“ƒOƒ‚[ƒh‚ÍŒø‰Ê‰¹‚ğÄ¶‚µ‚È‚¢‚Å‹A‚é
+  if(AddLong==true) return; // ãƒ­ãƒ³ã‚°ãƒ¢ãƒ¼ãƒ‰ã¯åŠ¹æœéŸ³ã‚’å†ç”Ÿã—ãªã„ã§å¸°ã‚‹
   
   PlaySE_Sequence(Count,AddLong);
 }

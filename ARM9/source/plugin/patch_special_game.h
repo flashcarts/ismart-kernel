@@ -14,92 +14,92 @@ extern uint32 patch_5292_data[];
 const char *games[] = {
 		"UBRJ",//0x01 /0506 
 		"UBRP",//0x02 /0591	
-		"APDK",//0x03 /0991 �ڴ����� 
-		"YHGJ",//0x04 /1981��ѧ�����꺺����		
-		"UORJ",//0x05 /3690 ��������
-		"BDUP",//0x06 /4377 - C.O.P. The Recruit - �����ƻ�:�̾��±� - EUR		
-		"VRGV",//0x07 /4375 - Rabbids Go Home - ������ӻؼ� - EUR
-		"C7UE",//0x08 /4501 ����ս��USA
+		"APDK",//0x03 /0991 口袋妖怪 
+		"YHGJ",//0x04 /1981放学后少年汉化版		
+		"UORJ",//0x05 /3690 老子制造
+		"BDUP",//0x06 /4377 - C.O.P. The Recruit - 罪恶覆灭计划:刑警新兵 - EUR		
+		"VRGV",//0x07 /4375 - Rabbids Go Home - 疯狂兔子回家 - EUR
+		"C7UE",//0x08 /4501 巨龙战争USA
 		"CHNE",//0x09 /4511 4512 - Might & Magic - Clash of Heroes (USA)
-		"CHNP",//0x0A /4638 - ħ����֮Ӣ�۽��� (E)
-		"IPGK",//0x0B /4698 - �ڴ����֣����飨����
-		"IPKK",//0x0C /4701 - �ڴ����֣����ģ�����
-		"IPKF",//0x0D /4786 - �ڴ����֣�����(��)
-		"IPKE",//0x0E /4787 - �ڴ����֣����ģ�����
-		"IPGE",//0x0F /4788 - �ڴ����֣����飨����
-		"IPGF",//0x10 /4791 - �ڴ����֣�����(��)
-		"BIGP",//0x11 /4800 - ����޳��ս��ŷ��
-		"UORE",//0x12 /4812 - ��������(����	
-		"IPKD",//0x13 /4828 - �ڴ����֣����ģ��£�
-		"IPGD",//0x14 /4829 - �ڴ����֣����飨�£�
-		"IPKS",//0x15 /4833 - �ڴ����֣����ģ����ࣩ
-		"IPGS",//0x16 /4834 - �ڴ����֣����飨���ࣩ
-		"IPKI",//0x17 /4835 - �ڴ����֣����ģ����
-		"IPKE",//0x18 /4841 - �ڴ����֣����ģ�ŷ��
-		"IPGE",//0x19 /4842 - �ڴ����֣����飨ŷ��
-		"IPGI",//0x1A /4843 - �ڴ����֣����飨���
-		"VLCJ",//0x1B /4913 - С���DS��Ů���ӵĿγ̣��գ�
-		"UORP",//0x1C /4915 - ��������(ŷ��
-		"BDEE",//0x1D /4933 - ������
+		"CHNP",//0x0A /4638 - 魔法门之英雄交锋 (E)
+		"IPGK",//0x0B /4698 - 口袋妖怪：银灵（韩）
+		"IPKK",//0x0C /4701 - 口袋妖怪：金心（韩）
+		"IPKF",//0x0D /4786 - 口袋妖怪：金心(法)
+		"IPKE",//0x0E /4787 - 口袋妖怪：金心（美）
+		"IPGE",//0x0F /4788 - 口袋妖怪：银灵（美）
+		"IPGF",//0x10 /4791 - 口袋妖怪：银灵(法)
+		"BIGP",//0x11 /4800 - 变异巨虫大战（欧）
+		"UORE",//0x12 /4812 - 老子制造(美）	
+		"IPKD",//0x13 /4828 - 口袋妖怪：金心（德）
+		"IPGD",//0x14 /4829 - 口袋妖怪：银灵（德）
+		"IPKS",//0x15 /4833 - 口袋妖怪：金心（西班）
+		"IPGS",//0x16 /4834 - 口袋妖怪：银灵（西班）
+		"IPKI",//0x17 /4835 - 口袋妖怪：金心（意大）
+		"IPKE",//0x18 /4841 - 口袋妖怪：金心（欧）
+		"IPGE",//0x19 /4842 - 口袋妖怪：银灵（欧）
+		"IPGI",//0x1A /4843 - 口袋妖怪：银灵（意大）
+		"VLCJ",//0x1B /4913 - 小莉加DS：女孩子的课程（日）
+		"UORP",//0x1C /4915 - 老子制造(欧）
+		"BDEE",//0x1D /4933 - 病房２
 		"COLE",//0x1E /4273_-_Mario_And_Sonic_At_The_Olympic_Winter_Games_USA_NDS-XPA
 		"COLP",//0x1F /4291
-		"CLWE",//0x20 /2906 - �����ս����¡ս�� ����ͬ�ˣ�����
-		"CLWP",//0x21 /2971 - �����ս����¡ս�� ����ͬ�ˣ�ŷ��
-		"VXHJ",//0xB22 /5142 - ��ͥ��ʦ Hitman Reborn��DS�����սXX���գ�
-		"YMYE",//0x23 /5138 - ���ص�������
-		"BM9J",//0x24 /5135 - ��װ����3���գ�
-		"CY9P",//0x25 /5114 - �����ֲ�����Ӣ��첿�� �ղ��صĸ���ŷ��
-		"CY9E",//0x26 /4970 - �����ֲ�����Ӣ��첿�� �ղ��صĸ�������
-		"BOJJ",//0x27 /5197 - ������������ս�����գ�
-		"IRAJ",//0x28 /5215 - �ڴ����֣��ף��գ�
-		"IRBJ",//0x29 /5216 - �ڴ����֣��ڣ��գ�
-		"BFLP",//0x2A /5237 - �ҵ�ģ������������Ӣ�ۣ�ŷ��
-		"BDEJ",//0x2B /5240 - ����2���գ�
-		"BDEP",//0x2C /5246 - ����2��ŷ��
-		"BK9J",//0x2D /5255 - ����֮�ģ��������ư棨�գ�
-		"UXBP",//0x2E /4951 - ����࣡�����ֵ�DX��ŷ��
-		"VCDJ",//0x2F /5289 - ��ջ����ˣ��գ�
-		"BO5J",//0x30 /5292 - �ƽ�̫������ڵ��������գ�
-		"BO5P",//0x31 /5387 - �ƽ�̫������ڵ�������ŷ��
-		"BO5E",//0x32 /5367 - �ƽ�̫������ڵ�����������
-		"B2KJ",//0x33 /5400 - ˫�ع��ȣ���ڵ�ħ��ʿ���գ�
-		"V2GE",//0x34 /5325 - ����¶Դ��գ����������Ĵ���ң�����
-		"V2GJ",//0x35 /5386 - ����¶Դ��գ����������Ĵ���ң��գ�
-		"B3GJ",//0x36 /5371 - SD�ߴ������� ������ɴ��ս
-		"CS3E",//0x37 /4743 - �����������ȫ��������������
-		"CS3P",//0x38 /4757 - �����������ȫ����������ŷ��
-		"VCMV",//0x39/5394 - ҡ���ഺ������JAM��ŷ��
+		"CLWE",//0x20 /2906 - 星球大战：克隆战争 绝地同盟（美）
+		"CLWP",//0x21 /2971 - 星球大战：克隆战争 绝地同盟（欧）
+		"VXHJ",//0xB22 /5142 - 家庭教师 Hitman Reborn！DS火焰对战XX（日）
+		"YMYE",//0x23 /5138 - 神秘岛（美）
+		"BM9J",//0x24 /5135 - 重装机兵3（日）
+		"CY9P",//0x25 /5114 - 企鹅俱乐部：精英企鹅部队 赫伯特的复仇（欧）
+		"CY9E",//0x26 /4970 - 企鹅俱乐部：精英企鹅部队 赫伯特的复仇（美）
+		"BOJJ",//0x27 /5197 - 海贼王：巨人战争（日）
+		"IRAJ",//0x28 /5215 - 口袋妖怪：白（日）
+		"IRBJ",//0x29 /5216 - 口袋妖怪：黑（日）
+		"BFLP",//0x2A /5237 - 我的模拟人生：蓝天英雄（欧）
+		"BDEJ",//0x2B /5240 - 病房2（日）
+		"BDEP",//0x2C /5246 - 病房2（欧）
+		"BK9J",//0x2D /5255 - 王国之心：编码重制版（日）
+		"UXBP",//0x2E /4951 - 大合奏！乐团兄弟DX（欧）
+		"VCDJ",//0x2F /5289 - 天空机器人（日）
+		"BO5J",//0x30 /5292 - 黄金太阳：漆黑的黎明（日）
+		"BO5P",//0x31 /5387 - 黄金太阳：漆黑的黎明（欧）
+		"BO5E",//0x32 /5367 - 黄金太阳：漆黑的黎明（美）
+		"B2KJ",//0x33 /5400 - 双重国度：漆黑的魔导士（日）
+		"V2GE",//0x34 /5325 - 马里奥对大金刚：迷你王国的大混乱（美）
+		"V2GJ",//0x35 /5386 - 马里奥对大金刚：迷你王国的大混乱（日）
+		"B3GJ",//0x36 /5371 - SD高达三国传 真三璃纱大战
+		"CS3E",//0x37 /4743 - 索尼克与世嘉全明星赛车（美）
+		"CS3P",//0x38 /4757 - 索尼克与世嘉全明星赛车（欧）
+		"VCMV",//0x39/5394 - 摇滚青春：最后的JAM（欧）
 		
-		"V2GV",//0x3A/5547 - ����¶Դ��գ����������Ĵ���ң�ŷ��
-		"IRAO",//0x3B/5584 - �ڴ����֣��ף�ŷ��
-		"IRBO",//0x3C/5585 - �ڴ����֣��ڣ�ŷ��
-		"IRAF",//0x3D/5586 - �ڴ����֣��ף�����
-		"IRBF",//0x3E/5587 - �ڴ����֣��ڣ�����
-		"IRAD",//0x3F/5588 - �ڴ����֣��ף��£�
-		"IRBD",//0x40/5589 - �ڴ����֣��ڣ��£�
-		"IRBO",//0x41/5593 - �ڴ����֣��ڣ���)
-		"IRAO",//0x42/5594 - �ڴ����֣��ף�����
-		"IRAS",//0x43/5598 - Pok��mon: Edici��n Blanca (S)
-		"IRBS",//0x44/5599 - Pok��mon: Edici��n Negra (S)
-		"IRAI",//0x45/5600 - Pok��mon: Versione Bianca (I)
-		"IRBI",//0x46/5601 - Pok��mon: Versione Nera (I)
-		"BYVJ",//0x47/5499 - ���޿��ǣ�Powered���գ�
-		"TFLJ",//0x48/5529 - �콵֮��F���λü��ڣ��գ�
-		"TDBJ",//0x49/5530 - ����ģ������䶷�����գ�
-		"BYYJ",//0x4A/5592 - ��Ϸ��5Ds������ھ����2011 ��Խ����գ�
+		"V2GV",//0x3A/5547 - 马里奥对大金刚：迷你王国的大混乱（欧）
+		"IRAO",//0x3B/5584 - 口袋妖怪：白（欧）
+		"IRBO",//0x3C/5585 - 口袋妖怪：黑（欧）
+		"IRAF",//0x3D/5586 - 口袋妖怪：白（法）
+		"IRBF",//0x3E/5587 - 口袋妖怪：黑（法）
+		"IRAD",//0x3F/5588 - 口袋妖怪：白（德）
+		"IRBD",//0x40/5589 - 口袋妖怪：黑（德）
+		"IRBO",//0x41/5593 - 口袋妖怪：黑（美)
+		"IRAO",//0x42/5594 - 口袋妖怪：白（美）
+		"IRAS",//0x43/5598 - Pokémon: Edición Blanca (S)
+		"IRBS",//0x44/5599 - Pokémon: Edición Negra (S)
+		"IRAI",//0x45/5600 - Pokémon: Versione Bianca (I)
+		"IRBI",//0x46/5601 - Pokémon: Versione Nera (I)
+		"BYVJ",//0x47/5499 - 怪兽克星：Powered（日）
+		"TFLJ",//0x48/5529 - 天降之物F：梦幻季节（日）
+		"TDBJ",//0x49/5530 - 龙珠改：究极武斗传（日）
+		"BYYJ",//0x4A/5592 - 游戏王5Ds：世界冠军大会2011 超越羁绊（日）
 		'\0',
 		'\0',
 };
 const char *games_forAddress[] = {
-		"YY8J",//0xB01 /2436 �����Լ�� ��ʧ��2����(JP) -�浵��ʼ������		
+		"YY8J",//0xB01 /2436 里克与约翰 消失的2幅画(JP) -存档初始化问题		
 		"BKBD",//0xB02 /4446_-_200_Klassische_Buecher_GER_NDS-iND
-		"BZOP",//0xB03 /4383_-_World_of_Zoo_EUR_MULTi8_NDS-BAHAMUT;;;��������λ����
+		"BZOP",//0xB03 /4383_-_World_of_Zoo_EUR_MULTi8_NDS-BAHAMUT;;;补丁代码位置用
 		"BKWE",//0xB04 /4649 - Bookworm (U)
-		"BT8E",//0xB05 /4705  - ĺ��֮��	����λ��
-		"BSDJ",//0xB06 /4735-������ս��
-		"CS3E",//0xB07 /4743 - �����������ȫ������������������λ��
-		"CS3P",//0xB08 /4757 - �����������ȫ����������ŷ������λ��
-		"BT8P",//0xB09 /4827 - ĺ��֮�ǣ�ŷ��//����λ��
+		"BT8E",//0xB05 /4705  - 暮光之城	补丁位置
+		"BSDJ",//0xB06 /4735-四龙神战记
+		"CS3E",//0xB07 /4743 - 索尼克与世嘉全明星赛车（美）补丁位置
+		"CS3P",//0xB08 /4757 - 索尼克与世嘉全明星赛车（欧）补丁位置
+		"BT8P",//0xB09 /4827 - 暮光之城（欧）//补丁位置
 
 		'\0',
 		'\0',
@@ -134,7 +134,7 @@ bool FixGame(const char *pFilename,uint32 address,uint32 oldValue,uint32 newValu
 	return true;
 }
 //--------------------------------------------------------------
-#define patch_data_at_ITCM_address 0x01FF7000   //�󲹶��Ĵ�ŵ�ַ
+#define patch_data_at_ITCM_address 0x01FF7000   //大补丁的存放地址
 bool GetGameSpecial(char* pbuf,const char *pFilename)
 {
 	//videoSub_SetShowLog(true);
@@ -166,16 +166,16 @@ bool GetGameSpecial(char* pbuf,const char *pFilename)
 		    				*(vu32*)(0x8000000+k) = 0xFFFFFFFF ;
 		    			}
 		    			
-		    			//����08000080
+		    			//查找08000080
 		    				*(vu32*)0x90000B0 = 0xFFFF;
 		    				*(vu32*)0x90000B4 = 0x24242400 ;
 		    				*(vu32*)0x90000B8 = 0xFFFFFFFF ;
 		    				*(vu32*)0x90000BC = 0x7FFFFFFF;
-		    			//����0801FFFE
+		    			//查找0801FFFE
 		    				*(vu32*)0x901FFFC = 0x7FFFFFFF ;
-		    			//����08240002	
+		    			//查找08240002	
 		    				*(vu16*)0x9240002 = 1 ;
-		    			//����08000004	 -- 2���ط�
+		    			//查找08000004	 -- 2个地方
 		    			//	*(vuint32*)0x9000000 = 0x544E494E ;
 		    			//	*(vuint32*)0x9000004 = 0x4F444E45 ;
 		    			WAIT_CR |= 0x80;
@@ -186,7 +186,7 @@ bool GetGameSpecial(char* pbuf,const char *pFilename)
 		    			*(vuint32*)special_for0991 =  0xe2803040; //ADD      r3,r0,#0x40
 		    		break;
 		    		}
-		        case 0x04://1981-YHGJ��ѧ�����꺺����
+		        case 0x04://1981-YHGJ放学后少年汉化版
 		    		{
 		    			//FixGame(pFilename,0x0007e9e8,0x8E1BA1C4,0x8E1BA110);
 		    			//MemCopy8CPU((void *)Game2patch,ptoAddress,(uint8*)Game2patch_end - (uint8*)Game2patch);
@@ -214,18 +214,18 @@ bool GetGameSpecial(char* pbuf,const char *pFilename)
 		        		break;
 		        	}
 
-		        case 0x0D://4786 - �ڴ����֣�����(��)
+		        case 0x0D://4786 - 口袋妖怪：金心(法)
         			{
         				FixGame(pFilename,0x000DF418,0xFAD10A01,0xFAE00A01);        			
         				break;
         			}        	
-		        case 0x0E://4787 - �ڴ����֣����ģ�����	        	
-		        case 0x0F://4788 - �ڴ����֣����飨����
+		        case 0x0E://4787 - 口袋妖怪：金心（美）	        	
+		        case 0x0F://4788 - 口袋妖怪：银灵（美）
 	        		{
 	        			FixGame(pFilename,0x000DF418,0xD10A2800,0xE00A2800);        			
 	        			break;
 	        		}
-		        case 0x10://4791 - �ڴ����֣�����(��)
+		        case 0x10://4791 - 口袋妖怪：银灵(法)
 	        		{
 	        			FixGame(pFilename,0x000DF418,0xFAD10A28,0xFAE00A28);        			
 	        			break;
@@ -346,7 +346,7 @@ void GetSpecialSave(char *pbuf)
 ////////////////////////////////////////////////////////////////////
 void WriteFat2_FPGA_SRAM(FAT_FILE * filePK , u32 startadd ,bool  needsomeloop)
 {
-    //д���ļ���FAT��
+    //写入文件的FAT表
     uint32 secp =  GetSecPerCls() ;
     uint32 value = GetFisrtCls()*0x200;
     FS_TYPE fs_systemType=FAT_GetFileSystemType();
@@ -659,7 +659,7 @@ void testSaver(char *SaverName)
 	const char save32M_3690[] = "DSMIO\0\0\0\0\0\0\0" ;
 	if(!memcmp(save32M_3690,(char*)0x27FFE00,12))
 		createSize = 32*1024*1024 ;
-	const char save1M_3499[] = "PICROSS3D\0\0\0" ;//3499 - Rittai Picross - ���巽�� - JPN
+	const char save1M_3499[] = "PICROSS3D\0\0\0" ;//3499 - Rittai Picross - 立体方块 - JPN
 	if(!memcmp(save1M_3499,(char*)0x27FFE00,12))
 		createSize = 1*1024*1024 ;
 	

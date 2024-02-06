@@ -216,7 +216,7 @@ static void ExtFont_TextOutW(CglCanvas *pCanvas,const int x,const int y,const Un
   int dx=x;
   int dy=y;
   
-  const u32 CanvasWidth=ScreenWidth; // 横サイズ256ピクセル以外には描画できない。
+  const u32 CanvasWidth=ScreenWidth; // 讓ｪ繧ｵ繧､繧ｺ256繝斐け繧ｻ繝ｫ莉･螟悶↓縺ｯ謠冗判縺ｧ縺阪↑縺�縲�
   
   while(*pstr!=0){
     const u16 widx=*pstr++;

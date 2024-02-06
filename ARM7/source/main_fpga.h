@@ -68,7 +68,7 @@ static u32 FPGA_GetRequestSamplesCount(void)
 {
   u32 pos=RAWPCM_POS&(RAWPCM_BUF_SIZE-1);
   
-  u32 lastcnt; // À¸À®ºÑ¤ßÌ¤ºÆÀ¸¥µ¥ó¥×¥ë¿ô
+  u32 lastcnt; // ç”Ÿæˆæ¸ˆã¿æœªå†ç”Ÿã‚µãƒ³ãƒ—ãƒ«æ•°
   if(pos<FPGA_LastWritePos){
     lastcnt=FPGA_LastWritePos-pos;
     }else{
@@ -77,7 +77,7 @@ static u32 FPGA_GetRequestSamplesCount(void)
   
   u32 cnt=RAWPCM_BUF_SIZE-lastcnt;
   
-  cnt=cnt&~1; // Ç°¤Î¤¿¤á2samplesÃ±°Ì¤Ç¥¢¥é¥¤¥á¥ó¥È¤¹¤ë¡£
+  cnt=cnt&~1; // å¿µã®ãŸã‚2sampleså˜ä½ã§ã‚¢ãƒ©ã‚¤ãƒ¡ãƒ³ãƒˆã™ã‚‹ã€‚
   
   return(cnt);
 }
@@ -140,10 +140,10 @@ static inline void FPGA_strpcmPlay()
 //  powerON(POWER_SOUND);
 //  SOUND_CR = SOUND_ENABLE | SOUND_VOL(0x7F);
   
-  TIMER0_DATA = SOUND_FREQ(48000); // DACÄ¾ÀÜÀÜÂ³RAWPCM¤Ï48kHz¸ÇÄê
+  TIMER0_DATA = SOUND_FREQ(48000); // DACç›´æ¥æ¥ç¶šRAWPCMã¯48kHzå›ºå®š
   TIMER0_CR = TIMER_DIV_1 | TIMER_ENABLE;
   
-  TIMER1_DATA = 0x10000 - (RAWPCM_BUF_SIZE/4*2); // ¥Ğ¥Ã¥Õ¥¡¥µ¥¤¥º¤Î4ÇÜ¤Î¼şÇÈ¿ô¤Ç¥İ¡¼¥ê¥ó¥°¤·¤Á¤ã¤¦¡£
+  TIMER1_DATA = 0x10000 - (RAWPCM_BUF_SIZE/4*2); // ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®4å€ã®å‘¨æ³¢æ•°ã§ãƒãƒ¼ãƒªãƒ³ã‚°ã—ã¡ã‚ƒã†ã€‚
   TIMER1_CR = TIMER_CASCADE | TIMER_IRQ_REQ | TIMER_ENABLE;
   
   IPC6->strpcmWriteRequest=0;

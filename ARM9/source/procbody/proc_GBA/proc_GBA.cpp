@@ -178,7 +178,7 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 			 UpdataWindows();
 			 if(!GetForPFlag())
 			 {				 
-				 //写入游戏到NorFlash
+				 //鍐欏叆娓告垙鍒癗orFlash
 				 WriteGbaRomToNorFlash();
 				 //SetRunGBAFlag();
 				 Enable_Arm9DS();
@@ -191,7 +191,7 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 			 }
 			 else
 			 {
-				 //写入游戏到PsRam
+				 //鍐欏叆娓告垙鍒癙sRam
 				 
 				 WriteGbaRomToPsRam();
 				 RunGBA(384,0x70);				 
@@ -366,7 +366,7 @@ static void UpdataGBA(void)
 	pScreenSub->pCanvas->BitBltFullBeta(pTmpBM);
 	
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor(SYSColor1);//设置字体颜色黑色  
+	pTmpBM->SetFontTextColor(SYSColor1);//璁剧疆瀛椾綋棰滆壊榛戣壊  
 		
 	CglTGF * pbm2= GBAAlpha_GetSkin(EGBASA_GBABG);
 	pbm2->BitBlt(pTmpBM,0,0);
@@ -486,7 +486,7 @@ static void UpdataGBA(void)
 	}   
 	/*if(GetRunGBAFlag())
 	{
-		//运行GBA
+		//杩愯GBA
 		ClearRunGBAFlag();
 		RunGBA();		
 	}*/
@@ -500,7 +500,7 @@ void UpdataWindows()
 static void CB_Start(void)
 {
 	Enable_Arm9DS();
-	SetShake(0x08);//关闭震动
+	SetShake(0x08);//鍏抽棴闇囧姩
 	lcdMainOnTop();
 	DrawOnlineHelp(); 
 }

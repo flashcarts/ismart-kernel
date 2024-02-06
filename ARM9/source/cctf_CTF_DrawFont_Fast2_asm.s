@@ -24,7 +24,7 @@ ScreenWidth EQU 256
 CTF_FontHeight EQU 12
 needbitscount EQU 9
 
-;//  bkpt 0 // ƒfƒoƒbƒO—pƒuƒŒ[ƒNƒ|ƒCƒ“ƒgİ’è
+;//  bkpt 0 // ãƒ‡ãƒãƒƒã‚°ç”¨ãƒ–ãƒ¬ãƒ¼ã‚¯ãƒã‚¤ãƒ³ãƒˆè¨­å®š
   
   push {r4,r5,r6,r7,r8,r9,lr}
   

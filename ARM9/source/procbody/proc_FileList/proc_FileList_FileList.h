@@ -455,7 +455,7 @@ static void FileList_DrawBG_DrawNDSFile(CglCanvas *pItemBM,TNDSFile *pNDSFile,bo
   {
 	 if(Selected)  
 	  {
-		  //±»Ñ¡ÖĞµÄÑ¡Ïî£¬¼ÆËã¿í¶È´óÓÚ200piexl£¬ÉèÖÃ×Ö³¬Ê±0Ãë¹ö¶¯±êÖ¾¡£
+		  //è¢«é€‰ä¸­çš„é€‰é¡¹ï¼Œè®¡ç®—å®½åº¦å¤§äº200piexlï¼Œè®¾ç½®å­—è¶…æ—¶0ç§’æ»šåŠ¨æ ‡å¿—ã€‚
 		  int wStr=0;
 		  wStr = pItemBM->GetTextWidthW(pNDSFile->pFilenameUnicode+curChar);
 		  if(loopFlg)
@@ -466,7 +466,7 @@ static void FileList_DrawBG_DrawNDSFile(CglCanvas *pItemBM,TNDSFile *pNDSFile,bo
 				  goto Flg2;
 			  if(wStr > 160)
 			  {
-				  //ĞèÒªÑ­»·
+				  //éœ€è¦å¾ªç¯
 				  goBackFlg = true;
 				  Unicode_Copy(pFilenameUnicode,pNDSFile->pFilenameUnicode+curChar);
 				  Unicode_Copy(pFilenameUnicode2,pNDSFile->pFilenameUnicode+curChar);
@@ -514,7 +514,7 @@ static void FileList_DrawBG_DrawNDSFile(CglCanvas *pItemBM,TNDSFile *pNDSFile,bo
   
   
   
-  s32 tx=0;//Í¼±ê¿ªÊ¼Î»ÖÃ
+  s32 tx=0;//å›¾æ ‡å¼€å§‹ä½ç½®
   switch(FileList_Mode){
     case EPSFLM_Single: tx=NDSROMIconXMargin+NDSROMIcon16Width+NDSROMIconXMargin; break;
     case EPSFLM_Double: tx=NDSROMIconXMargin+NDSROMIcon32Width+NDSROMIconXMargin; break;
@@ -741,7 +741,7 @@ static void FileList_DrawBG_DrawNDSFile(CglCanvas *pItemBM,TNDSFile *pNDSFile,bo
   }
 } 
 
-//////ÏÔÊ¾ÎÄ¼şÁĞ±íĞÅÏ¢£¬mainÆÁ£¬Èç¹ûĞèÒªĞŞ¸Ä·½Ê½µÈ
+//////æ˜¾ç¤ºæ–‡ä»¶åˆ—è¡¨ä¿¡æ¯ï¼Œmainå±ï¼Œå¦‚æœéœ€è¦ä¿®æ”¹æ–¹å¼ç­‰
 
 static void FileList_MainDrawBG(TScrollBar *psb)
 {
@@ -784,7 +784,7 @@ static void FileList_MainDrawBG(TScrollBar *psb)
         pItemBM->BitBlt(pTmpBM,0,DrawTop,ScreenWidth,DrawHeight,0,0,false);
       }
     }
-    //»­¹ö¶¯Ìõ
+    //ç”»æ»šåŠ¨æ¡
     ScrollBar_Draw(psb,pTmpBM);
     
   }
@@ -821,17 +821,17 @@ static void FileList_SubDrawBG_Standby(TScrollBar *psb)
   }
 }
 
-//ÏÔÊ¾subµÄĞÅÏ¢
+//æ˜¾ç¤ºsubçš„ä¿¡æ¯
 
 static void FileList_SubDrawBG(TScrollBar *psb)
 {
 	TiniSkinUser *SkinUser=&GlobalUserINI;
 	if(Backlight_isStandby()==true)
-    {//³öÓÚstandby×´Ì¬µÄÊ±ºò £¬ subĞèÒªÏÔÊ¾ClockĞÅÏ¢£¬Ö÷ÆÁ¹Ø±Õ
+    {//å‡ºäºstandbyçŠ¶æ€çš„æ—¶å€™ ï¼Œ subéœ€è¦æ˜¾ç¤ºClockä¿¡æ¯ï¼Œä¸»å±å…³é—­
         FileList_SubDrawBG_Standby(psb);
         return;
     }
-    //ÏÔÊ¾Ê²Ã´£¿
+    //æ˜¾ç¤ºä»€ä¹ˆï¼Ÿ
     if(DrawIPK(pScreenSub->pCanvas)==true) return;
   
     CglCanvas *pTmpBM=new CglCanvas(NULL,ScreenWidth,ScreenHeight,pf15bit);
@@ -840,14 +840,14 @@ static void FileList_SubDrawBG(TScrollBar *psb)
 // ------------------------------
 
     if(ShellSet.SwapDisp==true)
-    {//ÕâÀï½»»»ÏÔÊ¾µÄÊ±ºò£¬ÏÔÊ¾µÄ¶«Î÷
+    {//è¿™é‡Œäº¤æ¢æ˜¾ç¤ºçš„æ—¶å€™ï¼Œæ˜¾ç¤ºçš„ä¸œè¥¿
         CglB15 *pb15=FileList_GetSkin(EFLS_BG_TopMsg);
         pb15->pCanvas->BitBltFullBeta(pTmpBM);
         pTmpBM->SetFontTextColor(0x8000);
        
         
         //-------------------------------------------------------------------------------
-        {//»­Í¼±ê
+        {//ç”»å›¾æ ‡
             CglTGF *pbm;
             if(SkinUser->LightControl.x != -1)
             {
@@ -1015,7 +1015,7 @@ static void FileList_SubDrawBG(TScrollBar *psb)
             //time
             if(SkinUser->Time.x != -1)
             {
-            	 //Ìí¼ÓÊ±ÖÓ 
+            	 //æ·»åŠ æ—¶é’Ÿ 
     	        char DataTimeChar[256];
     	        memset(DataTimeChar,0,256);
     	        DateTime_ResetNow();
@@ -1026,7 +1026,7 @@ static void FileList_SubDrawBG(TScrollBar *psb)
     	        pTmpBM->SetFontTextColor(0x8000);
             }
             //Game ico
-            //È·¶¨Ñ¡ÖĞµÄÓÎÏ·
+            //ç¡®å®šé€‰ä¸­çš„æ¸¸æˆ
 	        TScrollBar *psb=&ScrollBar;
 	        TNDSFile *pSelectNDS = &pNDSFiles[psb->SelectedIndex];
             if(SkinUser->Gameicon.x != -1)
@@ -1112,7 +1112,7 @@ static void FileList_SubDrawBG(TScrollBar *psb)
         TDateTime now=DateTime_GetNow();
         if(isMS2)
         {
-        	//²»´æÔÚmoonshell2.ndsÎÄ¼ş
+        	//ä¸å­˜åœ¨moonshell2.ndsæ–‡ä»¶
         	
         	CglTGF *pbm;
         	pbm= ScrollBarAlpha_GetSkin(EFLSA_NO_MS2);
@@ -1181,12 +1181,12 @@ static void FileList_SubDrawBG(TScrollBar *psb)
   
   // ------------------------------
   
-    ////Ê±ÖÓĞÅÏ¢ÏÔÊ¾£¬ÔİÊ±²»ĞèÒª
+    ////æ—¶é’Ÿä¿¡æ¯æ˜¾ç¤ºï¼Œæš‚æ—¶ä¸éœ€è¦
     //Clock_Draw(pTmpBM);
   
    // FileList_DrawID3Tag(pTmpBM,false);
   
-    //½«Êı¾İÏÔÊ¾µ½subÆÁÄ»ÉÏ
+    //å°†æ•°æ®æ˜¾ç¤ºåˆ°subå±å¹•ä¸Š
     VRAMWriteCache_Enable();
     pTmpBM->BitBltFullBeta(pScreenSub->pCanvas);
     VRAMWriteCache_Disable();
@@ -1214,7 +1214,7 @@ static bool FileList_MouseDown(TScrollBar *psb,s32 x,s32 y)
   movespeed=0;
   mvsynccnt=0;
   
-  ///×¢ÊÍÎÄ¼şÑ¡Ôñ
+  ///æ³¨é‡Šæ–‡ä»¶é€‰æ‹©
   psb->UsePressImage=true;
   
   //added by mj----------
@@ -1243,11 +1243,11 @@ static bool FileList_MouseDown(TScrollBar *psb,s32 x,s32 y)
 }
 
 static bool FileList_MouseMove(TScrollBar *psb,s32 x,s32 y)
-{//´¥ÃşÆÁµÄÒÆ¶¯
+{//è§¦æ‘¸å±çš„ç§»åŠ¨
     if(mb==false) return(false);
   
     if(y!=my)
-    {//ÕâÀïÊÇÉÏÏÂÒÆ¶¯µÄ£¬×¢ÊÍ£¬È¡ÏûÒÆ¶¯Ñ¡Ïî
+    {//è¿™é‡Œæ˜¯ä¸Šä¸‹ç§»åŠ¨çš„ï¼Œæ³¨é‡Šï¼Œå–æ¶ˆç§»åŠ¨é€‰é¡¹
         s32 vec=my-y;
         //ScrollBar_SetDirectTopPos(psb,psb->TopPos+vec);
     
@@ -1310,10 +1310,10 @@ static bool FileList_MouseUp(TScrollBar *psb,s32 x,s32 y)
         return(true);
       }
       }else{
-//      _consolePrintf("ƒNƒŠƒbƒNŠÔ‚ª%dframes(%dms)ˆÈã‚¾‚Á‚½‚Ì‚Å–³‹‚µ‚Ü‚µ‚½B(%dframes)\n",marginhigh,marginhigh*16,mvsynccnt);
+//      _consolePrintf("ã‚¯ãƒªãƒƒã‚¯æ™‚é–“ãŒ%dframes(%dms)ä»¥ä¸Šã ã£ãŸã®ã§ç„¡è¦–ã—ã¾ã—ãŸã€‚(%dframes)\n",marginhigh,marginhigh*16,mvsynccnt);
     }
     }else{
-//    _consolePrintf("ƒNƒŠƒbƒNŠÔ‚ª%dframes(%dms)ˆÈ‰º‚¾‚Á‚½‚Ì‚Å–³‹‚µ‚Ü‚µ‚½B(%dframes)\n",marginlow,marginlow*16,mvsynccnt);
+//    _consolePrintf("ã‚¯ãƒªãƒƒã‚¯æ™‚é–“ãŒ%dframes(%dms)ä»¥ä¸‹ã ã£ãŸã®ã§ç„¡è¦–ã—ã¾ã—ãŸã€‚(%dframes)\n",marginlow,marginlow*16,mvsynccnt);
   }
   
   return(true);

@@ -104,7 +104,7 @@ static bool isHiddenExt32(u32 Ext32)
 #define ATTRIB_HID	0x02
 static void NDSFiles_RefreshCurrentFolder(void)
 {
-    //ÊÍ·ÅÇ°Ò»´ÎµÄĞÅÏ¢
+    //é‡Šæ”¾å‰ä¸€æ¬¡çš„ä¿¡æ¯
     NDSFiles_Free();
   
     NDSIconLoaded=false;
@@ -113,7 +113,7 @@ static void NDSFiles_RefreshCurrentFolder(void)
   
     const char *pBasePathAlias=ConvertFull_Unicode2Alias(ProcState.FileList.CurrentPathUnicode,NULL);
     
-    //ÇĞ»»µ½ÖÆ¶¨Ä¿Â¼
+    //åˆ‡æ¢åˆ°åˆ¶å®šç›®å½•
     if((pBasePathAlias==NULL)||(FAT2_chdir_Alias(pBasePathAlias)==false))
     {
         _consolePrintf("Can not change path. [%s]\n",pBasePathAlias);
@@ -285,7 +285,7 @@ static void NDSFiles_RefreshCurrentFolder(void)
     }
   }
   
-  //ÓÎÏ·ÃûÅÅĞò
+  //æ¸¸æˆåæ’åº
   if(2<=NDSFilesCount){
     _consolePrint("Sort for filenames.\n");
     for(s32 idx0=0;idx0<NDSFilesCount-1;idx0++){

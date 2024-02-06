@@ -72,11 +72,11 @@ bool GetFlag2()
 	return(bFlag2);
 }
 
-//¼ì²âÎÄ¼ş¼ĞµÄ´æÔÚÓë·ñ
+//æ£€æµ‹æ–‡ä»¶å¤¹çš„å­˜åœ¨ä¸å¦
 static void isRomDatFolderExist()
 {
 	FAT_chdir("/");
-	FILE_TYPE fstype = FAT_FileExists("/ROMDAT"); //´óĞ¡Ğ´ÎŞ¹Ø
+	FILE_TYPE fstype = FAT_FileExists("/ROMDAT"); //å¤§å°å†™æ— å…³
     if(fstype == FT_DIR)
     { 
     	_consolePrintf("ROMDAT Folder exist \n");    
@@ -84,7 +84,7 @@ static void isRomDatFolderExist()
     else
     {
         _consolePrintf("ROMDAT Folder NOT exist \n");
-            //ÕâÀïÊÇ´´½¨ĞÂÄ¿Â¼ ÏÔÊ¾ĞÅÏ¢
+            //è¿™é‡Œæ˜¯åˆ›å»ºæ–°ç›®å½• æ˜¾ç¤ºä¿¡æ¯
             //MessageDialog_Draw(pScreenMainOverlay->pCanvas,(UnicodeChar *)L"Create SAVE");
         if(FAT_mkdir("/ROMDAT")==0)
         {
@@ -175,7 +175,7 @@ static void RomDatFileDataSectorIndex()
         if(fstype2 == FT_NONE)
         {
 
-            //´´½¨´æµµÎÄ¼ş
+            //åˆ›å»ºå­˜æ¡£æ–‡ä»¶
             //MessageDialog_Draw(pScreenMainOverlay->pCanvas,(UnicodeChar *)L"Create SAVER");
             filePK = FAT2_fopen_CreateForWrite_on_CurrentFolder(a_saver,w_saver);
            	if(filePK->length==0)
@@ -187,7 +187,7 @@ static void RomDatFileDataSectorIndex()
         }
         else
         {
-        	memcpy(a_saver,pafn,13);//ÓÃÕâ¸ö±ğÃû´ò¿ªÒÑÓĞ´æµµ
+        	memcpy(a_saver,pafn,13);//ç”¨è¿™ä¸ªåˆ«åæ‰“å¼€å·²æœ‰å­˜æ¡£
         }
     }
     FAT_FILE *pf=FAT2_fopen_AliasForRead(a_saver);*/
@@ -200,7 +200,7 @@ static void RomDatFileDataSectorIndex()
     	if(FAT2_GetFileSize(pf)==512)
         {
             if(pf->firstCluster!=0)
-            {//Ö±½Ó´ò¿ªÎÄ¼şµÄÔÚTF¿¨µÄËùÔÚÎïÀíÉÈÇø
+            {//ç›´æ¥æ‰“å¼€æ–‡ä»¶çš„åœ¨TFå¡çš„æ‰€åœ¨ç‰©ç†æ‰‡åŒº
             	DataSectorIndex=FAT2_ClustToSect(pf->firstCluster);
             }
         }
@@ -214,7 +214,7 @@ static void RomDatFileDataSectorIndex()
     _consolePrintf("\n Here4!");
 }
 //-------------------------------------------------------------
-//¶ÁĞ´datÎÄ¼ş
+//è¯»å†™datæ–‡ä»¶
 static u8 fbuf[512];
 static u32 fbuf_pos;
 
@@ -277,7 +277,7 @@ static void RomDataSave(u8* toSaveRomData)
     REG_IME=1;
 }
 //-------------------------------------------------------------
-//ÕÒ³öÓÎÏ·ÄÚ²¿Âë
+//æ‰¾å‡ºæ¸¸æˆå†…éƒ¨ç 
 static void FindRomSign()
 {
 	uint8 *bm=(uint8*)safemalloc(512);
@@ -302,7 +302,7 @@ static void FindRomSign()
 		safefree(bm);bm=NULL;
 	}
 }
-//´ò¿ªÌØ¶¨ÓÎÏ·µÄdatÎÄ¼ş
+//æ‰“å¼€ç‰¹å®šæ¸¸æˆçš„datæ–‡ä»¶
 void OpenRomData()
 {
 	memset(RomSign,0x00,5);
@@ -318,14 +318,14 @@ void OpenRomData()
 	RomDataLoad(SaveRomData);
 	if(memcmp(RomSign,&SaveRomData[0xa0],4))
 	{
-		//Íâ²¿ÃûÓëÄÚ²¿Ãû²»·û£¬³õÊ¼»¯ÎªÈ«0;
+		//å¤–éƒ¨åä¸å†…éƒ¨åä¸ç¬¦ï¼Œåˆå§‹åŒ–ä¸ºå…¨0;
 		memset(SaveRomData,0x00,0x100);
 		memcpy(&SaveRomData[0xa0],RomSign,4);
-		//³õÊ¼»¯romsetµÄ×´Ì¬
+		//åˆå§‹åŒ–romsetçš„çŠ¶æ€
 		memset((void*)&RomSetState,0x00,sizeof(TRomSetState));
 		RomSetState.Speed=(SaveRomData[0xb6]==0)?5:SaveRomData[0xb6];
 	}
-	else//Íâ²¿ÃûÓëÄÚ²¿ÃûÏà·û£¬¶ÁÈ¡Êı¾İ³õÊ¼»¯
+	else//å¤–éƒ¨åä¸å†…éƒ¨åç›¸ç¬¦ï¼Œè¯»å–æ•°æ®åˆå§‹åŒ–
 	{
 		if(SaveRomData[0xb0])
 			RomSetState.SoftReset=true;

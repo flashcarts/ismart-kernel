@@ -3,7 +3,7 @@ static CglCanvas *pCustomBG=NULL;
 
 static void LoadCustomBG(void)
 {
-    //加载缺省的背景，取消此函数，没有必要
+    //鍔犺浇缂虹渷鐨勮儗鏅紝鍙栨秷姝ゅ嚱鏁帮紝娌℃湁蹇呰
     return ;
 /*    
     if(pCustomBG!=NULL) return;

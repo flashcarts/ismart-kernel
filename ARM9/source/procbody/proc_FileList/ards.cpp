@@ -45,7 +45,7 @@
 
 
 
-uint32 	dw_GameCounter;//ÓĞ½ğÊÖÖ¸µÄÓÎÏ·¸öÊı
+uint32 	dw_GameCounter;//æœ‰é‡‘æ‰‹æŒ‡çš„æ¸¸æˆä¸ªæ•°
 AR_DATA	*m_pARDataHead;
 uint32	m_CheatItemCounter;
 uint32	m_FirstLevelCIC;
@@ -155,7 +155,7 @@ NDSCheatInfo *FindNDSCheatInfo(char *sign,uint32 RomCRC)
 			dw_GameCounter++;
 			if((memcmp(sign,&pBuf[kk],4)==0) && (*((uint32 *)&pBuf[kk+4])==RomCRC))
 			{
-				//·µ»ØÒ»¸öNDSCheatInfo
+				//è¿”å›ä¸€ä¸ªNDSCheatInfo
 			
 				pNdsCheatInfo = (NDSCheatInfo *)safemalloc(sizeof(NDSCheatInfo));
 				memcpy(pNdsCheatInfo->sign,(char *)&pBuf[kk],4);
@@ -254,7 +254,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 	char *pBuf=NULL;
 	bool bOneHot=false;
 	bool bSub=false;
-	//¶ÁÊı¾İ
+	//è¯»æ•°æ®
 	
 	FAT_FILE *h=NULL; 
 	char pStrname[256];
@@ -287,7 +287,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 	{
 		safefree(pInfo);pInfo=NULL;
 	}
-	//¶ÁÈ¡ÓÎÏ·µÄÃèÊö·û
+	//è¯»å–æ¸¸æˆçš„æè¿°ç¬¦
 	loop=0;
 	do
 	{
@@ -311,7 +311,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 	memset(pARCheatCur->pFunction,0,loop);
 	memcpy(pARCheatCur->pFunction,&pBuf[off],loop);
 	pARCheatCur->pFunction2=NULL;
-	//È¡µÃ½ğÊÖÖ¸ÌõÄ¿¸öÊı
+	//å–å¾—é‡‘æ‰‹æŒ‡æ¡ç›®ä¸ªæ•°
 	m_CheatItemCounter = *((uint32 *)&pBuf[off+loop]) & 0xFFFFFFF;
 	_consolePrintf("m_CheatItemCounter=%d\n",m_CheatItemCounter);
 	
@@ -327,19 +327,19 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 	
 	uint32 SubCnt_cpy = 0;
 	uint32 count_cpy = 1;
-	//Ìî³äÊı¾İ
+	//å¡«å……æ•°æ®
 	off += loop+36;
 	for(uint32 kk=0;kk<m_CheatItemCounter;kk++)
 	{
 		/*
-		ÏÂÃæ¾ÍÊÇ¾ßÌå¸÷ÌõÄ¿£¬Ã¿ÌõÄ¿µÄ¸ñÊ½£º
-'Ê×ÏÈÊÇÒ»¸öDWORD£¬±íÊ¾¸ÃÌõÄ¿ÀàĞÍ£¬Èç¹û×î¸ß×Ö½Ú²»Îª0±íÊ¾Îªfolder£¬·ñÔò±íÊ¾code£¬
-'    µ±ÀàĞÍÎªfolderÊ±£ºXYZZZZZZ£¬X±íÊ¾foler£¬Y±íÊ¾£ºone hot£¬ZZZZZZÊÇ±¾folderÏÂÃæ°üÀ¨µÄcodeÊıÁ¿£¨ºÃÏñXYÒ»°ãÊÇ1£©
-'    µ±ÀàĞÍÎªcodeÊ±£ºXY=0£¬ZµÄº¬Òå²»Ã÷
-'È»ºóÊÇ2¸ö×Ö·û´®£¬·Ö±ğ´ú±í¸ÃÌõÄ¿µÄNameºÍNote£¬µÚ2¸ö×Ö·û´®ºóÃæÒªÓÃ\0²¹Æë£¬Ê¹2¸ö×Ö·û´®³¤¶ÈºÍÊÇ4µÄÕûÊı±¶£¨ÎªÁËÕÕ¹Ë32Î»ÏµÍ³£¿£©
-'Èç¹ûÊÇfolderÔò¸ÃÌõÄ¿µ½´Ë½áÊø£¬Èç¹ûÊÇcode£¬ºóÃæ»¹ÓĞARDSÂë¶Î£¬¸ñÊ½Îª£ºARDSÂë´óĞ¡+ARDSÂë
-'   ARDSÂë´óĞ¡ÓÃ1¸öDWORD±íÊ¾
-'   ARDSÂëÊÇn¸öDWORD£¬Ã¿2¸öDWORD¹¹³ÉÒ»ĞĞÓï¾ä£¬¶ş½øÖÆ¸ñÊ½
+		ä¸‹é¢å°±æ˜¯å…·ä½“å„æ¡ç›®ï¼Œæ¯æ¡ç›®çš„æ ¼å¼ï¼š
+'é¦–å…ˆæ˜¯ä¸€ä¸ªDWORDï¼Œè¡¨ç¤ºè¯¥æ¡ç›®ç±»å‹ï¼Œå¦‚æœæœ€é«˜å­—èŠ‚ä¸ä¸º0è¡¨ç¤ºä¸ºfolderï¼Œå¦åˆ™è¡¨ç¤ºcodeï¼Œ
+'    å½“ç±»å‹ä¸ºfolderæ—¶ï¼šXYZZZZZZï¼ŒXè¡¨ç¤ºfolerï¼ŒYè¡¨ç¤ºï¼šone hotï¼ŒZZZZZZæ˜¯æœ¬folderä¸‹é¢åŒ…æ‹¬çš„codeæ•°é‡ï¼ˆå¥½åƒXYä¸€èˆ¬æ˜¯1ï¼‰
+'    å½“ç±»å‹ä¸ºcodeæ—¶ï¼šXY=0ï¼ŒZçš„å«ä¹‰ä¸æ˜
+'ç„¶åæ˜¯2ä¸ªå­—ç¬¦ä¸²ï¼Œåˆ†åˆ«ä»£è¡¨è¯¥æ¡ç›®çš„Nameå’ŒNoteï¼Œç¬¬2ä¸ªå­—ç¬¦ä¸²åé¢è¦ç”¨\0è¡¥é½ï¼Œä½¿2ä¸ªå­—ç¬¦ä¸²é•¿åº¦å’Œæ˜¯4çš„æ•´æ•°å€ï¼ˆä¸ºäº†ç…§é¡¾32ä½ç³»ç»Ÿï¼Ÿï¼‰
+'å¦‚æœæ˜¯folderåˆ™è¯¥æ¡ç›®åˆ°æ­¤ç»“æŸï¼Œå¦‚æœæ˜¯codeï¼Œåé¢è¿˜æœ‰ARDSç æ®µï¼Œæ ¼å¼ä¸ºï¼šARDSç å¤§å°+ARDSç 
+'   ARDSç å¤§å°ç”¨1ä¸ªDWORDè¡¨ç¤º
+'   ARDSç æ˜¯nä¸ªDWORDï¼Œæ¯2ä¸ªDWORDæ„æˆä¸€è¡Œè¯­å¥ï¼ŒäºŒè¿›åˆ¶æ ¼å¼
 		*/
 		uint32 type=*((uint32 *)&pBuf[off]);
 		uint32 X=0xF0000000 & type;
@@ -364,7 +364,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 				count_cpy++;
 			}
 			///////////////////////////////////	
-			//±íÊ¾code
+			//è¡¨ç¤ºcode
 			AR_DATA *p = (AR_DATA *)safemalloc(sizeof(AR_DATA));
 			p->bOneHot=bOneHot;
 			p->bFolder=false;
@@ -377,7 +377,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 			p->ARCheat.datasize=0;
 			p->pARNextData=NULL;
 			p->pARPreData=NULL;
-			//¿½±´ÃèÊö·ûºÅ
+			//æ‹·è´æè¿°ç¬¦å·
 			uint32 dwLen1=0;
 			uint32 dwLen2=0;
 			while(pBuf[off+4+dwLen1]!='\0')
@@ -390,7 +390,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 			dwLen1++;
 			//_consolePrintf("kk=%d,dwLen1=%d\n",kk,dwLen1);
 			//_consolePrintf("p->pFunction=%s\n",p->pFunction);
-			//´¦ÀíµÚ¶ş¸ö×Ö·û´®
+			//å¤„ç†ç¬¬äºŒä¸ªå­—ç¬¦ä¸²
 			while(pBuf[off+4+dwLen1+dwLen2]!='\0')
 			{
 				dwLen2++;
@@ -403,10 +403,10 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 			}
 			else
 				p->pFunction2=NULL;
-			//´¦Àí×Ö½Ú¶ÔÆë
+			//å¤„ç†å­—èŠ‚å¯¹é½
 			dwLen1=(dwLen1+dwLen2+4)/4*4;
 			p->ARCheat.datasize=*((uint32 *)&pBuf[off+4+dwLen1]);
-			//Ìî³äÊı¾İ
+			//å¡«å……æ•°æ®
 			p->ARCheat.pData=(uint32 *)safemalloc(p->ARCheat.datasize*4);
 			for(uint32 jj=0;jj<p->ARCheat.datasize;jj++)
 			{
@@ -424,7 +424,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 			SubCnt_cpy = SubCnt;
 			count_cpy = 1;
 			bSub=true;
-			//±íÊ¾floder
+			//è¡¨ç¤ºfloder
 		//	AR_DATA *p = new AR_DATA;
 			AR_DATA *p = (AR_DATA *)safemalloc(sizeof(AR_DATA));
 			p->bOneHot=false;
@@ -442,7 +442,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 				p->bOneHot=true;
 				bOneHot=true;
 			}
-			//¿½±´ÃèÊö·ûºÅ
+			//æ‹·è´æè¿°ç¬¦å·
 			uint32 dwLen1=0;
 			uint32 dwLen2=0;
 			while(pBuf[off+4+dwLen1]!='\0')
@@ -454,7 +454,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 			memcpy(p->pFunction,&pBuf[off+4],dwLen1);
 			*(p->pFunction+dwLen1)='\0';
 			dwLen1++;
-			//´¦ÀíµÚ¶ş¸ö×Ö·û´®
+			//å¤„ç†ç¬¬äºŒä¸ªå­—ç¬¦ä¸²
 			while(pBuf[off+4+dwLen1+dwLen2]!='\0')
 			{
 				dwLen2++;
@@ -469,7 +469,7 @@ bool GetCheatData(NDSCheatInfo *pInfo)
 			}
 			else
 				p->pFunction2=NULL;
-			//´¦Àí×Ö½Ú¶ÔÆë
+			//å¤„ç†å­—èŠ‚å¯¹é½
 			dwLen1=(dwLen1+dwLen2+4)/4*4;
 
 			pARCheatCur->pARNextData=p;

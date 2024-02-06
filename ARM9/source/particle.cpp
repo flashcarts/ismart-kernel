@@ -143,7 +143,7 @@ void Particle_Update(u32 VsyncCount,CglCanvas *pcan)
       pParticle->ay=ay;
       if(firststart==true){
         TParticle_Part *ptagpart=&pParticle->Parts[0];
-        for(u32 idx=1;idx<PartsCount;idx++){ // idx0‚Íˆ—‚µ‚È‚¢
+        for(u32 idx=1;idx<PartsCount;idx++){ // idx0ã¯å‡¦ç†ã—ãªã„
           TParticle_Part *ppart=&pParticle->Parts[idx];
           ppart->x=ptagpart->x;
           ppart->y=ptagpart->y;
@@ -153,7 +153,7 @@ void Particle_Update(u32 VsyncCount,CglCanvas *pcan)
   }
   
   for(u32 loop=0;loop<VsyncCount*3;loop++){
-    for(u32 idx=1;idx<PartsCount;idx++){ // idx0‚Íˆ—‚µ‚È‚¢
+    for(u32 idx=1;idx<PartsCount;idx++){ // idx0ã¯å‡¦ç†ã—ãªã„
       TParticle_Part *ptagpart=&pParticle->Parts[idx-1];
       TParticle_Part *ppart=&pParticle->Parts[idx];
       

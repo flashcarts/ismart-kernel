@@ -70,7 +70,7 @@ static bool isExt32VSINI(u32 Ext32)
 }
 void ListSkinDirFile(void)
 {
-    //ÇĞ»»µ½ÖÆ¶¨Ä¿Â¼
+    //åˆ‡æ¢åˆ°åˆ¶å®šç›®å½•
     memset(ListFile,0x00,128*sizeof(SkinListFile));
     ListFileNum=0;
     
@@ -171,7 +171,7 @@ void printSkinFileList(void)
 }
 void ListMulLangFile(void)
 {
-    //ÇĞ»»µ½ÖÆ¶¨Ä¿Â¼
+    //åˆ‡æ¢åˆ°åˆ¶å®šç›®å½•
     memset(MulLangListFile,0x00,128*sizeof(SkinListFile));
     MulLangListFileNum=0;
     

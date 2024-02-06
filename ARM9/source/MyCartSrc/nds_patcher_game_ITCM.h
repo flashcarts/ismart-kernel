@@ -13,7 +13,7 @@ CODE_IN_ITCM void patch_global_Pokemon(uint32 b_address,uint32 b_code,uint32 to_
 	if(*(vuint32*)b_address == 0XE12FFF1E)
 	{
 		*(vuint32*)b_address = b_code;	
-		//--ww-- µÇ¼ÇÐ´Èë
+		//--ww-- ç™»è®°å†™å…¥
 		WritePatchInfo_4BYTE((uint32)b_address,(uint32)b_code);
 		fix_data_Pokemon[17] = replace1;
 		fix_data_Pokemon[21] = replace2;
@@ -21,11 +21,11 @@ CODE_IN_ITCM void patch_global_Pokemon(uint32 b_address,uint32 b_code,uint32 to_
 		{
 			*((vuint32*)to_address + tt) = fix_data_Pokemon[tt];
 		}
-		//--ww-- µÇ¼ÇÐ´Èë
+		//--ww-- ç™»è®°å†™å…¥
 		WritePatchInfo((uint32)to_address,23*4,fix_data_Pokemon);
 	}	
 }
-CODE_IN_ITCM void patch_4638(void)//Ä§·¨ÃÅ
+CODE_IN_ITCM void patch_4638(void)//é­”æ³•é—¨
 {
 	uint32* patch_4638_data = (uint32*)0x01FF7000;
 	for(int i=0;i<359;i++)
@@ -38,7 +38,7 @@ CODE_IN_ITCM void patch_4638(void)//Ä§·¨ÃÅ
 	}	
 }
 //////////////////////////////////////////
-CODE_IN_ITCM void patch_4501(void)//¾ÞÁúÕ½ÕùUSA
+CODE_IN_ITCM void patch_4501(void)//å·¨é¾™æˆ˜äº‰USA
 {
 	uint8* baseAddress = (uint8*)0x2000000;
 	*(baseAddress+0x1d1d) = 0xe0;
@@ -166,26 +166,26 @@ CODE_IN_ITCM void fixAddressValue(uint32 *address1,uint32 *address2,uint32 type)
 	case 1:
 		*address1 = mov_r0_0;
 		*(address1+1) = bx_lr;
-		//--ww-- µÇ¼ÇÐ´Èë
+		//--ww-- ç™»è®°å†™å…¥
 		WritePatchInfo_4BYTE((uint32)address1,mov_r0_0);
 		WritePatchInfo_4BYTE((uint32)(address1+1),bx_lr);
 		break;
 	case 2:
 		*address1 = mov_r0_0;
 		*(address1+1) = bx_lr;
-		//--ww-- µÇ¼ÇÐ´Èë
+		//--ww-- ç™»è®°å†™å…¥
 		WritePatchInfo_4BYTE((uint32)address1,mov_r0_0);
 		WritePatchInfo_4BYTE((uint32)(address1+1),bx_lr);
     
 		*address2 = mov_r0_0;
 		*(address2+1) = bx_lr;
-		//--ww-- µÇ¼ÇÐ´Èë
+		//--ww-- ç™»è®°å†™å…¥
 		WritePatchInfo_4BYTE((uint32)address2,mov_r0_0);
 		WritePatchInfo_4BYTE((uint32)(address2+1),bx_lr);
 		break;
 	case 3:
 		*address1 = (uint32)address2;
-		//--ww-- µÇ¼ÇÐ´Èë
+		//--ww-- ç™»è®°å†™å…¥
 		WritePatchInfo_4BYTE((uint32)address1,(uint32)address2);
 		break;	      
 
@@ -202,50 +202,50 @@ CODE_IN_ITCM inline void fix_3690()
 	{
 		*((uint32*)0x0200353C + tt) = fix_data_3690[tt];//WRITEFLASH
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x0200353C,10*4,fix_data_3690);
 	fix_data_3690[7] = 0X02000104;
 	for(int tt=0;tt<10;tt++)
 	{
 		*((uint32*)0x02003908 + tt) = fix_data_3690[tt];//READFLASH
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x02003908,10*4,fix_data_3690);
 }
 //---------------------
-CODE_IN_ITCM inline void fix_4812()//ÀÏ×ÓÖÆÔì
+CODE_IN_ITCM inline void fix_4812()//è€å­åˆ¶é€ 
 {
 	fix_data_3690[7] = 0X02000150;
 	for(int tt=0;tt<10;tt++)
 	{
 		*((uint32*)0x0200355C + tt) = fix_data_3690[tt];//WRITEFLASH
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x0200355C,10*4,fix_data_3690);
 	fix_data_3690[7] = 0X02000154;
 	for(int tt=0;tt<10;tt++)
 	{
 		*((uint32*)0x02003928 + tt) = fix_data_3690[tt];//READFLASH
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x02003928,10*4,fix_data_3690);
 }
 //---------------------
-CODE_IN_ITCM inline void fix_4915()//ÀÏ×ÓÖÆÔì
+CODE_IN_ITCM inline void fix_4915()//è€å­åˆ¶é€ 
 {
 	fix_data_3690[7] = 0X02000230;
 	for(int tt=0;tt<10;tt++)
 	{
 		*((uint32*)0x020035FC + tt) = fix_data_3690[tt];//WRITEFLASH
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x020035FC,10*4,fix_data_3690);
 	fix_data_3690[7] = 0X02000234;
 	for(int tt=0;tt<10;tt++)
 	{
 		*((uint32*)0x020039C8 + tt) = fix_data_3690[tt];//READFLASH
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x020039C8,10*4,fix_data_3690);
 }
 //---------------------
@@ -256,18 +256,18 @@ CODE_IN_ITCM inline void fix_4951()
 	{
 		*((uint32*)0x0206176c + tt) = fix_data_3690[tt];//WRITEFLASH
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x0206176c,10*4,fix_data_3690);
 	fix_data_3690[7] = 0X02000304;
 	for(int tt=0;tt<10;tt++)
 	{
 		*((uint32*)0x02061ac4 + tt) = fix_data_3690[tt];//READFLASH
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x02061ac4,10*4,fix_data_3690);
 }
 //---------------------------------------------------
-CODE_IN_ITCM inline void fix_4377()//×ï¶ñ¸²Ãð¼Æ»®:ÐÌ¾¯ÐÂ±ø
+CODE_IN_ITCM inline void fix_4377()//ç½ªæ¶è¦†ç­è®¡åˆ’:åˆ‘è­¦æ–°å…µ
 {
 	if(*(vuint32*)0x2000800 == 0xEA0906BE) return;
     uint32 *puStart = (uint32*)(*(uint32*)0x27FFE24) ;	
@@ -355,7 +355,7 @@ CODE_IN_ITCM void patch_5292(void)
 	uint32* patch_5292_data = (uint32*)0x01FF7000;
 	//*(vuint32*)0x020009f8 = 0xEAFFFEB0;
 	*(vuint32*)0x0204B868 = 0xEBFED31C;
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	//WritePatchInfo_4BYTE((uint32)0x020009f8,(uint32)0xEAFFFEB0);
 	for(int tt=0;tt<104;tt++)
 	{
@@ -370,7 +370,7 @@ CODE_IN_ITCM void patch_5387(void)
 	//*(vuint32*)0x020009f8 = 0xEAFFFDC0; 
 
 	*(vuint32*)0X0204BB24 = 0xEBFED17D;
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo_4BYTE((uint32)0X0204BB24,(uint32)0xEBFED17D);
 	patch_5292_data[80] = 0x02000331;//0X02059909;
 	//patch_5292_data[4] = 0X0204BB24;
@@ -387,7 +387,7 @@ CODE_IN_ITCM void patch_5367(void)
 	uint32* patch_5292_data = (uint32*)0x01FF7000;
 	//*(vuint32*)0x020009f8 = 0xEAFFFDC0; 
 	*(vuint32*)0X0204BA64 = 0xEBFED2AD;
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo_4BYTE((uint32)0X0204BA64,(uint32)0xEBFED2AD);	
 	patch_5292_data[80] = 0x02059849;
 	for(int tt=0;tt<101;tt++)
@@ -403,16 +403,16 @@ CODE_IN_ITCM uint32 fix_data_4375[13]={
 		0XE12FFF1E,0X0218DA4C,0X0218DA54,0XE3A05921,
 		0XE3A04000
 };
-CODE_IN_ITCM void patch_4375()//·è¿ñÍÃ×Ó»Ø¼Ò
+CODE_IN_ITCM void patch_4375()//ç–¯ç‹‚å…”å­å›žå®¶
 {
 	*(vuint32*)0x0203d108 = 0xEBFF0FBC; 
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	//WritePatchInfo_4BYTE((uint32)0x0203d108,(uint32)0xEBFF0FBC);
 	for(int tt=0;tt<13;tt++)
 	{
 		*((vuint32*)0x02001000 + tt) = fix_data_4375[tt];
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	//WritePatchInfo((uint32)0x02001000,13*4,fix_data_4375);	
 }
 //----------------------------------------------
@@ -426,13 +426,13 @@ CODE_IN_ITCM uint32 fix_data_5400[19]={
 CODE_IN_ITCM void patch_5400()
 {
 	*(vuint32*)0x020009f8 = 0xEAFFFE06; 
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	//WritePatchInfo_4BYTE((uint32)0x0203d108,(uint32)0xEBFF0FBC);
 	for(int tt=0;tt<19;tt++)
 	{
 		*((vuint32*)0x02000200 + tt) = fix_data_5400[tt];
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	//WritePatchInfo((uint32)0x02001000,13*4,fix_data_4375);	
 }
 CODE_IN_ITCM void patch_global_pp(uint32 b_address,uint32 b_code,uint32 to_address,uint32 replace1,uint32 replace2,uint32 replace3)
@@ -440,7 +440,7 @@ CODE_IN_ITCM void patch_global_pp(uint32 b_address,uint32 b_code,uint32 to_addre
 	if(*(vuint32*)b_address == 0XE12FFF1E)
 	{
 		*(vuint32*)b_address = b_code;	
-		//--ww-- µÇ¼ÇÐ´Èë
+		//--ww-- ç™»è®°å†™å…¥
 		WritePatchInfo_4BYTE((uint32)b_address,(uint32)b_code);
 		fix_data_5400[16] = replace1;
 		fix_data_5400[17] = replace2;
@@ -449,7 +449,7 @@ CODE_IN_ITCM void patch_global_pp(uint32 b_address,uint32 b_code,uint32 to_addre
 		{
 			*((vuint32*)to_address + tt) = fix_data_5400[tt];
 		}
-		//--ww-- µÇ¼ÇÐ´Èë
+		//--ww-- ç™»è®°å†™å…¥
 		WritePatchInfo((uint32)to_address,19*4,fix_data_5400);
 	}	
 }
@@ -460,7 +460,7 @@ CODE_IN_ITCM void patch_1981()
 	//uint32* patch_4273_data2 = (uint32*)0x01FF7200;
 	*(vuint32*)0x0203c448 = 0xe51ff004;
 	*(vuint32*)0x0203c44C = 0x02000010;
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo_4BYTE((uint32)0x0203c448,(uint32)0xe51ff004);
 	WritePatchInfo_4BYTE((uint32)0x0203c44C,(uint32)0x02000010);
 
@@ -468,7 +468,7 @@ CODE_IN_ITCM void patch_1981()
 	{
 		*((vuint32*)0x02000010 + tt) = patch_1981_data[tt];
 	}
-	//--ww-- µÇ¼ÇÐ´Èë
+	//--ww-- ç™»è®°å†™å…¥
 	WritePatchInfo((uint32)0x02000010,20*4,patch_1981_data);
 
 }
@@ -476,7 +476,7 @@ CODE_IN_ITCM void patch_1981()
 //--------------------------------------------------------------------
 CODE_IN_ITCM void patchSpecialGame(uint32 *r0_start,uint32 *r1_end)
 {
-	{//´úÌæ swi BÃüÁî
+	{//ä»£æ›¿ swi Bå‘½ä»¤
 		uint32 swi3Address = A9_ReadSram(0x7DFB8); 
 		if(swi3Address)
 		{
@@ -491,10 +491,10 @@ CODE_IN_ITCM void patchSpecialGame(uint32 *r0_start,uint32 *r1_end)
 	switch(number)
 	{
 
-	case 0x05://3690 ÀÏ×ÓÖÆÔì
+	case 0x05://3690 è€å­åˆ¶é€ 
 		{
 			copyCode((void*)((uint32)SAVE_32M_3690_start),(void*)0x2000100,(uint32)SAVE_32M_3690_end-(uint32)SAVE_32M_3690_start);
-			//--ww-- µÇ¼ÇÐ´Èë
+			//--ww-- ç™»è®°å†™å…¥
 			WritePatchInfo((uint32)0x2000100,(uint32)SAVE_32M_3690_end-(uint32)SAVE_32M_3690_start,(uint32*)SAVE_32M_3690_start);
 			fixAddressValue((uint32*)0x02003880,(uint32*)0xE12FFF1E,3);//NandWait
 			fixAddressValue((uint32*)0x02003A94,(uint32*)0xE3A00003,3);//NandState		
@@ -509,27 +509,27 @@ CODE_IN_ITCM void patchSpecialGame(uint32 *r0_start,uint32 *r1_end)
 		patch_1981();
 		break;
 	case 0x06:
-		fix_4377();//×ï¶ñ¸²Ãð¼Æ»®:ÐÌ¾¯ÐÂ±ø
+		fix_4377();//ç½ªæ¶è¦†ç­è®¡åˆ’:åˆ‘è­¦æ–°å…µ
 		break;
 	case 0x07:
-		patch_4375();//·è¿ñÍÃ×Ó»Ø¼Ò
+		patch_4375();//ç–¯ç‹‚å…”å­å›žå®¶
 		break;
-	case 0x08://4501¾ÞÁúÕ½ÕùUSA
+	case 0x08://4501å·¨é¾™æˆ˜äº‰USA
 		patch_4501();
 		break;
 	case 0x09://4511 Might & Magic
 		patch_4511();
 		break;
-	case 0x0A://4638Ä§·¨ÃÅÖ®Ó¢ÐÛ½»·æ (E)
+	case 0x0A://4638é­”æ³•é—¨ä¹‹è‹±é›„äº¤é”‹ (E)
 		patch_4638();
 		break;
 	case 0x11://4800
 		patch_4800();
 		break;
-	case 0x12://4812 ÀÏ×ÓÖÆÔì
+	case 0x12://4812 è€å­åˆ¶é€ 
 		{
 			copyCode((void*)((uint32)SAVE_32M_3690_start),(void*)0x2000150,(uint32)SAVE_32M_3690_end-(uint32)SAVE_32M_3690_start);
-			//--ww-- µÇ¼ÇÐ´Èë
+			//--ww-- ç™»è®°å†™å…¥
 			WritePatchInfo((uint32)0x2000150,(uint32)SAVE_32M_3690_end-(uint32)SAVE_32M_3690_start,(uint32*)SAVE_32M_3690_start);
 			fixAddressValue((uint32*)0x020038A0,(uint32*)0xE12FFF1E,3);//NandWait
 			fixAddressValue((uint32*)0x02003AB4,(uint32*)0xE3A00003,3);//NandState		
@@ -540,37 +540,37 @@ CODE_IN_ITCM void patchSpecialGame(uint32 *r0_start,uint32 *r1_end)
 			fix_4812();
 		}
 		break;
-	case 0x13://4828 - ¿Ú´üÑý¹Ö£º½ðÐÄ£¨µÂ
-	case 0x14://4829 - ¿Ú´üÑý¹Ö£ºÒøÁé£¨µÂ£©
+	case 0x13://4828 - å£è¢‹å¦–æ€ªï¼šé‡‘å¿ƒï¼ˆå¾·
+	case 0x14://4829 - å£è¢‹å¦–æ€ªï¼šé“¶çµï¼ˆå¾·ï¼‰
 		{
 			fixAddressValue((uint32*)0x020de220,(uint32*)0xe3a000aa,3);
 			break;
 		}
-	case 0x15://4833 - ¿Ú´üÑý¹Ö£º½ðÐÄ£¨Î÷°à£©
+	case 0x15://4833 - å£è¢‹å¦–æ€ªï¼šé‡‘å¿ƒï¼ˆè¥¿ç­ï¼‰
 		{
 			fixAddressValue((uint32*)0x020de218,(uint32*)0xe3a000aa,3);
 			break;	
 		}
-	case 0x16://4834 - ¿Ú´üÑý¹Ö£ºÒøÁé£¨Î÷°à£©
+	case 0x16://4834 - å£è¢‹å¦–æ€ªï¼šé“¶çµï¼ˆè¥¿ç­ï¼‰
 		{
 			fixAddressValue((uint32*)0x020de220,(uint32*)0xe3a000aa,3);
 			break;
 		}
-	case 0x17://4835 - ¿Ú´üÑý¹Ö£º½ðÐÄ£¨Òâ´ó£©
-	case 0x1A://4843 - ¿Ú´üÑý¹Ö£ºÒøÁé£¨Òâ´ó£©
+	case 0x17://4835 - å£è¢‹å¦–æ€ªï¼šé‡‘å¿ƒï¼ˆæ„å¤§ï¼‰
+	case 0x1A://4843 - å£è¢‹å¦–æ€ªï¼šé“¶çµï¼ˆæ„å¤§ï¼‰
 		fixAddressValue((uint32*)0x020de220,(uint32*)0xe3a000aa,3);
 		break;
-	case 0x18://4841 - ¿Ú´üÑý¹Ö£º½ðÐÄ£¨Å·£©
-	case 0x19://4842 - ¿Ú´üÑý¹Ö£ºÒøÁé£¨Å·£©
+	case 0x18://4841 - å£è¢‹å¦–æ€ªï¼šé‡‘å¿ƒï¼ˆæ¬§ï¼‰
+	case 0x19://4842 - å£è¢‹å¦–æ€ªï¼šé“¶çµï¼ˆæ¬§ï¼‰
 		fixAddressValue((uint32*)0x020de220,(uint32*)0xe3a000aa,3);
 		break;
 
-	case 0x1C://4915 ÀÏ×ÓÖÆÔì
+	case 0x1C://4915 è€å­åˆ¶é€ 
 		{
 			*(vuint32*)0x020A65B8 = 0xDF0B0000; //SWI B
 			WritePatchInfo_4BYTE((uint32)0x020A65B8,0xDF0B0000);
 			copyCode((void*)((uint32)SAVE_32M_3690_start),(void*)0x2000230,(uint32)SAVE_32M_3690_end-(uint32)SAVE_32M_3690_start);
-			//--ww-- µÇ¼ÇÐ´Èë
+			//--ww-- ç™»è®°å†™å…¥
 			WritePatchInfo((uint32)0x2000230,(uint32)SAVE_32M_3690_end-(uint32)SAVE_32M_3690_start,(uint32*)SAVE_32M_3690_start);
 			fixAddressValue((uint32*)0x02003940,(uint32*)0xE12FFF1E,3);//NandWait
 			fixAddressValue((uint32*)0x02003B54,(uint32*)0xE3A00003,3);//NandState		
@@ -594,12 +594,12 @@ CODE_IN_ITCM void patchSpecialGame(uint32 *r0_start,uint32 *r1_end)
 	case 0x29:
 		patch_global_Pokemon(0X02004EA4 ,0xEAFFFDED,0x02004660,0x02188064,0x02180C60);
 		break;
-	case 0x2E://4951 ´óºÏ×à
+	case 0x2E://4951 å¤§åˆå¥
 		{	
 			*(vuint32*)0x020E8354 = 0xDF0B0000; //SWI B
 			WritePatchInfo_4BYTE((uint32)0x020E8354,0xDF0B0000);
 			copyCode((void*)((uint32)SAVE_32M_3690_start),(void*)0x2000300,(uint32)SAVE_32M_3690_end-(uint32)SAVE_32M_3690_start);
-			//--ww-- µÇ¼ÇÐ´Èë
+			//--ww-- ç™»è®°å†™å…¥
 			WritePatchInfo((uint32)0x2000300,(uint32)SAVE_32M_3690_end-(uint32)SAVE_32M_3690_start,(uint32*)SAVE_32M_3690_start);
 			fixAddressValue((uint32*)0x02061c24,(uint32*)0,1);//NandError
 			fixAddressValue((uint32*)0x020613cc,(uint32*)0xE3A00001,3);//NandInit 		
@@ -692,7 +692,7 @@ CODE_IN_ITCM void patchSpecialGame(uint32 *r0_start,uint32 *r1_end)
 	default:
 		break;
 	}		
-	//²¹¶¡overlay
+	//è¡¥ä¸overlay
 	//patch_Overlay();
 }
 CODE_IN_ITCM bool patch_special_games(void)

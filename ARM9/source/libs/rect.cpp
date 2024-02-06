@@ -25,7 +25,7 @@ static void AddRect(TRect r)
 
 u32 GetDirtyRect_OutSide(TRect Rect,TRect DelRect,TRect **ppRects)
 {
-  // RectとDelRectのサイズ(w,h)は同じじゃなきゃダメ
+  // Rect縺ｨDelRect縺ｮ繧ｵ繧､繧ｺ(w,h)縺ｯ蜷後§縺倥ｃ縺ｪ縺阪ｃ繝繝｡
   
   RectCount=0;
   *ppRects=&Rects[0];

@@ -157,7 +157,7 @@ void a7sleep_dummy(void)
 /*
 void a7sleep(void)
 {
-		//	割り込み停止 ハンドラ登録
+		//	蜑ｲ繧願ｾｼ縺ｿ蛛懈ｭ｢ 繝上Φ繝峨Λ逋ｻ骭ｲ
 		// Set up the interrupt handler
 		REG_IME = 0;
 		u32 irq_w=(u32)IRQ_HANDLER;
@@ -178,7 +178,7 @@ void a7sleep(void)
 		HALT_CR =0xC000; // 14-15    Pause Mode   0..3=Halt, GBA Mode, Stop, Sleep   
 		swiSleep();
 
-		//	割り込み停止 ハンドラ復帰
+		//	蜑ｲ繧願ｾｼ縺ｿ蛛懈ｭ｢ 繝上Φ繝峨Λ蠕ｩ蟶ｰ
 		// Set up the interrupt handler
 		REG_IME = 0;
 		IRQ_HANDLER =(void (*)()) irq_w;

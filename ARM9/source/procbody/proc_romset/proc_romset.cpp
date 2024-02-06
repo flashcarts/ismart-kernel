@@ -117,7 +117,7 @@ static bool isUserCheatDataExits()
 		return false;
 }
 static NDSCheatInfo *FindSelectNDSCheatHeadInfo(void)
-{//ÔÚ¿âÎÄ¼þÖÐÑ°ÕÒÓÎÏ·½ðÊÖÖ¸Êý¾ÝÊÇ·ñ´æÔÚ
+{//åœ¨åº“æ–‡ä»¶ä¸­å¯»æ‰¾æ¸¸æˆé‡‘æ‰‹æŒ‡æ•°æ®æ˜¯å¦å­˜åœ¨
 	_consolePrintf("\n this");
 	u32 gl_RomCRC;
 	uint8 *bm=(uint8*)safemalloc(512);
@@ -135,7 +135,7 @@ static NDSCheatInfo *FindSelectNDSCheatHeadInfo(void)
 	FAT2_fread(bm,512,1,fh);
 	FAT2_fclose(fh);
 	{
-		 	//¼ÆËãÏÂCRC32
+		 	//è®¡ç®—ä¸‹CRC32
 	 	gl_RomCRC=crc32(0,bm,512);
 		gl_RomCRC = ~gl_RomCRC;
 	}
@@ -313,8 +313,8 @@ static void CB_KeyPress(u32 VsyncCount,u32 Keys)
 				   //do nothing
 				}
 				else
-				{//ÉÌÒµROMÆô¶¯´úÂë	  
-				   	//´ò¿ª½ðÊÖÖ¸´°¿Ú					
+				{//å•†ä¸šROMå¯åŠ¨ä»£ç 	  
+				   	//æ‰“å¼€é‡‘æ‰‹æŒ‡çª—å£					
   
 					 if(isUserCheatDataExits())
 					 {
@@ -470,8 +470,8 @@ static void CB_MouseUp(s32 x,s32 y)
 				   //do nothing
 				}
 				else
-				{//ÉÌÒµROMÆô¶¯´úÂë	  
-				   	//´ò¿ª½ðÊÖÖ¸´°¿Ú					
+				{//å•†ä¸šROMå¯åŠ¨ä»£ç 	  
+				   	//æ‰“å¼€é‡‘æ‰‹æŒ‡çª—å£					
 					 if(isUserCheatDataExits())
 					 {
 						 NDSCheatInfo *pInfo=FindSelectNDSCheatHeadInfo();	
@@ -630,7 +630,7 @@ static void UpdataRomSet(void)
 	CglCanvas *pTmpBM=new CglCanvas(NULL,ScreenWidth,ScreenHeight,pf15bit);
 	pScreenSub->pCanvas->BitBltFullBeta(pTmpBM);
 	pTmpBM->SetCglFont(pCglFontDefault);
-	pTmpBM->SetFontTextColor(SYSColor1);//ÉèÖÃ×ÖÌåÑÕÉ«ºÚÉ«  
+	pTmpBM->SetFontTextColor(SYSColor1);//è®¾ç½®å­—ä½“é¢œè‰²é»‘è‰²  
 	
 	CglTGF * pbm2= RomSetAlpha_GetSkin(ERSSA_RomSetBG);
 	pbm2->BitBlt(pTmpBM,0,0);

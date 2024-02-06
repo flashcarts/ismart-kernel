@@ -19,26 +19,26 @@ arm7/main.cpp add
 
 #include "a7sleep.h"
 
-//	XKEYS‚ğIPC‚É‘‚«‚ñ‚Å‚¢‚é‚ ‚½‚è‚É‚Å‚à“ü‚ê‚é
+//	XKEYSã‚’IPCã«æ›¸ãè¾¼ã‚“ã§ã„ã‚‹ã‚ãŸã‚Šã«ã§ã‚‚å…¥ã‚Œã‚‹
 
     u32 xkeys=XKEYS;
     IPC->buttons = xkeys;
 
-    if(xkeys == 0x00FF)	//	ƒpƒlƒ‹ƒNƒ[ƒY
+    if(xkeys == 0x00FF)	//	ãƒ‘ãƒãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
     {
-//	ƒpƒlƒ‹ƒNƒ[ƒYó‘Ô‚ÅŒÄ‚Ô–
-//	ƒpƒlƒ‹ƒI[ƒvƒ“‚Å•œ‹A‚µ‚Ü‚·
+//	ãƒ‘ãƒãƒ«ã‚¯ãƒ­ãƒ¼ã‚ºçŠ¶æ…‹ã§å‘¼ã¶äº‹
+//	ãƒ‘ãƒãƒ«ã‚ªãƒ¼ãƒ—ãƒ³ã§å¾©å¸°ã—ã¾ã™
 		a7sleep();
     }
 
 
 
-//	LCDƒoƒbƒNƒ‰ƒCƒgOFF/ON§Œä
+//	LCDãƒãƒƒã‚¯ãƒ©ã‚¤ãƒˆOFF/ONåˆ¶å¾¡
 
     u32 xkeys=XKEYS;
     IPC->buttons = xkeys;
 
-    if(xkeys == 0x00FF)	//	ƒpƒlƒ‹ƒNƒ[ƒY
+    if(xkeys == 0x00FF)	//	ãƒ‘ãƒãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
     {
 		a7lcdbl(0);
     }

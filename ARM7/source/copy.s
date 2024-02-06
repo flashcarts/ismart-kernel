@@ -1,7 +1,7 @@
     AREA     BOOT ,CODE,READONLY
 	CODE32
 	EXPORT JmpGBA,Switch2Sytem,bxr0
-bxr0	;@r0 ��ת��ַ
+bxr0	;@r0 ﾌｪｵﾘﾖｷ
 	bx  r0
 JmpGBA
 	mov 	r2,#0x40

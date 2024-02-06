@@ -22,16 +22,16 @@ check_key
 	b		quit_irq
 	
 SoftReset_PROC
-	;ĞèÒª½«ARM7 ARM9È«²¿copy£¬È»ºóÔÙÆô¶¯
+	;éœ€è¦å°†ARM7 ARM9å…¨éƒ¨copyï¼Œç„¶åå†å¯åŠ¨
 	ldr		r6,=0x4000200
 	str		r6,[r6,#8]
 	ldr		r5,=0xe000
 	strh	r5,[r6,#4]
 	
-	;´ÓPSRAMÖĞ¶ÁÈ¡Èí¸´Î»´úÂë£¬È»ºó¸´Î»
-	;ldr		r7,=0x77000;¾ÉµÄspramµØÖ·
-	;mov 	r7,#0;sramµÄµØÖ·
-	ldr 	r7,=0x17F000   ;Èí¸´Î»µÄ´úÂë·Åµ½Õâ¸öÎ»ÖÃ
+	;ä»PSRAMä¸­è¯»å–è½¯å¤ä½ä»£ç ï¼Œç„¶åå¤ä½
+	;ldr		r7,=0x77000;æ—§çš„spramåœ°å€
+	;mov 	r7,#0;sramçš„åœ°å€
+	ldr 	r7,=0x17F000   ;è½¯å¤ä½çš„ä»£ç æ”¾åˆ°è¿™ä¸ªä½ç½®
 	ldr		r5,=0x2340000
 	;ldr		r4,=0x1000
 	ldr		r4,=0x600
@@ -56,18 +56,18 @@ startshow
 	str r1,[r3]	
 	mov r1,#0x80
 	str r1,[r3,#0x240]	
-	ldr r1,=0x03e0  ;°×
+	ldr r1,=0x03e0  ;ç™½
 	mov r3,#0x6800000	
-	mov r6,#0x46     ;70 ;¸ß
-	ldr r2,=0x7aa6   ;°×¿òµÄÆğÊ¼µØÖ·
+	mov r6,#0x46     ;70 ;é«˜
+	ldr r2,=0x7aa6   ;ç™½æ¡†çš„èµ·å§‹åœ°å€
 loop111	
-	mov r5,#0x5a ;90 ;¿í
+	mov r5,#0x5a ;90 ;å®½
 loop222	
 	strh r1,[r3,r2]
 	add r2,#0x2
 	subs r5,#1
 	bne loop222
-	add r2,#0x14c  ;ÏÂÒ»ĞĞ
+	add r2,#0x14c  ;ä¸‹ä¸€è¡Œ
 	subs r6,#1
 	bne loop111
 	b .
@@ -89,7 +89,7 @@ arm9_ReadFlash
 	bl		IRQ_arm7_Read512
 	pop		{r2-r7,pc}
 
-;r0£¬r1, Îª´«µİµÄ²ÎÊı
+;r0ï¼Œr1, ä¸ºä¼ é€’çš„å‚æ•°
 IRQ_arm7_Read512	
 ;r0 null r1,buffer
 	push	{r2-r7,lr}
@@ -110,7 +110,7 @@ IRQ_ARM7_read_loop2
 	bne  	IRQ_ARM7_read_loop1
 	pop		{r2-r7,pc}
 		
-arm9reset_SetRomOP 	 ;r0,r1 ´«ËÍµÄ²ÎÊı
+arm9reset_SetRomOP 	 ;r0,r1 ä¼ é€çš„å‚æ•°
 	ldr 	r3,=0x040001A0
 arm9reset_oploop
 	ldr 	r4,[r3,#4]
@@ -137,7 +137,7 @@ arm9reset_oploop
 
 quit_irq
 	pop		{r0-r6}
-	pop		{r7}		;;»Ö¸´LR
+	pop		{r7}		;;æ¢å¤LR
 	mov		lr,r7
 	ldr		r7,=0x1FFA040
 	mov		r12,r7

@@ -1,9 +1,9 @@
 
-#define Trigger_ReleaseTimeout (16) // ƒNƒŠƒbƒNŠÔŠuiƒ_ƒuƒ‹ƒNƒŠƒbƒNj‹–—eŠÔ
-#define Trigger_PressTimeout (12) // ’·‰Ÿ‚µ”»’èŠÔ
+#define Trigger_ReleaseTimeout (16) // ã‚¯ãƒªãƒƒã‚¯é–“éš”ï¼ˆãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ï¼‰è¨±å®¹æ™‚é–“
+#define Trigger_PressTimeout (12) // é•·æŠ¼ã—åˆ¤å®šæ™‚é–“
 
-// ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚ªƒVƒ“ƒOƒ‹“ñ‰ñ‚ÆŒë”F¯‚µ‚Ä‚µ‚Ü‚¤‚È‚çAReleaseTimeout‚ğ‘‚â‚·B
-// ƒNƒŠƒbƒN‚ª’·‰Ÿ‚µ‚ÆŒë”F¯‚µ‚Ä‚µ‚Ü‚¤‚È‚çAPressTimeout‚ğ‘‚â‚·B
+// ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ãŒã‚·ãƒ³ã‚°ãƒ«äºŒå›ã¨èª¤èªè­˜ã—ã¦ã—ã¾ã†ãªã‚‰ã€ReleaseTimeoutã‚’å¢—ã‚„ã™ã€‚
+// ã‚¯ãƒªãƒƒã‚¯ãŒé•·æŠ¼ã—ã¨èª¤èªè­˜ã—ã¦ã—ã¾ã†ãªã‚‰ã€PressTimeoutã‚’å¢—ã‚„ã™ã€‚
 
 static void Proc_Trigger(u32 Init,u32 VsyncCount)
 {

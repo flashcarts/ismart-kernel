@@ -119,7 +119,7 @@ extern void TestPauseKey(void);
 
 static bool EraseNorFlashJA(char *pFileNameAlis)
 {
-	//²Á³ı¿é	
+	//æ“¦é™¤å—	
 	FAT_FILE *fp=FAT2_fopen_AliasForRead(pFileNameAlis);
 	if(fp)
 	{
@@ -221,15 +221,15 @@ static bool LoadSaveData2Struct(char *pFileNameAlis)
     	//FILE_TYPE fstype = FAT_FileExists(a_saver);
         if(fstype2 == FT_NONE)
         {
-    		//²»´æÔÚ´Ë²¹¶¡Êı¾İÎÄ¼ş
+    		//ä¸å­˜åœ¨æ­¤è¡¥ä¸æ•°æ®æ–‡ä»¶
     		return false;
         }
         else
         {
-        	memcpy(a_saver,pafn,13);//ÓÃÕâ¸ö±ğÃû´ò¿ªÒÑÓĞ´æµµ        	
+        	memcpy(a_saver,pafn,13);//ç”¨è¿™ä¸ªåˆ«åæ‰“å¼€å·²æœ‰å­˜æ¡£        	
         }        
     }
-    //Ğ´²¹¶¡Êı¾İÎÄ¼şµ½rom
+    //å†™è¡¥ä¸æ•°æ®æ–‡ä»¶åˆ°rom
     FAT_FILE *pf=FAT2_fopen_AliasForRead(a_saver);	
 	const u32 LEN=0x8000;
 	u8 *pSrc = NULL;
@@ -289,7 +289,7 @@ static bool LoadSaveData2Struct(char *pFileNameAlis)
 
 static bool WriteNorFlashJA(char *pFileNameAlis,bool flag)
 {
-	//Ğ´Èë
+	//å†™å…¥
 	u32 LEN=0x8000;
 	FAT_FILE *fp=FAT2_fopen_AliasForRead(pFileNameAlis);
 	u8 *pSrc;
@@ -299,7 +299,7 @@ static bool WriteNorFlashJA(char *pFileNameAlis,bool flag)
 	{
 		if(!g_GBAPatchDataHead.dwPatchNum)
 		{
-			//´æµµ²¹¶¡Êı¾İÎª¿Õ
+			//å­˜æ¡£è¡¥ä¸æ•°æ®ä¸ºç©º
 			SetEraseProgressVal(0);	
 			u32 Size=FAT2_GetFileSize(fp);
 			FAT2_fseek(fp,0,SEEK_SET);
@@ -327,7 +327,7 @@ static bool WriteNorFlashJA(char *pFileNameAlis,bool flag)
 		}
 		else
 		{
-			//´æµµ²¹¶¡Êı¾İĞ´Èë
+			//å­˜æ¡£è¡¥ä¸æ•°æ®å†™å…¥
 			SetEraseProgressVal(0);	
 			u32 Size=FAT2_GetFileSize(fp);
 			FAT2_fseek(fp,0,SEEK_SET);
@@ -355,7 +355,7 @@ static bool WriteNorFlashJA(char *pFileNameAlis,bool flag)
 					pCur=pCur->pNext;
 					_consolePrintf("\n offkk[%d]=0x%x",ii,offkk[ii]);
 				}
-				if((Nextdatalen!=0)&&(NextFlag==true))//ÉÏ´ÎÃ»ÓĞĞ´Íê Õâ´Î½Ó×ÅĞ´
+				if((Nextdatalen!=0)&&(NextFlag==true))//ä¸Šæ¬¡æ²¡æœ‰å†™å®Œ è¿™æ¬¡æ¥ç€å†™
 				{
 					pCur=NULL;
 					pCur=m_pGBAPatchData;
@@ -431,7 +431,7 @@ static bool WriteNorFlashJA(char *pFileNameAlis,bool flag)
 
 static bool SavePatchNorFlashJA(char *pFileNameAlis)
 {
-	//´ò´æµµ²¹¶¡
+	//æ‰“å­˜æ¡£è¡¥ä¸
 	u32 LEN=0x8000;
 	FAT_FILE *fp=FAT2_fopen_AliasForRead(pFileNameAlis);
 
@@ -555,7 +555,7 @@ static FAT_FILE *CreatFile( char *pFullPathAlias,u32 DesSize)
         if(fstype2 == FT_NONE)
         {
 
-            //´´½¨´æµµÎÄ¼ş
+            //åˆ›å»ºå­˜æ¡£æ–‡ä»¶
             //MessageDialog_Draw(pScreenMainOverlay->pCanvas,(UnicodeChar *)L"Create SAVER");
             filePK = FAT2_fopen_CreateForWrite_on_CurrentFolder(a_saver,w_saver);
            	FAT2_SetSize(filePK,DesSize,0xAB); 
@@ -564,7 +564,7 @@ static FAT_FILE *CreatFile( char *pFullPathAlias,u32 DesSize)
         }
         else
         {
-        	memcpy(a_saver,pafn,12);//ÓÃÕâ¸ö±ğÃû´ò¿ªÒÑÓĞ´æµµ
+        	memcpy(a_saver,pafn,12);//ç”¨è¿™ä¸ªåˆ«åæ‰“å¼€å·²æœ‰å­˜æ¡£
         }
         FAT_FILE *pf=FAT2_fopen_AliasForWrite(a_saver);
         return pf;
@@ -574,7 +574,7 @@ static FAT_FILE *CreatFile( char *pFullPathAlias,u32 DesSize)
 static void isRomDatFolderExist()
 {
 	FAT_chdir("/");
-	FILE_TYPE fstype = FAT_FileExists("/GBADATA"); //´óĞ¡Ğ´ÎŞ¹Ø
+	FILE_TYPE fstype = FAT_FileExists("/GBADATA"); //å¤§å°å†™æ— å…³
     if(fstype == FT_DIR)
     { 
     	_consolePrintf("GBADATA Folder exist \n");    
@@ -582,7 +582,7 @@ static void isRomDatFolderExist()
     else
     {
         _consolePrintf("GBADATA Folder NOT exist \n");
-            //ÕâÀïÊÇ´´½¨ĞÂÄ¿Â¼ ÏÔÊ¾ĞÅÏ¢
+            //è¿™é‡Œæ˜¯åˆ›å»ºæ–°ç›®å½• æ˜¾ç¤ºä¿¡æ¯
             //MessageDialog_Draw(pScreenMainOverlay->pCanvas,(UnicodeChar *)L"Create SAVE");
         if(FAT_mkdir("/GBADATA")==0)
         {
@@ -594,12 +594,12 @@ static void isRomDatFolderExist()
 }
 static bool WriteSavePatchData2file(char *pFileNameAlis)
 {
-	//»ØĞ´²¹¶¡Êı¾İÎÄ¼ş
+	//å›å†™è¡¥ä¸æ•°æ®æ–‡ä»¶
 	isRomDatFolderExist();							
 	FAT_FILE *fpData=CreatFile(pFileNameAlis,0x8000*2);
 	if(fpData)
 	{
-		//Ğ´Êı¾İµ½ÎÄ¼ş
+		//å†™æ•°æ®åˆ°æ–‡ä»¶
 		const u32 LEN=0x8000;
 		u8 *pSrc = NULL;
 		u8 *pSrc1 = NULL;
@@ -741,14 +741,14 @@ static bool SaveGbaTmp()
 			 _consolePrintf("\n 2=%s ",GbaTmpInfo.Sign);
 			if(!strcmp(GbaTmpInfo.Sign,"PS"))
 			{
-				//PSRAMĞ´ÔÚÇ°16+256×Ö½Ú
+				//PSRAMå†™åœ¨å‰16+256å­—èŠ‚
 				memset(pBuf,0,16+256);
 				memcpy(pBuf,&(GbaTmp)GbaTmpInfo,16+256);
 				 _consolePrintf("\n Hear1");
 			}
 			else
 			{
-				//NorFlashĞ´ÔÚºó16+256×Ö½Ú
+				//NorFlashå†™åœ¨å16+256å­—èŠ‚
 				memset(&pBuf[16+256],0,16+256);
 				memcpy(&pBuf[16+256],&(GbaTmp)GbaTmpInfo,16+256);
 				 _consolePrintf("\n Hear2");
@@ -772,7 +772,7 @@ static bool SaveGbaTmp()
 static void isGBASAVEFolderExist()
 {
 	FAT_chdir("/");
-	FILE_TYPE fstype = FAT_FileExists("/GBASAVE"); //´óĞ¡Ğ´ÎŞ¹Ø
+	FILE_TYPE fstype = FAT_FileExists("/GBASAVE"); //å¤§å°å†™æ— å…³
     if(fstype == FT_DIR)
     { 
     	_consolePrintf("GBASAVE Folder exist \n");    
@@ -780,7 +780,7 @@ static void isGBASAVEFolderExist()
     else
     {
         _consolePrintf("GBASAVE Folder NOT exist \n");
-            //ÕâÀïÊÇ´´½¨ĞÂÄ¿Â¼ ÏÔÊ¾ĞÅÏ¢
+            //è¿™é‡Œæ˜¯åˆ›å»ºæ–°ç›®å½• æ˜¾ç¤ºä¿¡æ¯
             //MessageDialog_Draw(pScreenMainOverlay->pCanvas,(UnicodeChar *)L"Create SAVE");
         if(FAT_mkdir("/GBASAVE")==0)
         {
@@ -850,7 +850,7 @@ static bool LoadSav(char *a_saver,UnicodeChar *w_saver,bool TypeFlag)
 
 	{
 		FAT_chdir("/");
-		FILE_TYPE fstype = FAT_FileExists("/GBASAVE"); //´óĞ¡Ğ´ÎŞ¹Ø
+		FILE_TYPE fstype = FAT_FileExists("/GBASAVE"); //å¤§å°å†™æ— å…³
 	    if(fstype == FT_DIR)
 	    { 
 	    	_consolePrintf("GBASAVE Folder exist \n");    
@@ -910,11 +910,11 @@ static bool LoadSav(char *a_saver,UnicodeChar *w_saver,bool TypeFlag)
 
 static bool CmpGBASave(bool TypeFlag)
 {
-	//µ±Ç°µÄÎÄ¼şµÄÃû×Ö´æÔÚ½á¹¹ÌåÖĞ£¬ÉÏ´ÎµÄÎÄ¼şµÄÃû×Ö´æÔÚÎÄ¼şÖĞ
-	//ĞèÒª±È½ÏÁ½´ÎµÄÃû×Ö£¬Ãû×Ö²»Í¬ÔòĞèÒª±¸·İ´æµµºÍ¼ÓÔÚ´æµµÎÄ¼ş
+	//å½“å‰çš„æ–‡ä»¶çš„åå­—å­˜åœ¨ç»“æ„ä½“ä¸­ï¼Œä¸Šæ¬¡çš„æ–‡ä»¶çš„åå­—å­˜åœ¨æ–‡ä»¶ä¸­
+	//éœ€è¦æ¯”è¾ƒä¸¤æ¬¡çš„åå­—ï¼Œåå­—ä¸åŒåˆ™éœ€è¦å¤‡ä»½å­˜æ¡£å’ŒåŠ åœ¨å­˜æ¡£æ–‡ä»¶
 	if(!isGbaTmpExits())
 	{
-		//ÎÄ¼ş²»´æÔÚ,¼ÓÔØµ±Ç°ÎÄ¼şÃûµÄ´æµµ
+		//æ–‡ä»¶ä¸å­˜åœ¨,åŠ è½½å½“å‰æ–‡ä»¶åçš„å­˜æ¡£
 		
 		_consolePrintf("\n q2....");
 		_consolePrintf("\n GbaTmpInfo.SAlis=%s",GbaTmpInfo.SAlis);
@@ -928,7 +928,7 @@ static bool CmpGBASave(bool TypeFlag)
 	}
 	else
 	{
-		//ÎÄ¼ş´æÔÚ,±È½ÏÁ½ÎÄ¼şÃû,±¸·İÉÏ´ÎÎÄ¼şÃû´æµµ,¼ÓÔØµ±Ç°ÎÄ¼şÃûµÄ´æµµ
+		//æ–‡ä»¶å­˜åœ¨,æ¯”è¾ƒä¸¤æ–‡ä»¶å,å¤‡ä»½ä¸Šæ¬¡æ–‡ä»¶åå­˜æ¡£,åŠ è½½å½“å‰æ–‡ä»¶åçš„å­˜æ¡£
 		u8 *pBuf;
 		pBuf=(u8*)safemalloc(544);
 		memset(pBuf,0,544);
@@ -951,13 +951,13 @@ static bool CmpGBASave(bool TypeFlag)
 		
 		if(TypeFlag)
 		{
-			//±È½ÏPSRAM
+			//æ¯”è¾ƒPSRAM
 			if(memcmp(GbaTmpInfo.SAlis,&pBuf[3],12))
 			{
 				
 				SetbSaveMagFlag();
 				UpdataWindows();
-				//Á½ÎÄ¼şÃû²»Í¬,±¸·İ,¼ÓÔØ
+				//ä¸¤æ–‡ä»¶åä¸åŒ,å¤‡ä»½,åŠ è½½
 				GbaTmp Tmp1;
 				memcpy(Tmp1.Sign,&pBuf[0],3);
 				memcpy(Tmp1.SAlis,&pBuf[3],13);
@@ -971,7 +971,7 @@ static bool CmpGBASave(bool TypeFlag)
 				//TestPauseKey();				
 				if(!strcmp(Tmp1.Sign,"PS"))
 				{
-					//ÎÄ¼ş´æÔÚ,µ«ÎÄ¼şÃûÎª¿Õ,²»±¸·Ö´æµµ
+					//æ–‡ä»¶å­˜åœ¨,ä½†æ–‡ä»¶åä¸ºç©º,ä¸å¤‡åˆ†å­˜æ¡£
 					BackupSav(Tmp1.SAlis,Tmp1.WName,TypeFlag);
 				}
 				LoadSav(GbaTmpInfo.SAlis,GbaTmpInfo.WName,TypeFlag);				
@@ -982,12 +982,12 @@ static bool CmpGBASave(bool TypeFlag)
 		}
 		else
 		{
-			//±È½ÏNorFlash
+			//æ¯”è¾ƒNorFlash
 			if(memcmp(GbaTmpInfo.SAlis,&pBuf[3+16+256],12))
 			{
 				SetbSaveMagFlag();
 				UpdataWindows();
-				//Á½ÎÄ¼şÃû²»Í¬,±¸·İ,¼ÓÔØ
+				//ä¸¤æ–‡ä»¶åä¸åŒ,å¤‡ä»½,åŠ è½½
 				GbaTmp Tmp1;
 //				memcpy(&(GbaTmp)Tmp1,&pBuf[16+256],16+256);
 				memcpy(Tmp1.Sign,&pBuf[0+16+256],3);
@@ -995,7 +995,7 @@ static bool CmpGBASave(bool TypeFlag)
 				memcpy(Tmp1.WName,&pBuf[16+16+256],256);
 				if(!strcmp(Tmp1.Sign,"NF"))
 				{
-					//ÎÄ¼ş´æÔÚ,µ«ÎÄ¼şÃûÎª¿Õ,²»±¸·Ö´æµµ
+					//æ–‡ä»¶å­˜åœ¨,ä½†æ–‡ä»¶åä¸ºç©º,ä¸å¤‡åˆ†å­˜æ¡£
 					BackupSav(Tmp1.SAlis,Tmp1.WName,TypeFlag);
 				}				
 				LoadSav(GbaTmpInfo.SAlis,GbaTmpInfo.WName,TypeFlag);
@@ -1010,8 +1010,8 @@ static bool CmpGBASave(bool TypeFlag)
 bool WriteGbaRomToNorFlash()
 {
 	/**********************************************************************/
-	//Ğ´romµ½3in1
-	//´ò¿ªromÎÄ¼ş
+	//å†™romåˆ°3in1
+	//æ‰“å¼€romæ–‡ä»¶
 	char pp[256];
 	char pp2[256];
 	strcpy(pp,GBAOPInfo.FullPathAlias);
@@ -1022,11 +1022,11 @@ bool WriteGbaRomToNorFlash()
 	if(fp)
 	{
 		FAT2_fclose(fp);
-		//²Á³ı
+		//æ“¦é™¤
 		_consolePrintf("\n Erase....");
 		strcpy(pp,GBAOPInfo.FullPathAlias);
 		EraseNorFlashJA(pp);
-		//Ğ´Èë
+		//å†™å…¥
 		_consolePrintf("\n Load....");
 		strcpy(GBAOPInfo.FullPathAlias,pp2);
 		strcpy(pp,GBAOPInfo.FullPathAlias);
@@ -1051,7 +1051,7 @@ bool WriteGbaRomToNorFlash()
 
 		if(!bSaveDataFlag)
 		{
-			//µÚÒ»´ÎĞ´Èë ´ò´æµµ²¹¶¡	
+			//ç¬¬ä¸€æ¬¡å†™å…¥ æ‰“å­˜æ¡£è¡¥ä¸	
 			_consolePrintf("\n Patching....");
 			
 			strcpy(pp,GBAOPInfo.FullPathAlias);
@@ -1068,7 +1068,7 @@ bool WriteGbaRomToNorFlash()
 
 static bool WritePsRamJA(char *pFileNameAlis,bool flag)
 {
-	//Ğ´Èë
+	//å†™å…¥
 	vuint16* pPSram=(vuint16*)0x08800000;
 	vuint16* pTemp=pPSram;
 	u32 LEN=0x8000;
@@ -1080,7 +1080,7 @@ static bool WritePsRamJA(char *pFileNameAlis,bool flag)
 	{
 		if(!g_GBAPatchDataHead.dwPatchNum)
 		{
-			//´æµµ²¹¶¡Êı¾İÎª¿Õ
+			//å­˜æ¡£è¡¥ä¸æ•°æ®ä¸ºç©º
 			SetEraseProgressVal(0);	
 			u32 Size=FAT2_GetFileSize(fp);
 			FAT2_fseek(fp,0,SEEK_SET);
@@ -1113,7 +1113,7 @@ static bool WritePsRamJA(char *pFileNameAlis,bool flag)
 		}
 		else
 		{
-			//´æµµ²¹¶¡Êı¾İĞ´Èë
+			//å­˜æ¡£è¡¥ä¸æ•°æ®å†™å…¥
 			SetEraseProgressVal(0);	
 			u32 Size=FAT2_GetFileSize(fp);
 			FAT2_fseek(fp,0,SEEK_SET);
@@ -1142,7 +1142,7 @@ static bool WritePsRamJA(char *pFileNameAlis,bool flag)
 					pCur=pCur->pNext;
 					_consolePrintf("\n offkk[%d]=0x%x",ii,offkk[ii]);
 				}
-				if((Nextdatalen!=0)&&(NextFlag==true))//ÉÏ´ÎÃ»ÓĞĞ´Íê Õâ´Î½Ó×ÅĞ´
+				if((Nextdatalen!=0)&&(NextFlag==true))//ä¸Šæ¬¡æ²¡æœ‰å†™å®Œ è¿™æ¬¡æ¥ç€å†™
 				{
 					pCur=NULL;
 					pCur=m_pGBAPatchData;
@@ -1218,7 +1218,7 @@ static bool WritePsRamJA(char *pFileNameAlis,bool flag)
 }
 static bool SavePatchPsRamJA(char *pFileNameAlis)
 {
-	//´ò´æµµ²¹¶¡
+	//æ‰“å­˜æ¡£è¡¥ä¸
 	u32 LEN=0x8000;
 	FAT_FILE *fp=FAT2_fopen_AliasForRead(pFileNameAlis);
 
@@ -1276,7 +1276,7 @@ bool WriteGbaRomToPsRam()
 	
 
 	FAT_FILE *fp=FAT2_fopen_AliasForRead(pp);
-	//´óÓÚ16MÓÎÏ· ÍË³ö¡£
+	//å¤§äº16Mæ¸¸æˆ é€€å‡ºã€‚
 	if( FAT2_GetFileSize(fp) > 0x1000000)
 	{
 		
@@ -1289,7 +1289,7 @@ bool WriteGbaRomToPsRam()
 	if(fp)
 	{
 		FAT2_fclose(fp);
-		//Ğ´Èë
+		//å†™å…¥
 		_consolePrintf("\n Load....");
 		strcpy(GBAOPInfo.FullPathAlias,pp2);
 		strcpy(pp,GBAOPInfo.FullPathAlias);
@@ -1311,7 +1311,7 @@ bool WriteGbaRomToPsRam()
 		
 		if(!bSaveDataFlag)
 		{
-			//µÚÒ»´ÎĞ´Èë ´ò´æµµ²¹¶¡	
+			//ç¬¬ä¸€æ¬¡å†™å…¥ æ‰“å­˜æ¡£è¡¥ä¸	
 			_consolePrintf("\n Patching....");
 			strcpy(pp,GBAOPInfo.FullPathAlias);
 			SavePatchPsRamJA(pp);

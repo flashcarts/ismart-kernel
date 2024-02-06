@@ -95,8 +95,8 @@ u8*	FindMotif(u8 *Buffer, s32 BufferSize, u8 *Motif, s32 MotifSize,s32 *off)
 extern void TestPauseKey(void);
 void ModifyFlash(s32 off,u8 *szbuf,s32 len)
 {
-	//****ĞèÒªÊÍ·ÅµÄ¿Õ¼ä°üº¬Á½²¿·Ö*****
-	// *****GBAPatchData ºÍ GBAPatchData.pData*****
+	//****éœ€è¦é‡Šæ”¾çš„ç©ºé—´åŒ…å«ä¸¤éƒ¨åˆ†*****
+	// *****GBAPatchData å’Œ GBAPatchData.pData*****
 	
 	//backup change 
 	GBAPatchData *pCur=m_pGBAPatchData;
@@ -170,14 +170,14 @@ void ModifyFlash(s32 off,u8 *szbuf,s32 len)
     	//ShowLogHalt();
     	while(1);
   	}
-	//Ê×ÏÈ¼ÆËãÊÇÄÄÒ»¿é
+	//é¦–å…ˆè®¡ç®—æ˜¯å“ªä¸€å—
 	bolckNum = off>>18;
 	blockOff = off & 0x3FFFF;
 	
 //	TestPauseKey();
 	_consolePrintf("bolckNum=0x%x,blockOff=%x\n",bolckNum,blockOff);
 	
-	//¶Á³ö¿éÖĞµÄÊı¾İ
+	//è¯»å‡ºå—ä¸­çš„æ•°æ®
 	Enable_Arm9DS();
 	OpenNorWrite();
 	SetSerialMode();
@@ -199,13 +199,13 @@ void ModifyFlash(s32 off,u8 *szbuf,s32 len)
 	
 	
 	_consolePrintf("ModifyFlash 1\n");
-	//ĞŞ¸Ä
+	//ä¿®æ”¹
 	memcpy(&pBuf[blockOff],szbuf,len);
 	_consolePrintf("pBuf[blockOff]=0x%x 0x%x 0x%x 0x%x\n",pBuf[blockOff],pBuf[blockOff+1],pBuf[blockOff+1],pBuf[blockOff+3]);
 	_consolePrintf("ModifyFlash 2\n");
 	
 //	TestPauseKey();
-	//Ğ´»Ø
+	//å†™å›
 	Enable_Arm9DS();
  	OpenNorWrite();
  	SetSerialMode();
@@ -245,7 +245,7 @@ void ModifyFlash(s32 off,u8 *szbuf,s32 len)
 	}
 	CloseNorWrite();
 //	_consolePrintf("ModifyFlash 4\n");
-	//½áÊø
+	//ç»“æŸ
 	if(pBuf)
 	{
 		safefree(pBuf);
@@ -273,13 +273,13 @@ s32 GetSaveTypeAndSize(u8 **buf,s32 *length,SAVERTYPE *type,s32 *off)
 	find = FindMotif(*buf, *length, (u8*)"SRAM_", 5,off);
 	if(find)
 	{
-		*type = SRAM_TYPE ; //±íÊ¾´æµµÀàĞÍÎªsram
+		*type = SRAM_TYPE ; //è¡¨ç¤ºå­˜æ¡£ç±»å‹ä¸ºsram
 		rvalue = 32768;
 	}
 	find = FindMotif(*buf, *length, (u8*)"EEPROM_V", 8,off);
 	if(find)
 	{
-		*type = EEPROM_TYPE ; //±íÊ¾´æµµÀàĞÍÎªsram
+		*type = EEPROM_TYPE ; //è¡¨ç¤ºå­˜æ¡£ç±»å‹ä¸ºsram
 		rvalue = 8192 ;
 	}
 	find = FindMotif(*buf, *length, (u8*)"FLASH_V", 7,off);
@@ -303,14 +303,14 @@ s32 GetSaveTypeAndSize(u8 **buf,s32 *length,SAVERTYPE *type,s32 *off)
 	
 	char name[16] ;
 	memset(name,0,16);
-	//here ´¦ÀíÌØ±ğµÄÓÎÏ·
+	//here å¤„ç†ç‰¹åˆ«çš„æ¸¸æˆ
 	memcpy(name,&(*buf)[0xa0],12);
 	memset(name,0,16);
 	memcpy(name,&(*buf)[0xAC],4);
 	if((!strcmp("GMBA",name))||(!strcmp("PCEA",name))||
 		(!strcmp("FCA",name))||(!strcmp("PNES",name)))
 	{
-		*type = SRAM_TYPE ; //±íÊ¾´æµµÀàĞÍÎªsram
+		*type = SRAM_TYPE ; //è¡¨ç¤ºå­˜æ¡£ç±»å‹ä¸ºsram
 		rvalue = 32768;
 	}
 	return rvalue;
@@ -492,11 +492,11 @@ u8* FindSaveType(u8* Buffer,s32 BufferSize,SAVERTYPE *ptype)
 }
 
 /*
-u8 **buf    ÓÎÏ·Êı¾İÖ¸Õë
-s32 *lengt 	ÓÎÏ·´óĞ¡
-s32 saverOffse ´æµµÒ³Æ«ÒÆ
-SAVERTYPE *dwSaverType ´æµµÀàĞÍ
-s32 *dwSaveSize ´æµµ´óĞ¡
+u8 **buf    æ¸¸æˆæ•°æ®æŒ‡é’ˆ
+s32 *lengt 	æ¸¸æˆå¤§å°
+s32 saverOffse å­˜æ¡£é¡µåç§»
+SAVERTYPE *dwSaverType å­˜æ¡£ç±»å‹
+s32 *dwSaveSize å­˜æ¡£å¤§å°
 */
 
 s32 SaverPatch(u8 **buf,s32 *length,s32 saverOffset,SAVERTYPE *dwSaverType,s32 *dwSaveSize)
@@ -550,7 +550,7 @@ s32 SaverPatch(u8 **buf,s32 *length,s32 saverOffset,SAVERTYPE *dwSaverType,s32 *
 		_consolePrintf("here 1\n");
 		if(find)
 		{
-			//*dwSaverType = SRAM_TYPE ; //±íÊ¾´æµµÀàĞÍÎªsram
+			//*dwSaverType = SRAM_TYPE ; //è¡¨ç¤ºå­˜æ¡£ç±»å‹ä¸ºsram
 			*dwSaveSize = 32768;
 			SaverType=SRAM_TYPE;
 			dwSaverType=&SaverType;
@@ -1161,7 +1161,7 @@ s32 SaverPatch(u8 **buf,s32 *length,s32 saverOffset,SAVERTYPE *dwSaverType,s32 *
 			_consolePrintf("find[11]=%x\n",(char)find[11]);
 			
 			if((char)find[9]=='1'&&(char)find[10]=='0'&&(char)find[11]=='3')
-			{//special ¿Ú´üÑı¹Ö
+			{//special å£è¢‹å¦–æ€ª
 				if(b512==true)
 				{
 					CloseNorWrite();
@@ -1576,7 +1576,7 @@ s32 SaverPatchPsRam(u8 **buf,s32 *length,s32 saverOffset,SAVERTYPE *dwSaverType,
 		_consolePrintf("here 1\n");
 		if(find)
 		{
-//			*dwSaverType = SRAM_TYPE ; //±íÊ¾´æµµÀàĞÍÎªsram
+//			*dwSaverType = SRAM_TYPE ; //è¡¨ç¤ºå­˜æ¡£ç±»å‹ä¸ºsram
 			*dwSaveSize = 32768;
 			SaverType=SRAM_TYPE;
 			dwSaverType=&SaverType;
@@ -1923,7 +1923,7 @@ s32 SaverPatchPsRam(u8 **buf,s32 *length,s32 saverOffset,SAVERTYPE *dwSaverType,
 			_consolePrintf("find[11]=%x\n",(char)find[11]);
 			
 			if((char)find[9]=='1'&&(char)find[10]=='0'&&(char)find[11]=='3')
-			{//special ¿Ú´üÑı¹Ö
+			{//special å£è¢‹å¦–æ€ª
 			
 				s32 off0=0;
 				s32 off1=0;
@@ -2113,7 +2113,7 @@ void FreeQuickPatchData()
 	_consolePrintf("\nfree Struct");
 	if(g_GBAPatchDataHead.dwPatchNum)
 	{
-		//ÊÍ·ÅÄÚ´æ
+		//é‡Šæ”¾å†…å­˜
 		GBAPatchData *p=m_pGBAPatchData;
 		while(p)
 		{

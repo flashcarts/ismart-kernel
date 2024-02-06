@@ -195,7 +195,7 @@ enum ETextViewSkinAlpha {ETVA_Bookmark_Cursor,ETVA_Bookmark_Clear,ETVA_Bookmark_
 
 extern CglTGF* TextViewAlpha_GetSkin(ETextViewSkinAlpha TextViewSkinAlpha);
 
-//added by mj 20090414 设置和金手指窗口
+//added by mj 20090414 璁剧疆鍜岄噾鎵嬫寚绐楀彛
 
 enum ESetupWSkinAlpha {ESWSA_SetupWBG,/*ESWSA_SelectOptionBG,ESWSA_Opt_LET0,ESWSA_Opt_LET1,ESWSA_Opt_RIT0,ESWSA_Opt_RIT1,ESWSA_Opt_BG,*/
 						ESWSACount};

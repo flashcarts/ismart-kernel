@@ -27,12 +27,12 @@ bool ProcState_RequestSave;
 
 static void DataInit(void)
 {
-    //ËùÓĞÀàËÆ½ø³ÌµÄ½á¹¹
+    //æ‰€æœ‰ç±»ä¼¼è¿›ç¨‹çš„ç»“æ„
     TProcState *pstate=&ProcState;
-    //½á¹¹°æ±¾ºÅ
+    //ç»“æ„ç‰ˆæœ¬å·
     pstate->Version=CurrentProcStateVersion;
   
-  {//ÏµÍ³×´Ì¬,LCDÏµÍ³
+  {//ç³»ç»ŸçŠ¶æ€,LCDç³»ç»Ÿ
     TProcState_System *psys=&pstate->System;
     psys->SkipSetup=false;
     psys->BootCheckDisk=true;
@@ -53,7 +53,7 @@ static void DataInit(void)
     psys->Reserved3=(u32)-1;
   }
   
-  {//ÎÄ¼şÁĞ±í´¦ÀíÏµÍ³×´Ì¬
+  {//æ–‡ä»¶åˆ—è¡¨å¤„ç†ç³»ç»ŸçŠ¶æ€
     TProcState_FileList *pfl=&pstate->FileList;
     pfl->CurrentPathUnicode[0]=(UnicodeChar)'/';
     pfl->CurrentPathUnicode[1]=(UnicodeChar)0;
@@ -76,7 +76,7 @@ static void DataInit(void)
     pfl->Reserved3=(u32)-1;
   }
   
-  {//DPG ²¥·ÅÏµÍ³´¦Àí
+  {//DPG æ’­æ”¾ç³»ç»Ÿå¤„ç†
     TProcState_DPG *pdpg=&pstate->DPG;
     pdpg->EnabledFastStart=true;
     pdpg->PlayMode=EDPM_AllRep;
@@ -84,7 +84,7 @@ static void DataInit(void)
     pdpg->PauseWhenPanelClosed=true;
   }
   
-  {//Í¼Æ¬´¦ÀíÏµÍ³³õÊ¼ÉèÖÃ
+  {//å›¾ç‰‡å¤„ç†ç³»ç»Ÿåˆå§‹è®¾ç½®
     TProcState_Image *pimg=&pstate->Image;
     pimg->MultipleFix8=1*0x100;
     pimg->ShowInfomation=true;
@@ -98,7 +98,7 @@ static void DataInit(void)
     pimg->EffectPastelForBottomBG=true;
   }
   
-  {//txtÎÄ¼şÏµÍ³³õÊ¼ÉèÖÃ
+  {//txtæ–‡ä»¶ç³»ç»Ÿåˆå§‹è®¾ç½®
     TProcState_Text *ptxt=&pstate->Text;
     ptxt->TopScrMode=ETTSM_Clock;
     ptxt->ScreenSaver_BlackMode=true;
@@ -129,14 +129,14 @@ static u32 DataSectorIndex=0;
 
 void ProcState_Init(void)
 {
-    //³õÊ¼»¯ÏµÍ³µÄ½á¹¹
+    //åˆå§‹åŒ–ç³»ç»Ÿçš„ç»“æ„
     DataInit();
   
     ProcState_RequestSave=false;
   
     DataSectorIndex=0;
     
-    //¸üĞÂsplash¶¯»­µÄÏÔÊ¾×´Ì¬
+    //æ›´æ–°splashåŠ¨ç”»çš„æ˜¾ç¤ºçŠ¶æ€
     Splash_Update();
   
     const char *fn=DefaultDataPath "/" DataFilename;
@@ -150,7 +150,7 @@ void ProcState_Init(void)
             if(FAT2_GetFileSize(pf)==512)
             {
                 if(pf->firstCluster!=0)
-                {//Ö±½Ó´ò¿ªÎÄ¼şµÄÔÚTF¿¨µÄËùÔÚÎïÀíÉÈÇø
+                {//ç›´æ¥æ‰“å¼€æ–‡ä»¶çš„åœ¨TFå¡çš„æ‰€åœ¨ç‰©ç†æ‰‡åŒº
                     DataSectorIndex=FAT2_ClustToSect(pf->firstCluster);
                 }
             }
@@ -222,13 +222,13 @@ static void* fbuf_GetCurrentPointer(void)
 void ProcState_Load(void)
 {
     _consolePrintf("Load settings.\n");
-    //¶ÁÈ¡ÉèÖÃÎÄ¼şµÄÒ»¸öSetctor
+    //è¯»å–è®¾ç½®æ–‡ä»¶çš„ä¸€ä¸ªSetctor
     fbuf_LoadFromDisk();
     fbuf_SetPos(0);
   
     Splash_Update();
   
-    //¶ÁÈ¡32bit
+    //è¯»å–32bit
     u32 ver=fbuf_r32();
     if(ver!=CurrentProcStateVersion)
     {
@@ -240,7 +240,7 @@ void ProcState_Load(void)
         Splash_Update();
         _consolePrint("Setting load from file.\n");
     
-        //¶ÁÈ¡È±Ê¡µÄÉèÖÃ
+        //è¯»å–ç¼ºçœçš„è®¾ç½®
         TZLIBData ZLIBData;
     
         ZLIBData.SrcSize=fbuf_r32();
@@ -260,7 +260,7 @@ void ProcState_Load(void)
   
     Splash_Update();
    
-    //¼ì²é·Ç·¨²ÎÊı
+    //æ£€æŸ¥éæ³•å‚æ•°
     u32 FontSize=ProcState.Text.FontSize;
     if((FontSize!=Text_FontSize_Small)&&(FontSize!=Text_FontSize_Middle)&&(FontSize!=Text_FontSize_Large))
     {

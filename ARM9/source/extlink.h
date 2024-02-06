@@ -2,7 +2,7 @@
 #ifndef extlink_h
 #define extlink_h
 
-extern void ExtLink_Init(void); // ƒƒ‚ƒŠƒƒbƒN‘O‚ÉŒÄ‚Ô‚±‚Æ
+extern void ExtLink_Init(void); // ãƒ¡ãƒ¢ãƒªãƒ­ãƒƒã‚¯å‰ã«å‘¼ã¶ã“ã¨
 extern u32 ExtLink_GetTargetIndex(u32 Ext32);
 extern const UnicodeChar* ExtLink_GetNDSFullPathFilenameUnicode(u32 idx);
 

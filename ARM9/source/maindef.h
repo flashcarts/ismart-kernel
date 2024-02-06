@@ -17,7 +17,7 @@ extern __declspec(noreturn) void ShowLogHalt(void);
 #define TCM_StackStart (0x02803f00)
 extern u32 *pDTCMEND,*pMTCMEND;
 
-static inline void DTCM_StackCheck(s32 ID) // “®‰æˆÈŠOƒ‚[ƒh—pƒXƒ^ƒbƒNƒI[ƒo[ƒtƒ[ƒ`ƒFƒbƒN
+static inline void DTCM_StackCheck(s32 ID) // å‹•ç”»ä»¥å¤–ãƒ¢ãƒ¼ãƒ‰ç”¨ã‚¹ã‚¿ãƒƒã‚¯ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ãƒã‚§ãƒƒã‚¯
 {
   u32 *p=pDTCMEND;
   if(*p!=(u32)p){
@@ -31,7 +31,7 @@ static inline void DTCM_StackCheck(s32 ID) // “®‰æˆÈŠOƒ‚[ƒh—pƒXƒ^ƒbƒNƒI[ƒo[ƒt
   _consolePrintf("DStack:%d Pos:%d, Used:%d, Total:%d.\n",ID,TCM_StackStart-(u32)__current_sp(),TCM_StackStart-(u32)p,TCM_StackStart-(u32)pDTCMEND);
 }
 
-static inline void MTCM_StackCheck(s32 ID) // “®‰æƒ‚[ƒh—pƒXƒ^ƒbƒNƒI[ƒo[ƒtƒ[ƒ`ƒFƒbƒN
+static inline void MTCM_StackCheck(s32 ID) // å‹•ç”»ãƒ¢ãƒ¼ãƒ‰ç”¨ã‚¹ã‚¿ãƒƒã‚¯ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ãƒã‚§ãƒƒã‚¯
 {
   u32 *p=pMTCMEND;
   if(*p!=(u32)p){

@@ -34,7 +34,7 @@
 
 CODE_IN_ITCM void DCache_FlushRangeOverrun(const void *v,u32 size)
 {
-//  Flush up. (ƒ_[ƒeƒB[ƒf[ƒ^‚ðƒ‰ƒCƒgƒoƒbƒN‚¹‚¸‚ÉƒLƒƒƒbƒVƒ…‚ð–³Œø‰»‚·‚éj
+//  Flush up. (ãƒ€ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ©ã‚¤ãƒˆãƒãƒƒã‚¯ã›ãšã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ç„¡åŠ¹åŒ–ã™ã‚‹ï¼‰
 
   u32 va=(u32)v;
   if((va<0x02000000)||(0x02400000<=va)) return;
@@ -58,7 +58,7 @@ CODE_IN_ITCM void DCache_FlushRangeOverrun(const void *v,u32 size)
 
 CODE_IN_ITCM void DCache_CleanRangeOverrun(const void *v,u32 size)
 {
-// Clean up. (ƒ_[ƒeƒB[ƒf[ƒ^‚ðƒ‰ƒCƒgƒoƒbƒtƒ@‚É‘—‚Á‚ÄƒNƒŠƒA‚·‚éBƒLƒƒƒbƒVƒ…‚Í—LŒø‚Ì‚Ü‚Üj
+// Clean up. (ãƒ€ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ©ã‚¤ãƒˆãƒãƒƒãƒ•ã‚¡ã«é€ã£ã¦ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã¯æœ‰åŠ¹ã®ã¾ã¾ï¼‰
 
   u32 va=(u32)v;
   if((va<0x02000000)||(0x02400000<=va)) return;
@@ -398,7 +398,7 @@ void *safemalloc(int size)
   
   if(size<=0) return(NULL);
   
-  void *ptr=malloc(size+(8*2)); // æ“ª’¼‘O‚ÆI’[’¼Œã‚ÉŒŸ¸ƒR[ƒh‚ð“ü‚ê‚é
+  void *ptr=malloc(size+(8*2)); // å…ˆé ­ç›´å‰ã¨çµ‚ç«¯ç›´å¾Œã«æ¤œæŸ»ã‚³ãƒ¼ãƒ‰ã‚’å…¥ã‚Œã‚‹
   
   if(ptr==NULL){
     _consolePrintf("safemalloc(%d) fail allocate error.\n",size);

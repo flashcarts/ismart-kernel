@@ -88,7 +88,7 @@ void CglCanvas::FillFull(const u16 _Color)
 
 void CglCanvas::FillFast(const int x,const int y,const int w,const int h)
 {
-  // ğŒFƒLƒƒƒ“ƒoƒX‰¡ƒTƒCƒY‚ª2pixel’PˆÊAx,w‚ª2pixel’PˆÊ
+  // æ¡ä»¶ï¼šã‚­ãƒ£ãƒ³ãƒã‚¹æ¨ªã‚µã‚¤ã‚ºãŒ2pixelå˜ä½ã€x,wãŒ2pixelå˜ä½
   
   u32 col=(u32)(Color | (Color<<16));
   
@@ -693,41 +693,41 @@ u8* CglCanvas::CreateBMPImage(u32 *size) const
   
   // BITMAPFILEHEADER
   
-  // bfType 2 byte ƒtƒ@ƒCƒ‹ƒ^ƒCƒv 'BM' - OS/2, Windows Bitmap
+  // bfType 2 byte ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ— 'BM' - OS/2, Windows Bitmap
   add8((u8)'B');
   add8((u8)'M');
-  // bfSize 4 byte ƒtƒ@ƒCƒ‹ƒTƒCƒY (byte)
+  // bfSize 4 byte ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚º (byte)
   add32(bufsize);
-  // bfReserved1 2 byte —\–ñ—Ìˆæ í‚É 0
+  // bfReserved1 2 byte äºˆç´„é ˜åŸŸ å¸¸ã« 0
   add16(0);
-  // bfReserved2 2 byte —\–ñ—Ìˆæ í‚É 0
+  // bfReserved2 2 byte äºˆç´„é ˜åŸŸ å¸¸ã« 0
   add16(0);
-  // bfOffBits 4 byte ƒtƒ@ƒCƒ‹æ“ª‚©‚ç‰æ‘œƒf[ƒ^‚Ü‚Å‚ÌƒIƒtƒZƒbƒg (byte)
+  // bfOffBits 4 byte ãƒ•ã‚¡ã‚¤ãƒ«å…ˆé ­ã‹ã‚‰ç”»åƒãƒ‡ãƒ¼ã‚¿ã¾ã§ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ (byte)
   add32(14+40);
   
   // BITMAPINFOHEADER
   
-  // biSize 4 byte î•ñƒwƒbƒ_‚ÌƒTƒCƒY (byte) 40
+  // biSize 4 byte æƒ…å ±ãƒ˜ãƒƒãƒ€ã®ã‚µã‚¤ã‚º (byte) 40
   add32(40);
-  // biWidth 4 byte ‰æ‘œ‚Ì• (ƒsƒNƒZƒ‹)
+  // biWidth 4 byte ç”»åƒã®å¹… (ãƒ”ã‚¯ã‚»ãƒ«)
   add32(Width);
-  // biHeight 4 byte ‰æ‘œ‚Ì‚‚³ (ƒsƒNƒZƒ‹) biHeight ‚Ì’l‚ª³”‚È‚çC‰æ‘œƒf[ƒ^‚Í‰º‚©‚çã‚Ö
+  // biHeight 4 byte ç”»åƒã®é«˜ã• (ãƒ”ã‚¯ã‚»ãƒ«) biHeight ã®å€¤ãŒæ­£æ•°ãªã‚‰ï¼Œç”»åƒãƒ‡ãƒ¼ã‚¿ã¯ä¸‹ã‹ã‚‰ä¸Šã¸
   add32(Height);
-  // biPlanes 2 byte ƒvƒŒ[ƒ“” í‚É 1
+  // biPlanes 2 byte ãƒ—ãƒ¬ãƒ¼ãƒ³æ•° å¸¸ã« 1
   add16(1);
-  // biBitCount 2 byte 1 ‰æ‘f‚ ‚½‚è‚Ìƒf[ƒ^ƒTƒCƒY (bit)
+  // biBitCount 2 byte 1 ç”»ç´ ã‚ãŸã‚Šã®ãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚º (bit)
   add16(24);
-  // biCopmression 4 byte ˆ³kŒ`® 0 - BI_RGB (–³ˆ³k)
+  // biCopmression 4 byte åœ§ç¸®å½¢å¼ 0 - BI_RGB (ç„¡åœ§ç¸®)
   add32(0);
-  // biSizeImage 4 byte ‰æ‘œƒf[ƒ^•”‚ÌƒTƒCƒY (byte) 96dpi ‚È‚ç‚Î3780
+  // biSizeImage 4 byte ç”»åƒãƒ‡ãƒ¼ã‚¿éƒ¨ã®ã‚µã‚¤ã‚º (byte) 96dpi ãªã‚‰ã°3780
   add32(0);
-  // biXPixPerMeter 4 byte ‰¡•ûŒü‰ğ‘œ“x (1m‚ ‚½‚è‚Ì‰æ‘f”) 96dpi ‚È‚ç‚Î3780
+  // biXPixPerMeter 4 byte æ¨ªæ–¹å‘è§£åƒåº¦ (1mã‚ãŸã‚Šã®ç”»ç´ æ•°) 96dpi ãªã‚‰ã°3780
   add32(0);
-  // biYPixPerMeter 4 byte c•ûŒü‰ğ‘œ“x (1m‚ ‚½‚è‚Ì‰æ‘f”) 96dpi ‚È‚ç‚Î3780
+  // biYPixPerMeter 4 byte ç¸¦æ–¹å‘è§£åƒåº¦ (1mã‚ãŸã‚Šã®ç”»ç´ æ•°) 96dpi ãªã‚‰ã°3780
   add32(0);
-  // biClrUsed 4 byte Ši”[‚³‚ê‚Ä‚¢‚éƒpƒŒƒbƒg” (g—pF”) 0 ‚Ìê‡‚à‚ ‚é
+  // biClrUsed 4 byte æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ãƒ‘ãƒ¬ãƒƒãƒˆæ•° (ä½¿ç”¨è‰²æ•°) 0 ã®å ´åˆã‚‚ã‚ã‚‹
   add32(0);
-  // biCirImportant 4 byte d—v‚ÈƒpƒŒƒbƒg‚ÌƒCƒ“ƒfƒbƒNƒX 0 ‚Ìê‡‚à‚ ‚é
+  // biCirImportant 4 byte é‡è¦ãªãƒ‘ãƒ¬ãƒƒãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ 0 ã®å ´åˆã‚‚ã‚ã‚‹
   add32(0);
   
   for(int y=Height-1;0<=y;y--){

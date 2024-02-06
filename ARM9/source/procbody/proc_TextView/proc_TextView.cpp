@@ -553,7 +553,7 @@ static void CB_MouseMove(s32 x,s32 y)
   }
   
   if(mbodyf==true){
-    s32 h=ShowLineHeight/2; // ¥¿¥Ã¥Á¤ÎÇÜ¤ÎÂ®ÅÙ¤Ç¥¹¥¯¥í¡¼¥ë¤¹¤ë
+    s32 h=ShowLineHeight/2; // ã‚¿ãƒƒãƒã®å€ã®é€Ÿåº¦ã§ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹
     s32 mv=y-mbodyy;
     s32 v=0;
     while(mv<=-h){
@@ -773,7 +773,7 @@ static void CB_Start(void)
   InitMsg_Draw(Lang_GetUTF8("TV_PRG_LoadExtendFont"));
   ExtFont_LoadBody();
   
-  // ¥Æ¥­¥¹¥ÈÊÑ´¹¸å¤Ë¥¹¥­¥ó¤òÆÉ¤ß¹ş¤à
+  // ãƒ†ã‚­ã‚¹ãƒˆå¤‰æ›å¾Œã«ã‚¹ã‚­ãƒ³ã‚’èª­ã¿è¾¼ã‚€
   InitMsg_Draw(Lang_GetUTF8("TV_PRG_LoadSkinData"));
   Skin_Load_TextView_AfterLoad();
   pTmpBM=new CglCanvas(NULL,ScreenWidth,ScreenHeight,pf15bit);
